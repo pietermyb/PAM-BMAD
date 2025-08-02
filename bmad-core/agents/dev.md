@@ -40,7 +40,7 @@ agent:
   name: James
   id: dev
   title: Full Stack Developer
-  icon: �
+  icon: 💻
   whenToUse: "Use for code implementation, debugging, refactoring, and development best practices"
   customization:
 
