@@ -1,0 +1,540 @@
+template:
+  id: enterprise-architecture-template-v1
+  name: Enterprise Architecture Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/enterprise-architecture.md
+    title: "{{project_name}} Enterprise Architecture Document"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: |
+      Review any provided relevant documents to gather enterprise context before beginning. This document follows TOGAF methodology and should align with enterprise architecture frameworks.
+    sections:
+      - id: intro-content
+        content: |
+          This document outlines the enterprise architecture for {{project_name}}, following TOGAF methodology and enterprise architecture best practices. It provides a comprehensive view of the enterprise's current state, target state, and transition roadmap.
+          
+          **Framework Alignment:**
+          This enterprise architecture document follows TOGAF ADM (Architecture Development Method), Zachman Framework perspectives, and Enterprise Architecture Planning (EAP) principles.
+      - id: framework-overview
+        title: Framework Overview
+        instruction: |
+          Document the enterprise architecture framework approach:
+          
+          1. TOGAF ADM Phase Alignment
+          2. Zachman Framework Perspectives
+          3. EAP Methodology Integration
+          4. Custom Framework Adaptations
+          5. Governance and Compliance Requirements
+        elicit: true
+      - id: changelog
+        title: Change Log
+        type: table
+        columns: [Date, Version, Description, Author]
+        instruction: Track document versions and changes
+
+  - id: architecture-vision
+    title: Architecture Vision
+    instruction: |
+      This section establishes the vision and scope for the enterprise architecture.
+    sections:
+      - id: business-context
+        title: Business Context
+        instruction: |
+          Document the business context for the enterprise architecture:
+          
+          1. Business Strategy and Objectives
+          2. Business Drivers and Motivations
+          3. Strategic Business Goals
+          4. Business Constraints and Assumptions
+          5. Success Criteria and KPIs
+        elicit: true
+      - id: architecture-scope
+        title: Architecture Scope
+        instruction: |
+          Define the scope of the enterprise architecture:
+          
+          1. Organizational Scope
+          2. Functional Scope
+          3. Technical Scope
+          4. Geographic Scope
+          5. Temporal Scope
+        elicit: true
+      - id: stakeholder-analysis
+        title: Stakeholder Analysis
+        instruction: |
+          Identify and analyze enterprise stakeholders:
+          
+          1. Executive Stakeholders
+          2. Business Stakeholders
+          3. IT Stakeholders
+          4. External Stakeholders
+          5. Stakeholder Concerns and Requirements
+        elicit: true
+
+  - id: current-state-architecture
+    title: Current State Architecture
+    instruction: |
+      This section documents the current state of the enterprise architecture.
+    sections:
+      - id: business-architecture-current
+        title: Current Business Architecture
+        instruction: |
+          Document the current business architecture:
+          
+          1. Business Functions and Processes
+          2. Organizational Structure
+          3. Business Capabilities
+          4. Business Information
+          5. Business Locations
+        elicit: true
+      - id: data-architecture-current
+        title: Current Data Architecture
+        instruction: |
+          Document the current data architecture:
+          
+          1. Data Entities and Relationships
+          2. Data Stores and Repositories
+          3. Data Flows and Integration
+          4. Data Quality and Governance
+          5. Data Security and Privacy
+        elicit: true
+      - id: application-architecture-current
+        title: Current Application Architecture
+        instruction: |
+          Document the current application architecture:
+          
+          1. Application Portfolio
+          2. Application Interfaces
+          3. Application Dependencies
+          4. Application Lifecycle
+          5. Application Performance
+        elicit: true
+      - id: technology-architecture-current
+        title: Current Technology Architecture
+        instruction: |
+          Document the current technology architecture:
+          
+          1. Technology Stack
+          2. Infrastructure Components
+          3. Network Architecture
+          4. Security Infrastructure
+          5. Technology Standards
+        elicit: true
+      - id: current-state-diagram
+        title: Current State Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a comprehensive current state diagram showing:
+          
+          1. Business functions and processes
+          2. Applications and systems
+          3. Data stores and flows
+          4. Technology infrastructure
+          5. Integration points
+
+  - id: target-state-architecture
+    title: Target State Architecture
+    instruction: |
+      This section defines the target state of the enterprise architecture.
+    sections:
+      - id: business-architecture-target
+        title: Target Business Architecture
+        instruction: |
+          Define the target business architecture:
+          
+          1. Target Business Functions
+          2. Target Organizational Structure
+          3. Target Business Capabilities
+          4. Target Business Information
+          5. Target Business Locations
+        elicit: true
+      - id: data-architecture-target
+        title: Target Data Architecture
+        instruction: |
+          Define the target data architecture:
+          
+          1. Target Data Model
+          2. Target Data Stores
+          3. Target Data Integration
+          4. Target Data Governance
+          5. Target Data Security
+        elicit: true
+      - id: application-architecture-target
+        title: Target Application Architecture
+        instruction: |
+          Define the target application architecture:
+          
+          1. Target Application Portfolio
+          2. Target Application Interfaces
+          3. Target Application Patterns
+          4. Target Application Lifecycle
+          5. Target Application Performance
+        elicit: true
+      - id: technology-architecture-target
+        title: Target Technology Architecture
+        instruction: |
+          Define the target technology architecture:
+          
+          1. Target Technology Stack
+          2. Target Infrastructure
+          3. Target Network Architecture
+          4. Target Security Architecture
+          5. Target Technology Standards
+        elicit: true
+      - id: target-state-diagram
+        title: Target State Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a comprehensive target state diagram showing:
+          
+          1. Target business architecture
+          2. Target application architecture
+          3. Target data architecture
+          4. Target technology architecture
+          5. Target integration patterns
+
+  - id: gap-analysis
+    title: Gap Analysis
+    instruction: |
+      This section analyzes the gaps between current and target state.
+    sections:
+      - id: business-gaps
+        title: Business Architecture Gaps
+        instruction: |
+          Identify gaps in business architecture:
+          
+          1. Business Function Gaps
+          2. Business Process Gaps
+          3. Business Capability Gaps
+          4. Organizational Gaps
+          5. Business Information Gaps
+        elicit: true
+      - id: data-gaps
+        title: Data Architecture Gaps
+        instruction: |
+          Identify gaps in data architecture:
+          
+          1. Data Model Gaps
+          2. Data Integration Gaps
+          3. Data Quality Gaps
+          4. Data Governance Gaps
+          5. Data Security Gaps
+        elicit: true
+      - id: application-gaps
+        title: Application Architecture Gaps
+        instruction: |
+          Identify gaps in application architecture:
+          
+          1. Application Portfolio Gaps
+          2. Application Integration Gaps
+          3. Application Functionality Gaps
+          4. Application Performance Gaps
+          5. Application Lifecycle Gaps
+        elicit: true
+      - id: technology-gaps
+        title: Technology Architecture Gaps
+        instruction: |
+          Identify gaps in technology architecture:
+          
+          1. Technology Stack Gaps
+          2. Infrastructure Gaps
+          3. Network Gaps
+          4. Security Gaps
+          5. Standards Gaps
+        elicit: true
+      - id: gap-analysis-table
+        title: Gap Analysis Summary
+        type: table
+        columns: [Architecture Domain, Current State, Target State, Gap, Impact, Priority]
+        instruction: |
+          Summarize all identified gaps
+
+  - id: architecture-requirements
+    title: Architecture Requirements
+    instruction: |
+      This section defines the requirements for the enterprise architecture.
+    sections:
+      - id: functional-requirements
+        title: Functional Requirements
+        instruction: |
+          Define functional requirements:
+          
+          1. Business Functional Requirements
+          2. Application Functional Requirements
+          3. Data Functional Requirements
+          4. Technology Functional Requirements
+          5. Integration Requirements
+        elicit: true
+      - id: non-functional-requirements
+        title: Non-Functional Requirements
+        instruction: |
+          Define non-functional requirements:
+          
+          1. Performance Requirements
+          2. Scalability Requirements
+          3. Security Requirements
+          4. Availability Requirements
+          5. Compliance Requirements
+        elicit: true
+      - id: constraints
+        title: Architecture Constraints
+        instruction: |
+          Identify architecture constraints:
+          
+          1. Business Constraints
+          2. Technical Constraints
+          3. Organizational Constraints
+          4. Regulatory Constraints
+          5. Budget and Timeline Constraints
+        elicit: true
+
+  - id: architecture-principles
+    title: Architecture Principles
+    instruction: |
+      This section defines the principles that guide the enterprise architecture.
+    sections:
+      - id: business-principles
+        title: Business Principles
+        instruction: |
+          Define business architecture principles:
+          
+          1. Business Alignment Principles
+          2. Customer-Centric Principles
+          3. Process Optimization Principles
+          4. Information Management Principles
+          5. Governance Principles
+        elicit: true
+      - id: data-principles
+        title: Data Principles
+        instruction: |
+          Define data architecture principles:
+          
+          1. Data Ownership Principles
+          2. Data Quality Principles
+          3. Data Security Principles
+          4. Data Integration Principles
+          5. Data Governance Principles
+        elicit: true
+      - id: application-principles
+        title: Application Principles
+        instruction: |
+          Define application architecture principles:
+          
+          1. Application Design Principles
+          2. Application Integration Principles
+          3. Application Lifecycle Principles
+          4. Application Security Principles
+          5. Application Performance Principles
+        elicit: true
+      - id: technology-principles
+        title: Technology Principles
+        instruction: |
+          Define technology architecture principles:
+          
+          1. Technology Selection Principles
+          2. Infrastructure Principles
+          3. Security Principles
+          4. Standards Principles
+          5. Innovation Principles
+        elicit: true
+
+  - id: architecture-standards
+    title: Architecture Standards
+    instruction: |
+      This section defines the standards for the enterprise architecture.
+    sections:
+      - id: technology-standards
+        title: Technology Standards
+        instruction: |
+          Define technology standards:
+          
+          1. Programming Languages
+          2. Frameworks and Libraries
+          3. Databases and Storage
+          4. Middleware and Integration
+          5. Infrastructure and Platforms
+        elicit: true
+      - id: data-standards
+        title: Data Standards
+        instruction: |
+          Define data standards:
+          
+          1. Data Modeling Standards
+          2. Data Exchange Standards
+          3. Data Quality Standards
+          4. Data Security Standards
+          5. Data Governance Standards
+        elicit: true
+      - id: application-standards
+        title: Application Standards
+        instruction: |
+          Define application standards:
+          
+          1. Application Design Standards
+          2. API Design Standards
+          3. User Interface Standards
+          4. Application Security Standards
+          5. Application Testing Standards
+        elicit: true
+      - id: integration-standards
+        title: Integration Standards
+        instruction: |
+          Define integration standards:
+          
+          1. Integration Patterns
+          2. Message Formats
+          3. Protocol Standards
+          4. Security Standards
+          5. Monitoring Standards
+        elicit: true
+
+  - id: implementation-roadmap
+    title: Implementation Roadmap
+    instruction: |
+      This section provides a roadmap for implementing the enterprise architecture.
+    sections:
+      - id: implementation-phases
+        title: Implementation Phases
+        instruction: |
+          Define implementation phases:
+          
+          1. Phase 1: Foundation and Core Infrastructure
+          2. Phase 2: Data Architecture Implementation
+          3. Phase 3: Application Architecture Implementation
+          4. Phase 4: Business Architecture Implementation
+          5. Phase 5: Optimization and Continuous Improvement
+        elicit: true
+      - id: migration-strategy
+        title: Migration Strategy
+        instruction: |
+          Define migration strategy:
+          
+          1. Migration Approach (Big Bang vs Incremental)
+          2. Migration Dependencies
+          3. Risk Mitigation Strategies
+          4. Rollback Plans
+          5. Success Criteria
+        elicit: true
+      - id: roadmap-diagram
+        title: Implementation Roadmap
+        type: mermaid
+        mermaid_type: gantt
+        instruction: |
+          Create a Gantt chart showing:
+          
+          1. Implementation phases
+          2. Key milestones
+          3. Dependencies
+          4. Resource requirements
+          5. Success criteria
+
+  - id: governance
+    title: Architecture Governance
+    instruction: |
+      This section defines the governance framework for the enterprise architecture.
+    sections:
+      - id: governance-structure
+        title: Governance Structure
+        instruction: |
+          Define governance structure:
+          
+          1. Architecture Board
+          2. Architecture Review Board
+          3. Architecture Working Groups
+          4. Roles and Responsibilities
+          5. Decision-Making Authority
+        elicit: true
+      - id: governance-processes
+        title: Governance Processes
+        instruction: |
+          Define governance processes:
+          
+          1. Architecture Review Process
+          2. Change Management Process
+          3. Compliance Monitoring Process
+          4. Exception Management Process
+          5. Continuous Improvement Process
+        elicit: true
+      - id: governance-tools
+        title: Governance Tools
+        instruction: |
+          Define governance tools:
+          
+          1. Architecture Repository
+          2. Modeling Tools
+          3. Governance Dashboards
+          4. Compliance Monitoring Tools
+          5. Communication Tools
+        elicit: true
+
+  - id: risks-and-mitigation
+    title: Risks and Mitigation
+    instruction: |
+      This section identifies and addresses enterprise architecture risks.
+    sections:
+      - id: risk-assessment
+        title: Risk Assessment
+        type: table
+        columns: [Risk, Impact, Probability, Mitigation Strategy, Owner]
+        instruction: |
+          Identify and assess enterprise architecture risks
+      - id: risk-mitigation
+        title: Risk Mitigation Strategies
+        instruction: |
+          Define detailed risk mitigation strategies:
+          
+          1. Strategic Risks
+          2. Operational Risks
+          3. Technical Risks
+          4. Organizational Risks
+          5. External Risks
+        elicit: true
+
+  - id: success-metrics
+    title: Success Metrics
+    instruction: |
+      This section defines how success will be measured.
+    sections:
+      - id: business-metrics
+        title: Business Metrics
+        instruction: |
+          Define business success metrics:
+          
+          1. Business Value Metrics
+          2. Efficiency Metrics
+          3. Agility Metrics
+          4. Innovation Metrics
+          5. Customer Satisfaction Metrics
+        elicit: true
+      - id: technical-metrics
+        title: Technical Metrics
+        instruction: |
+          Define technical success metrics:
+          
+          1. Performance Metrics
+          2. Quality Metrics
+          3. Security Metrics
+          4. Availability Metrics
+          5. Maintainability Metrics
+        elicit: true
+      - id: measurement-framework
+        title: Measurement Framework
+        instruction: |
+          Define measurement framework:
+          
+          1. Data Collection Methods
+          2. Reporting Frequency
+          3. Review and Analysis Process
+          4. Continuous Improvement
+          5. Stakeholder Communication
+        elicit: true 

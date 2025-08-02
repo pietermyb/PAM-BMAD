@@ -222,7 +222,7 @@ async function isBinaryFile(filePath) {
  * @param {Object} spinner - Optional spinner instance for progress display
  * @returns {Promise<Object>} Object containing file contents and metadata
  */
-async function aggregateFileContents(files, rootDir, spinner = null) {
+async function aggregateFileContents(files, rootDir, spinner = null, includeContent = true) {
   const results = {
     textFiles: [],
     binaryFiles: [],
@@ -249,14 +249,15 @@ async function aggregateFileContents(files, rootDir, spinner = null) {
           size: (await fs.stat(filePath)).size
         });
       } else {
-        // Read text file content
-        const content = await fs.readFile(filePath, 'utf8');
+        // Read text file content to get size and lines, but store content only if includeContent is true
+        const fullContent = await fs.readFile(filePath, 'utf8');
+        const contentToStore = includeContent ? fullContent : '';
         results.textFiles.push({
           path: relativePath,
           absolutePath: filePath,
-          content: content,
-          size: content.length,
-          lines: content.split('\n').length
+          content: contentToStore,
+          size: fullContent.length,
+          lines: fullContent.split('\n').length
         });
       }
 
@@ -291,7 +292,7 @@ async function aggregateFileContents(files, rootDir, spinner = null) {
  * @param {string} outputPath - The output file path
  * @returns {Promise<void>} Promise that resolves when writing is complete
  */
-async function generateXMLOutput(aggregatedContent, outputPath) {
+async function generateXMLOutput(aggregatedContent, outputPath, includeContent = true) {
   const { textFiles } = aggregatedContent;
 
   // Create write stream for efficient memory usage
@@ -323,18 +324,20 @@ async function generateXMLOutput(aggregatedContent, outputPath) {
       writeStream.write(`  <file path="${escapeXml(file.path)}">`);
 
       // Use CDATA for code content, handling CDATA end sequences properly
-      if (file.content?.trim()) {
-        const indentedContent = indentFileContent(file.content);
-        if (file.content.includes(']]>')) {
-          // If content contains ]]>, split it and wrap each part in CDATA
-          writeStream.write(splitAndWrapCDATA(indentedContent));
-        } else {
+      if (includeContent) {
+        if (file.content?.trim()) {
+          const indentedContent = indentFileContent(file.content);
+          if (file.content.includes(']]>')) {
+            // If content contains ]]>, split it and wrap each part in CDATA
+            writeStream.write(splitAndWrapCDATA(indentedContent));
+          } else {
+            writeStream.write(`<![CDATA[\n${indentedContent}\n    ]]>`);
+          }
+        } else if (file.content) {
+          // Handle empty or whitespace-only content
+          const indentedContent = indentFileContent(file.content);
           writeStream.write(`<![CDATA[\n${indentedContent}\n    ]]>`);
         }
-      } else if (file.content) {
-        // Handle empty or whitespace-only content
-        const indentedContent = indentFileContent(file.content);
-        writeStream.write(`<![CDATA[\n${indentedContent}\n    ]]>`);
       }
 
       // Write file closing tag
@@ -494,10 +497,11 @@ const program = new Command();
 
 program
   .name('bmad-flatten')
-  .description('BMad-Method codebase flattener tool')
+  .description('PAM BMad codebase flattener tool')
   .version('1.0.0')
   .option('-i, --input <path>', 'Input directory to flatten', process.cwd())
   .option('-o, --output <path>', 'Output file path', 'flattened-codebase.xml')
+  .option('-m, --minimal', 'Only export file paths and metadata, without file content', false)
   .action(async (options) => {
     const inputDir = path.resolve(options.input);
     const outputPath = path.resolve(options.output);
@@ -524,7 +528,7 @@ program
       // Process files with progress tracking
       console.log('Reading file contents');
       const processingSpinner = ora('📄 Processing files...').start();
-      const aggregatedContent = await aggregateFileContents(filteredFiles, inputDir, processingSpinner);
+      const aggregatedContent = await aggregateFileContents(filteredFiles, inputDir, processingSpinner, !options.minimal);
       processingSpinner.succeed(`✅ Processed ${aggregatedContent.processedFiles}/${filteredFiles.length} files`);
 
       // Log processing results for test validation
@@ -539,7 +543,7 @@ program
 
       // Generate XML output using streaming
       const xmlSpinner = ora('🔧 Generating XML output...').start();
-      await generateXMLOutput(aggregatedContent, outputPath);
+      await generateXMLOutput(aggregatedContent, outputPath, !options.minimal);
       xmlSpinner.succeed('📝 XML generation completed');
 
       // Calculate and display statistics

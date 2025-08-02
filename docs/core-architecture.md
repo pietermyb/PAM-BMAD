@@ -12,7 +12,7 @@ The systems core module facilitates a full development lifecycle tailored to the
 
 ## 2. System Architecture Diagram
 
-The entire BMad-Method ecosystem is designed around the installed `bmad-core` directory, which acts as the brain of the operation. The `tools` directory provides the means to process and package this brain for different environments.
+The entire PAM BMad ecosystem is designed around the installed `bmad-core` directory, which acts as the brain of the operation. The `tools` directory provides the means to process and package this brain for different environments.
 
 ```mermaid
 graph TD

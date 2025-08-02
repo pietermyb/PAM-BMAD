@@ -6,7 +6,7 @@ Provide a user-friendly interface to the BMad knowledge base without overwhelmin
 
 ## Instructions
 
-When entering KB mode (*kb-mode), follow these steps:
+When entering KB mode (\*kb-mode), follow these steps:
 
 ### 1. Welcome and Guide
 
@@ -27,7 +27,7 @@ Offer a concise list of main topic areas the user might want to explore:
 7. **Configuration** - Customizing BMad for your needs
 8. **Best Practices** - Tips for effective BMad usage
 
-Or ask me about anything else related to BMad-Method!
+Or ask me about anything else related to PAM BMad!
 
 ### 3. Respond Contextually
 
@@ -48,14 +48,14 @@ Or ask me about anything else related to BMad-Method!
 When user is done or wants to exit KB mode:
 
 - Summarize key points discussed if helpful
-- Remind them they can return to KB mode anytime with *kb-mode
+- Remind them they can return to KB mode anytime with \*kb-mode
 - Suggest next steps based on what was discussed
 
 ## Example Interaction
 
-**User**: *kb-mode
+**User**: \*kb-mode
 
-**Assistant**: I've entered KB mode and have access to the full BMad knowledge base. I can help you with detailed information about any aspect of BMad-Method.
+**Assistant**: I've entered KB mode and have access to the full BMad knowledge base. I can help you with detailed information about any aspect of PAM BMad.
 
 **What would you like to know more about?**
 
@@ -68,7 +68,7 @@ When user is done or wants to exit KB mode:
 7. **Configuration** - Customizing BMad for your needs
 8. **Best Practices** - Tips for effective BMad usage
 
-Or ask me about anything else related to BMad-Method!
+Or ask me about anything else related to PAM BMad!
 
 **User**: Tell me about workflows
 

@@ -1,0 +1,38 @@
+name: Threat Model
+description: A document that identifies potential threats and vulnerabilities in an application.
+elicit: true
+elicit-vars:
+  - name: application_name
+    prompt: "What is the name of the application being modeled?"
+  - name: application_description
+    prompt: "Please provide a brief description of the application."
+  - name: trust_boundaries
+    prompt: "What are the trust boundaries of the application?"
+  - name: data_flow
+    prompt: "Describe the data flow of the application."
+  - name: components
+    prompt: "What are the main components of the application?"
+template: |
+  # Threat Model for {{application_name}}
+
+  ## Application Description
+
+  {{application_description}}
+
+  ## Trust Boundaries
+
+  {{trust_boundaries}}
+
+  ## Data Flow Diagram
+
+  {{data_flow}}
+
+  ## Components
+
+  {{components}}
+
+  ## Threats
+
+  | Threat ID | Description | STRIDE Category | Mitigation |
+  |---|---|---|---|
+  | | | | |

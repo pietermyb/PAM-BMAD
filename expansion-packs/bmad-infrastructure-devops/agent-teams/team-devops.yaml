@@ -1,0 +1,12 @@
+bundle:
+  name: Team DevOps
+  icon: 👷
+  description: A team of agents focused on infrastructure, DevOps, and security.
+agents:
+  - infra-devops-platform
+  - security
+workflows:
+  - brownfield-security.yaml
+  - greenfield-security.yaml
+  - brownfield-architecture.yaml
+  - greenfield-architecture.yaml

@@ -1,6 +1,6 @@
 installation-options:
   full:
-    name: Complete BMad Core
+    name: PAM BMad Agile Core System (v1.0.0)
     description: Copy the entire .bmad-core folder with all agents, templates, and tools
     action: copy-folder
     source: bmad-core
@@ -68,12 +68,12 @@ ide-configurations:
       # 4. Rules are stored in .clinerules/ directory in your project
   gemini:
     name: Gemini CLI
-    rule-dir: .gemini/bmad-method/
+    rule-dir: .gemini/PAM-bmad/
     format: single-file
     command-suffix: .md
     instructions: |
       # To use BMad agents with the Gemini CLI:
-      # 1. The installer creates a .gemini/bmad-method/ directory in your project.
+      # 1. The installer creates a .gemini/PAM-bmad/ directory in your project.
       # 2. It concatenates all agent files into a single GEMINI.md file.
       # 3. Simply mention the agent in your prompt (e.g., "As *dev, ...").
       # 4. The Gemini CLI will automatically have the context for that agent.

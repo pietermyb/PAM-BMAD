@@ -33,12 +33,12 @@ try {
 
 program
   .version(version)
-  .description('BMad Method installer - Universal AI agent framework for any domain');
+  .description('PAM BMad Method installer - AI agent framework');
 
 program
   .command('install')
-  .description('Install BMad Method agents and tools')
-  .option('-f, --full', 'Install complete BMad Method')
+  .description('Install PAM BMad Method agents and tools')
+  .option('-f, --full', 'Install complete PAM BMad Method')
   .option('-x, --expansion-only', 'Install only expansion packs (no bmad-core)')
   .option('-d, --directory <path>', 'Installation directory')
   .option('-i, --ide <ide...>', 'Configure for specific IDE(s) - can specify multiple (cursor, claude-code, windsurf, trae, roo, cline, gemini, github-copilot, other)')
@@ -125,8 +125,17 @@ program
   });
 
 async function promptInstallation() {
-  
-  // Display ASCII logo
+
+  // Display PAM ASCII logo (Font Name: ANSI Shadow https://patorjk.com/software/taag/#p=display&h=1&f=ANSI%20Shadow&t=PAM)
+  console.log(chalk.bold.magenta(`
+██████╗  █████╗  ██████╗██╗  ██╗██████╗  █████╗ ███████╗███████╗
+██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝
+██████╔╝███████║██║     █████╔╝ ██████╔╝███████║███████╗█████╗  
+██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══██╗██╔══██║╚════██║██╔══╝  
+██████╔╝██║  ██║╚██████╗██║  ██╗██████╔╝██║  ██║███████║███████╗
+╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝
+                                                                
+`));
   console.log(chalk.bold.cyan(`
 ██████╗ ███╗   ███╗ █████╗ ██████╗       ███╗   ███╗███████╗████████╗██╗  ██╗ ██████╗ ██████╗ 
 ██╔══██╗████╗ ████║██╔══██╗██╔══██╗      ████╗ ████║██╔════╝╚══██╔══╝██║  ██║██╔═══██╗██╔══██╗
@@ -136,7 +145,7 @@ async function promptInstallation() {
 ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═════╝       ╚═╝     ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ 
   `));
   
-  console.log(chalk.bold.magenta('🚀 Universal AI Agent Framework for Any Domain'));
+  console.log(chalk.bold.blue('🚀 PAM AI Agent Framework'));
   console.log(chalk.bold.blue(`✨ Installer v${version}\n`));
 
   const answers = {};
@@ -147,6 +156,7 @@ async function promptInstallation() {
       type: 'input',
       name: 'directory',
       message: 'Enter the full path to your project directory where BMad should be installed:',
+      default: process.cwd(), // Set current working directory as default
       validate: (input) => {
         if (!input.trim()) {
           return 'Please enter a valid project path';
@@ -173,7 +183,7 @@ async function promptInstallation() {
   // Load core config to get short-title
   const coreConfigPath = path.join(__dirname, '..', '..', '..', 'bmad-core', 'core-config.yaml');
   const coreConfig = yaml.load(await fs.readFile(coreConfigPath, 'utf8'));
-  const coreShortTitle = coreConfig['short-title'] || 'BMad Agile Core System';
+  const coreShortTitle = coreConfig['short-title'] || 'PAM BMad Agile Core System';
   
   // Add BMad core option
   let bmadOptionText;

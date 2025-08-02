@@ -1,0 +1,500 @@
+template:
+  id: togaf-artifacts-template-v1
+  name: TOGAF Artifacts Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/togaf-artifacts.md
+    title: "{{project_name}} TOGAF Artifacts"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: |
+      Review any provided relevant documents to gather enterprise context before beginning. This document follows TOGAF ADM methodology.
+    sections:
+      - id: intro-content
+        content: |
+          This document contains the TOGAF artifacts for {{project_name}}, following the TOGAF Architecture Development Method (ADM) and providing comprehensive enterprise architecture documentation.
+          
+          **TOGAF ADM Alignment:**
+          This document follows TOGAF ADM phases and includes all relevant artifacts for each phase of the architecture development process.
+      - id: togaf-overview
+        title: TOGAF ADM Overview
+        instruction: |
+          Document the TOGAF ADM approach:
+          
+          1. ADM Phase Alignment
+          2. Artifact Selection Criteria
+          3. Stakeholder Mapping
+          4. Governance Integration
+          5. Compliance Requirements
+        elicit: true
+      - id: changelog
+        title: Change Log
+        type: table
+        columns: [Date, Version, Description, Author]
+        instruction: Track document versions and changes
+
+  - id: preliminary-phase
+    title: Preliminary Phase Artifacts
+    instruction: |
+      This section contains artifacts from the TOGAF Preliminary Phase.
+    sections:
+      - id: architecture-principles
+        title: Architecture Principles
+        instruction: |
+          Define enterprise architecture principles:
+          
+          1. Business Principles
+          2. Data Principles
+          3. Application Principles
+          4. Technology Principles
+          5. Implementation Principles
+        elicit: true
+      - id: stakeholder-map
+        title: Stakeholder Map
+        instruction: |
+          Create stakeholder mapping:
+          
+          1. Primary Stakeholders
+          2. Secondary Stakeholders
+          3. Stakeholder Concerns
+          4. Communication Requirements
+          5. Decision Authority
+        elicit: true
+      - id: governance-framework
+        title: Governance Framework
+        instruction: |
+          Define governance framework:
+          
+          1. Architecture Board
+          2. Review Processes
+          3. Compliance Requirements
+          4. Change Management
+          5. Performance Monitoring
+        elicit: true
+
+  - id: phase-a
+    title: Phase A - Architecture Vision Artifacts
+    instruction: |
+      This section contains artifacts from TOGAF Phase A.
+    sections:
+      - id: architecture-vision
+        title: Architecture Vision
+        instruction: |
+          Define the architecture vision:
+          
+          1. Business Context
+          2. Strategic Drivers
+          3. Architecture Scope
+          4. Success Criteria
+          5. Risk Assessment
+        elicit: true
+      - id: business-scenarios
+        title: Business Scenarios
+        instruction: |
+          Define business scenarios:
+          
+          1. Key Business Processes
+          2. User Interactions
+          3. System Interactions
+          4. Performance Requirements
+          5. Success Metrics
+        elicit: true
+      - id: architecture-definition-document
+        title: Architecture Definition Document
+        instruction: |
+          Create architecture definition document:
+          
+          1. Problem Statement
+          2. Solution Approach
+          3. Architecture Overview
+          4. Implementation Strategy
+          5. Migration Planning
+        elicit: true
+
+  - id: phase-b
+    title: Phase B - Business Architecture Artifacts
+    instruction: |
+      This section contains artifacts from TOGAF Phase B.
+    sections:
+      - id: business-architecture-model
+        title: Business Architecture Model
+        instruction: |
+          Create business architecture model:
+          
+          1. Business Functions
+          2. Business Processes
+          3. Business Services
+          4. Business Information
+          5. Business Locations
+        elicit: true
+      - id: business-interaction-matrix
+        title: Business Interaction Matrix
+        type: table
+        columns: [Business Function, Business Process, Business Service, Information, Location]
+        instruction: |
+          Create business interaction matrix
+      - id: business-architecture-diagram
+        title: Business Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create business architecture diagram showing:
+          
+          1. Business functions
+          2. Business processes
+          3. Business services
+          4. Information flows
+          5. Organizational structure
+
+  - id: phase-c
+    title: Phase C - Information Systems Architecture Artifacts
+    instruction: |
+      This section contains artifacts from TOGAF Phase C.
+    sections:
+      - id: data-architecture
+        title: Data Architecture
+        instruction: |
+          Define data architecture:
+          
+          1. Logical Data Model
+          2. Data Management Process
+          3. Data Security
+          4. Data Quality
+          5. Data Integration
+        elicit: true
+      - id: application-architecture
+        title: Application Architecture
+        instruction: |
+          Define application architecture:
+          
+          1. Application Portfolio
+          2. Application Interfaces
+          3. Application Dependencies
+          4. Application Lifecycle
+          5. Application Performance
+        elicit: true
+      - id: systems-architecture-diagram
+        title: Systems Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create systems architecture diagram showing:
+          
+          1. Applications
+          2. Data stores
+          3. Interfaces
+          4. Dependencies
+          5. Integration points
+
+  - id: phase-d
+    title: Phase D - Technology Architecture Artifacts
+    instruction: |
+      This section contains artifacts from TOGAF Phase D.
+    sections:
+      - id: technology-architecture
+        title: Technology Architecture
+        instruction: |
+          Define technology architecture:
+          
+          1. Technology Stack
+          2. Infrastructure Components
+          3. Network Architecture
+          4. Security Infrastructure
+          5. Technology Standards
+        elicit: true
+      - id: technology-standards
+        title: Technology Standards
+        instruction: |
+          Define technology standards:
+          
+          1. Platform Standards
+          2. Development Standards
+          3. Integration Standards
+          4. Security Standards
+          5. Operational Standards
+        elicit: true
+      - id: technology-architecture-diagram
+        title: Technology Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create technology architecture diagram showing:
+          
+          1. Technology components
+          2. Infrastructure layers
+          3. Network topology
+          4. Security zones
+          5. Integration patterns
+
+  - id: phase-e
+    title: Phase E - Opportunities and Solutions Artifacts
+    instruction: |
+      This section contains artifacts from TOGAF Phase E.
+    sections:
+      - id: implementation-strategy
+        title: Implementation Strategy
+        instruction: |
+          Define implementation strategy:
+          
+          1. Implementation Approach
+          2. Migration Strategy
+          3. Risk Mitigation
+          4. Resource Planning
+          5. Success Criteria
+        elicit: true
+      - id: work-package-definition
+        title: Work Package Definition
+        instruction: |
+          Define work packages:
+          
+          1. Work Package Scope
+          2. Dependencies
+          3. Resource Requirements
+          4. Timeline
+          5. Deliverables
+        elicit: true
+      - id: implementation-roadmap
+        title: Implementation Roadmap
+        type: mermaid
+        mermaid_type: gantt
+        instruction: |
+          Create implementation roadmap showing:
+          
+          1. Work packages
+          2. Dependencies
+          3. Milestones
+          4. Resource allocation
+          5. Success criteria
+
+  - id: phase-f
+    title: Phase F - Migration Planning Artifacts
+    instruction: |
+      This section contains artifacts from TOGAF Phase F.
+    sections:
+      - id: migration-plan
+        title: Migration Plan
+        instruction: |
+          Define migration plan:
+          
+          1. Migration Approach
+          2. Migration Dependencies
+          3. Risk Assessment
+          4. Rollback Strategy
+          5. Success Metrics
+        elicit: true
+      - id: implementation-governance-model
+        title: Implementation Governance Model
+        instruction: |
+          Define implementation governance:
+          
+          1. Governance Structure
+          2. Review Processes
+          3. Change Management
+          4. Quality Assurance
+          5. Performance Monitoring
+        elicit: true
+      - id: migration-diagram
+        title: Migration Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create migration diagram showing:
+          
+          1. Current state
+          2. Target state
+          3. Migration phases
+          4. Dependencies
+          5. Risk areas
+
+  - id: phase-g
+    title: Phase G - Implementation Governance Artifacts
+    instruction: |
+      This section contains artifacts from TOGAF Phase G.
+    sections:
+      - id: implementation-governance
+        title: Implementation Governance
+        instruction: |
+          Define implementation governance:
+          
+          1. Governance Structure
+          2. Review Processes
+          3. Change Management
+          4. Quality Assurance
+          5. Performance Monitoring
+        elicit: true
+      - id: architecture-compliance
+        title: Architecture Compliance
+        instruction: |
+          Define compliance requirements:
+          
+          1. Compliance Criteria
+          2. Review Process
+          3. Exception Management
+          4. Reporting Requirements
+          5. Continuous Improvement
+        elicit: true
+      - id: governance-dashboard
+        title: Governance Dashboard
+        instruction: |
+          Define governance dashboard:
+          
+          1. Key Metrics
+          2. Performance Indicators
+          3. Risk Monitoring
+          4. Compliance Status
+          5. Action Items
+        elicit: true
+
+  - id: phase-h
+    title: Phase H - Architecture Change Management Artifacts
+    instruction: |
+      This section contains artifacts from TOGAF Phase H.
+    sections:
+      - id: change-management
+        title: Change Management
+        instruction: |
+          Define change management:
+          
+          1. Change Request Process
+          2. Impact Assessment
+          3. Approval Process
+          4. Implementation Planning
+          5. Post-Implementation Review
+        elicit: true
+      - id: architecture-maintenance
+        title: Architecture Maintenance
+        instruction: |
+          Define architecture maintenance:
+          
+          1. Maintenance Schedule
+          2. Update Process
+          3. Version Control
+          4. Communication Plan
+          5. Continuous Improvement
+        elicit: true
+      - id: change-impact-analysis
+        title: Change Impact Analysis
+        type: table
+        columns: [Change Request, Impact Area, Risk Level, Mitigation Strategy, Owner]
+        instruction: |
+          Create change impact analysis table
+
+  - id: requirements-management
+    title: Requirements Management Artifacts
+    instruction: |
+      This section contains artifacts from Requirements Management.
+    sections:
+      - id: requirements-catalog
+        title: Requirements Catalog
+        instruction: |
+          Define requirements catalog:
+          
+          1. Functional Requirements
+          2. Non-Functional Requirements
+          3. Business Requirements
+          4. Technical Requirements
+          5. Compliance Requirements
+        elicit: true
+      - id: requirements-traceability
+        title: Requirements Traceability
+        type: table
+        columns: [Requirement ID, Description, Source, Priority, Status]
+        instruction: |
+          Create requirements traceability matrix
+      - id: requirements-diagram
+        title: Requirements Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create requirements diagram showing:
+          
+          1. Requirements hierarchy
+          2. Dependencies
+          3. Stakeholder relationships
+          4. Implementation status
+          5. Priority levels
+
+  - id: architecture-repository
+    title: Architecture Repository
+    instruction: |
+      This section defines the architecture repository structure.
+    sections:
+      - id: repository-structure
+        title: Repository Structure
+        instruction: |
+          Define repository structure:
+          
+          1. Architecture Metamodel
+          2. Architecture Capability
+          3. Architecture Landscape
+          4. Standards Information Base
+          5. Reference Library
+        elicit: true
+      - id: artifact-catalog
+        title: Artifact Catalog
+        instruction: |
+          Define artifact catalog:
+          
+          1. Business Artifacts
+          2. Data Artifacts
+          3. Application Artifacts
+          4. Technology Artifacts
+          5. Implementation Artifacts
+        elicit: true
+      - id: repository-governance
+        title: Repository Governance
+        instruction: |
+          Define repository governance:
+          
+          1. Access Control
+          2. Version Management
+          3. Quality Assurance
+          4. Maintenance Schedule
+          5. Backup and Recovery
+        elicit: true
+
+  - id: success-criteria
+    title: Success Criteria
+    instruction: |
+      This section defines success criteria for TOGAF implementation.
+    sections:
+      - id: business-success
+        title: Business Success Criteria
+        instruction: |
+          Define business success criteria:
+          
+          1. Strategic Alignment
+          2. Operational Efficiency
+          3. Cost Reduction
+          4. Risk Mitigation
+          5. Innovation Enablement
+        elicit: true
+      - id: technical-success
+        title: Technical Success Criteria
+        instruction: |
+          Define technical success criteria:
+          
+          1. Architecture Quality
+          2. Implementation Success
+          3. Performance Achievement
+          4. Security Compliance
+          5. Scalability Achievement
+        elicit: true
+      - id: governance-success
+        title: Governance Success Criteria
+        instruction: |
+          Define governance success criteria:
+          
+          1. Compliance Achievement
+          2. Decision Quality
+          3. Stakeholder Satisfaction
+          4. Process Efficiency
+          5. Continuous Improvement
+        elicit: true 

@@ -1,0 +1,144 @@
+workflow:
+  id: brownfield-security
+  name: Brownfield Security Enhancement
+  description: >-
+    Agent workflow for assessing and enhancing the security of existing full-stack applications.
+  type: brownfield
+  project_types:
+    - security-audit
+    - vulnerability-remediation
+    - security-hardening
+
+  sequence:
+    - step: project_analysis
+      agent: architect
+      action: analyze existing project and use task document-project
+      creates: brownfield-architecture.md
+      notes: "Run document-project to capture current system state."
+
+    - agent: security
+      action: review-architecture
+      uses: security-checklist
+      requires: brownfield-architecture.md
+      notes: "Reviews the existing architecture against security best practices."
+
+    - agent: security
+      creates: threat-model.md
+      uses: conduct-threat-model
+      requires: brownfield-architecture.md
+      notes: "Conducts a threat modeling session for the existing application. SAVE OUTPUT: Copy final threat-model.md to your project's docs/ folder."
+
+    - agent: pm
+      creates: prd.md
+      uses: brownfield-prd-tmpl
+      requires: 
+        - brownfield-architecture.md
+        - threat-model.md
+      notes: "Creates PRD for security enhancements based on analysis and threat model. SAVE OUTPUT: Copy final prd.md to your project's docs/ folder."
+
+    - agent: architect
+      creates: architecture.md
+      uses: brownfield-architecture-tmpl
+      requires: prd.md
+      condition: architecture_changes_needed
+      notes: "Creates architecture for significant security-driven architectural changes. SAVE OUTPUT: Copy final architecture.md to your project's docs/ folder."
+
+    - agent: po
+      validates: all_artifacts
+      uses: po-master-checklist
+      notes: "Validates all documents for integration safety and completeness."
+
+    - agent: various
+      updates: any_flagged_documents
+      condition: po_checklist_issues
+      notes: "If PO finds issues, return to relevant agent to fix and re-export updated documents to docs/ folder."
+
+    - agent: po
+      action: shard_documents
+      creates: sharded_docs
+      requires: all_artifacts_in_project
+      notes: "Shard documents for IDE development."
+
+    - agent: sm
+      action: create_story
+      creates: story.md
+      requires: sharded_docs
+      repeats: for_each_epic_or_enhancement
+      notes: "Creates story from available documentation."
+
+    - agent: dev
+      action: implement_story
+      creates: implementation_files
+      requires: story.md
+      notes: "Implements approved story."
+
+    - agent: security
+      action: review_code
+      requires: implementation_files
+      optional: true
+      notes: "OPTIONAL: Security agent reviews code for vulnerabilities."
+
+    - agent: qa
+      action: review_implementation
+      updates: implementation_files
+      requires: implementation_files
+      optional: true
+      notes: "OPTIONAL: QA Agent reviews implementation."
+
+    - repeat_development_cycle:
+      action: continue_for_all_stories
+      notes: "Repeat story cycle (SM → Dev → Security/QA) for all epic stories."
+
+    - agent: security
+      action: define-pentest-scope
+      creates: pentest-scope.md
+      condition: project_complete
+      notes: "Defines the scope for a penetration test. SAVE OUTPUT: Copy final pentest-scope.md to your project's docs/ folder."
+
+    - workflow_end:
+      action: project_complete
+      notes: "All stories implemented and reviewed! Project development phase complete."
+
+  flow_diagram: |
+    ```mermaid
+    graph TD
+        A[Start: Brownfield Security Enhancement] --> H[architect: document-project]
+        H --> F[security: review-architecture]
+        F --> G[security: conduct-threat-model]
+        G --> I[pm: brownfield PRD]
+        
+        I --> J{Architecture Needed?}
+        J -->|Yes| K[architect: architecture.md]
+        J -->|No| L[po: validate artifacts]
+        K --> L
+        
+        L --> M{PO finds issues?}
+        M -->|Yes| N[Fix issues]
+        M -->|No| O[po: shard documents]
+        N --> L
+        
+        O --> P[sm: create story]
+        P --> V[dev: implement]
+        
+        V --> W{Security/QA review?}
+        W -->|Yes| X[security/qa: review]
+        W -->|No| Y{More stories?}
+        X --> Z{Issues?}
+        Z -->|Yes| AA[dev: fix]
+        Z -->|No| Y
+        AA --> X
+        Y -->|Yes| P
+        Y -->|No| AB[security: define-pentest-scope]
+        AB --> AD[Complete]
+
+        style AD fill:#90EE90
+        style I fill:#FFE4B5
+        style K fill:#FFE4B5
+        style O fill:#ADD8E6
+        style P fill:#ADD8E6
+        style V fill:#ADD8E6
+        style X fill:#F0E68C
+        style F fill:#FFC0CB
+        style G fill:#FFC0CB
+        style AB fill:#FFC0CB
+    ```

@@ -15,6 +15,9 @@ roo-permissions:
   architect:
     fileRegex: "\\.(md|txt|yml|yaml|json)$"
     description: "Architecture docs and configs"
+  domain-architect:
+    fileRegex: "\\.(md|txt|yml|yaml|json)$"
+    description: "Domain-specific architecture docs and configs"
   qa:
     fileRegex: "\\.(test|spec)\\.(js|ts|jsx|tsx)$|\\.md$"
     description: "Test files and documentation"
@@ -45,14 +48,12 @@ cline-order:
   pm: 3
   analyst: 4
   architect: 5
-  po: 6
-  sm: 7
-  dev: 8
-  qa: 9
-  ux-expert: 10
+  domain-architect: 6
+  po: 7
+  sm: 8
+  dev: 9
+  qa: 10
+  ux-expert: 11
   # Expansion pack agents
-  bmad-the-creator: 11
-  game-designer: 12
-  game-developer: 13
-  game-sm: 14
-  infra-devops-platform: 15
+  bmad-the-creator: 12
+  infra-devops-platform: 13

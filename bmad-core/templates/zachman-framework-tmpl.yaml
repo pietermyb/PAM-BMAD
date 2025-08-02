@@ -1,0 +1,627 @@
+template:
+  id: zachman-framework-template-v1
+  name: Zachman Framework Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/zachman-framework.md
+    title: "{{project_name}} Zachman Framework"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: |
+      Review any provided relevant documents to gather enterprise context before beginning. This document follows Zachman Framework methodology.
+    sections:
+      - id: intro-content
+        content: |
+          This document applies the Zachman Framework to {{project_name}}, providing a comprehensive classification of enterprise architecture artifacts across all perspectives and abstractions.
+          
+          **Zachman Framework Overview:**
+          The Zachman Framework provides a structured approach to organizing enterprise architecture artifacts by stakeholder perspective and abstraction level.
+      - id: zachman-overview
+        title: Zachman Framework Overview
+        instruction: |
+          Document the Zachman Framework approach:
+          
+          1. Framework Application Scope
+          2. Stakeholder Perspectives
+          3. Abstraction Levels
+          4. Artifact Classification
+          5. Governance Integration
+        elicit: true
+      - id: changelog
+        title: Change Log
+        type: table
+        columns: [Date, Version, Description, Author]
+        instruction: Track document versions and changes
+
+  - id: framework-structure
+    title: Framework Structure
+    instruction: |
+      This section defines the Zachman Framework structure and classification.
+    sections:
+      - id: stakeholder-perspectives
+        title: Stakeholder Perspectives
+        instruction: |
+          Define stakeholder perspectives:
+          
+          1. Scope (Planner) - What
+          2. Business Model (Owner) - How
+          3. System Model (Designer) - Where
+          4. Technology Model (Builder) - Who
+          5. Detailed Representations (Subcontractor) - When
+          6. Functioning Enterprise (User) - Why
+        elicit: true
+      - id: abstraction-levels
+        title: Abstraction Levels
+        instruction: |
+          Define abstraction levels:
+          
+          1. Contextual - Scope and Context
+          2. Conceptual - Business Concepts
+          3. Logical - System Logic
+          4. Physical - Technology Implementation
+          5. Out-of-Context - Detailed Specifications
+          6. Operational - Functioning System
+        elicit: true
+      - id: framework-matrix
+        title: Zachman Framework Matrix
+        type: table
+        columns: [Perspective, What, How, Where, Who, When, Why]
+        instruction: |
+          Create Zachman Framework matrix
+
+  - id: scope-perspective
+    title: Scope Perspective (Planner)
+    instruction: |
+      This section contains artifacts from the Scope perspective.
+    sections:
+      - id: scope-what
+        title: What (Scope)
+        instruction: |
+          Define scope artifacts:
+          
+          1. Business Scope
+          2. Enterprise Boundaries
+          3. Business Objectives
+          4. Strategic Goals
+          5. Value Propositions
+        elicit: true
+      - id: scope-how
+        title: How (Scope)
+        instruction: |
+          Define scope processes:
+          
+          1. Business Processes
+          2. Workflows
+          3. Procedures
+          4. Business Rules
+          5. Policies
+        elicit: true
+      - id: scope-where
+        title: Where (Scope)
+        instruction: |
+          Define scope locations:
+          
+          1. Business Locations
+          2. Geographic Distribution
+          3. Organizational Structure
+          4. Business Units
+          5. Market Segments
+        elicit: true
+      - id: scope-who
+        title: Who (Scope)
+        instruction: |
+          Define scope people:
+          
+          1. Stakeholders
+          2. Business Roles
+          3. Responsibilities
+          4. Organizational Units
+          5. External Parties
+        elicit: true
+      - id: scope-when
+        title: When (Scope)
+        instruction: |
+          Define scope timing:
+          
+          1. Business Events
+          2. Triggers
+          3. Schedules
+          4. Deadlines
+          5. Business Cycles
+        elicit: true
+      - id: scope-why
+        title: Why (Scope)
+        instruction: |
+          Define scope motivation:
+          
+          1. Business Goals
+          2. Objectives
+          3. Success Criteria
+          4. Performance Metrics
+          5. Business Drivers
+        elicit: true
+
+  - id: business-model-perspective
+    title: Business Model Perspective (Owner)
+    instruction: |
+      This section contains artifacts from the Business Model perspective.
+    sections:
+      - id: business-what
+        title: What (Business Model)
+        instruction: |
+          Define business model entities:
+          
+          1. Business Entities
+          2. Business Objects
+          3. Business Concepts
+          4. Business Information
+          5. Business Data
+        elicit: true
+      - id: business-how
+        title: How (Business Model)
+        instruction: |
+          Define business model processes:
+          
+          1. Business Functions
+          2. Business Activities
+          3. Business Operations
+          4. Business Services
+          5. Business Capabilities
+        elicit: true
+      - id: business-where
+        title: Where (Business Model)
+        instruction: |
+          Define business model locations:
+          
+          1. Business Locations
+          2. Business Sites
+          3. Business Units
+          4. Business Areas
+          5. Business Domains
+        elicit: true
+      - id: business-who
+        title: Who (Business Model)
+        instruction: |
+          Define business model people:
+          
+          1. Business Roles
+          2. Business Actors
+          3. Business Users
+          4. Business Stakeholders
+          5. Business Organizations
+        elicit: true
+      - id: business-when
+        title: When (Business Model)
+        instruction: |
+          Define business model timing:
+          
+          1. Business Events
+          2. Business Cycles
+          3. Business Schedules
+          4. Business Triggers
+          5. Business Milestones
+        elicit: true
+      - id: business-why
+        title: Why (Business Model)
+        instruction: |
+          Define business model motivation:
+          
+          1. Business Goals
+          2. Business Objectives
+          3. Business Requirements
+          4. Business Benefits
+          5. Business Value
+        elicit: true
+
+  - id: system-model-perspective
+    title: System Model Perspective (Designer)
+    instruction: |
+      This section contains artifacts from the System Model perspective.
+    sections:
+      - id: system-what
+        title: What (System Model)
+        instruction: |
+          Define system model entities:
+          
+          1. Logical Data Model
+          2. Data Entities
+          3. Data Relationships
+          4. Data Attributes
+          5. Data Constraints
+        elicit: true
+      - id: system-how
+        title: How (System Model)
+        instruction: |
+          Define system model processes:
+          
+          1. System Functions
+          2. System Processes
+          3. System Services
+          4. System Operations
+          5. System Workflows
+        elicit: true
+      - id: system-where
+        title: Where (System Model)
+        instruction: |
+          Define system model locations:
+          
+          1. System Locations
+          2. System Nodes
+          3. System Networks
+          4. System Distribution
+          5. System Architecture
+        elicit: true
+      - id: system-who
+        title: Who (System Model)
+        instruction: |
+          Define system model people:
+          
+          1. System Users
+          2. System Roles
+          3. System Actors
+          4. System Interfaces
+          5. System Security
+        elicit: true
+      - id: system-when
+        title: When (System Model)
+        instruction: |
+          Define system model timing:
+          
+          1. System Events
+          2. System Triggers
+          3. System Schedules
+          4. System Cycles
+          5. System Timing
+        elicit: true
+      - id: system-why
+        title: Why (System Model)
+        instruction: |
+          Define system model motivation:
+          
+          1. System Requirements
+          2. System Objectives
+          3. System Goals
+          4. System Benefits
+          5. System Value
+        elicit: true
+
+  - id: technology-model-perspective
+    title: Technology Model Perspective (Builder)
+    instruction: |
+      This section contains artifacts from the Technology Model perspective.
+    sections:
+      - id: technology-what
+        title: What (Technology Model)
+        instruction: |
+          Define technology model entities:
+          
+          1. Physical Data Model
+          2. Database Schema
+          3. Data Storage
+          4. Data Formats
+          5. Data Structures
+        elicit: true
+      - id: technology-how
+        title: How (Technology Model)
+        instruction: |
+          Define technology model processes:
+          
+          1. Technology Functions
+          2. Technology Processes
+          3. Technology Services
+          4. Technology Operations
+          5. Technology Workflows
+        elicit: true
+      - id: technology-where
+        title: Where (Technology Model)
+        instruction: |
+          Define technology model locations:
+          
+          1. Technology Locations
+          2. Technology Infrastructure
+          3. Technology Networks
+          4. Technology Distribution
+          5. Technology Architecture
+        elicit: true
+      - id: technology-who
+        title: Who (Technology Model)
+        instruction: |
+          Define technology model people:
+          
+          1. Technology Users
+          2. Technology Roles
+          3. Technology Actors
+          4. Technology Interfaces
+          5. Technology Security
+        elicit: true
+      - id: technology-when
+        title: When (Technology Model)
+        instruction: |
+          Define technology model timing:
+          
+          1. Technology Events
+          2. Technology Triggers
+          3. Technology Schedules
+          4. Technology Cycles
+          5. Technology Timing
+        elicit: true
+      - id: technology-why
+        title: Why (Technology Model)
+        instruction: |
+          Define technology model motivation:
+          
+          1. Technology Requirements
+          2. Technology Objectives
+          3. Technology Goals
+          4. Technology Benefits
+          5. Technology Value
+        elicit: true
+
+  - id: detailed-representations-perspective
+    title: Detailed Representations Perspective (Subcontractor)
+    instruction: |
+      This section contains artifacts from the Detailed Representations perspective.
+    sections:
+      - id: detailed-what
+        title: What (Detailed Representations)
+        instruction: |
+          Define detailed representation entities:
+          
+          1. Detailed Data Models
+          2. Data Specifications
+          3. Data Definitions
+          4. Data Constraints
+          5. Data Validation
+        elicit: true
+      - id: detailed-how
+        title: How (Detailed Representations)
+        instruction: |
+          Define detailed representation processes:
+          
+          1. Detailed Functions
+          2. Detailed Processes
+          3. Detailed Services
+          4. Detailed Operations
+          5. Detailed Workflows
+        elicit: true
+      - id: detailed-where
+        title: Where (Detailed Representations)
+        instruction: |
+          Define detailed representation locations:
+          
+          1. Detailed Locations
+          2. Detailed Infrastructure
+          3. Detailed Networks
+          4. Detailed Distribution
+          5. Detailed Architecture
+        elicit: true
+      - id: detailed-who
+        title: Who (Detailed Representations)
+        instruction: |
+          Define detailed representation people:
+          
+          1. Detailed Users
+          2. Detailed Roles
+          3. Detailed Actors
+          4. Detailed Interfaces
+          5. Detailed Security
+        elicit: true
+      - id: detailed-when
+        title: When (Detailed Representations)
+        instruction: |
+          Define detailed representation timing:
+          
+          1. Detailed Events
+          2. Detailed Triggers
+          3. Detailed Schedules
+          4. Detailed Cycles
+          5. Detailed Timing
+        elicit: true
+      - id: detailed-why
+        title: Why (Detailed Representations)
+        instruction: |
+          Define detailed representation motivation:
+          
+          1. Detailed Requirements
+          2. Detailed Objectives
+          3. Detailed Goals
+          4. Detailed Benefits
+          5. Detailed Value
+        elicit: true
+
+  - id: functioning-enterprise-perspective
+    title: Functioning Enterprise Perspective (User)
+    instruction: |
+      This section contains artifacts from the Functioning Enterprise perspective.
+    sections:
+      - id: functioning-what
+        title: What (Functioning Enterprise)
+        instruction: |
+          Define functioning enterprise entities:
+          
+          1. Operational Data
+          2. Real-Time Data
+          3. Transaction Data
+          4. Historical Data
+          5. Analytics Data
+        elicit: true
+      - id: functioning-how
+        title: How (Functioning Enterprise)
+        instruction: |
+          Define functioning enterprise processes:
+          
+          1. Operational Processes
+          2. Real-Time Operations
+          3. Transaction Processing
+          4. Business Operations
+          5. System Operations
+        elicit: true
+      - id: functioning-where
+        title: Where (Functioning Enterprise)
+        instruction: |
+          Define functioning enterprise locations:
+          
+          1. Operational Locations
+          2. Real-Time Locations
+          3. Transaction Locations
+          4. Business Locations
+          5. System Locations
+        elicit: true
+      - id: functioning-who
+        title: Who (Functioning Enterprise)
+        instruction: |
+          Define functioning enterprise people:
+          
+          1. Operational Users
+          2. Real-Time Users
+          3. Transaction Users
+          4. Business Users
+          5. System Users
+        elicit: true
+      - id: functioning-when
+        title: When (Functioning Enterprise)
+        instruction: |
+          Define functioning enterprise timing:
+          
+          1. Operational Events
+          2. Real-Time Events
+          3. Transaction Events
+          4. Business Events
+          5. System Events
+        elicit: true
+      - id: functioning-why
+        title: Why (Functioning Enterprise)
+        instruction: |
+          Define functioning enterprise motivation:
+          
+          1. Operational Requirements
+          2. Real-Time Requirements
+          3. Transaction Requirements
+          4. Business Requirements
+          5. System Requirements
+        elicit: true
+
+  - id: framework-analysis
+    title: Framework Analysis
+    instruction: |
+      This section provides analysis of the Zachman Framework implementation.
+    sections:
+      - id: completeness-analysis
+        title: Completeness Analysis
+        instruction: |
+          Analyze framework completeness:
+          
+          1. Coverage Assessment
+          2. Gap Analysis
+          3. Completeness Metrics
+          4. Quality Assessment
+          5. Improvement Opportunities
+        elicit: true
+      - id: consistency-analysis
+        title: Consistency Analysis
+        instruction: |
+          Analyze framework consistency:
+          
+          1. Cross-Perspective Consistency
+          2. Cross-Abstraction Consistency
+          3. Alignment Assessment
+          4. Conflict Resolution
+          5. Harmonization Strategy
+        elicit: true
+      - id: framework-diagram
+        title: Zachman Framework Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create Zachman Framework diagram showing:
+          
+          1. Framework matrix
+          2. Artifact relationships
+          3. Perspective alignment
+          4. Abstraction levels
+          5. Coverage status
+
+  - id: governance
+    title: Framework Governance
+    instruction: |
+      This section defines governance for the Zachman Framework implementation.
+    sections:
+      - id: governance-structure
+        title: Governance Structure
+        instruction: |
+          Define governance structure:
+          
+          1. Framework Stewards
+          2. Perspective Owners
+          3. Artifact Custodians
+          4. Review Processes
+          5. Decision Authority
+        elicit: true
+      - id: governance-processes
+        title: Governance Processes
+        instruction: |
+          Define governance processes:
+          
+          1. Framework Maintenance
+          2. Artifact Review
+          3. Change Management
+          4. Quality Assurance
+          5. Continuous Improvement
+        elicit: true
+      - id: governance-tools
+        title: Governance Tools
+        instruction: |
+          Define governance tools:
+          
+          1. Framework Repository
+          2. Artifact Management
+          3. Relationship Mapping
+          4. Impact Analysis
+          5. Reporting Tools
+        elicit: true
+
+  - id: success-criteria
+    title: Success Criteria
+    instruction: |
+      This section defines success criteria for Zachman Framework implementation.
+    sections:
+      - id: completeness-success
+        title: Completeness Success Criteria
+        instruction: |
+          Define completeness success criteria:
+          
+          1. Coverage Achievement
+          2. Quality Standards
+          3. Consistency Levels
+          4. Alignment Metrics
+          5. Stakeholder Satisfaction
+        elicit: true
+      - id: usability-success
+        title: Usability Success Criteria
+        instruction: |
+          Define usability success criteria:
+          
+          1. Ease of Use
+          2. Accessibility
+          3. Navigation
+          4. Search Capability
+          5. User Adoption
+        elicit: true
+      - id: value-success
+        title: Value Success Criteria
+        instruction: |
+          Define value success criteria:
+          
+          1. Decision Support
+          2. Communication Improvement
+          3. Understanding Enhancement
+          4. Alignment Achievement
+          5. Business Value
+        elicit: true 

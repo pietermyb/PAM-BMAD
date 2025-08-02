@@ -8,11 +8,19 @@ agents:
   - pm
   - ux-expert
   - architect
+  - domain-architect
+  - security
   - po
+  - domain-architect
+  - security
 workflows:
   - brownfield-fullstack.yaml
   - brownfield-service.yaml
   - brownfield-ui.yaml
+  - brownfield-security.yaml
+  - brownfield-architecture.yaml
   - greenfield-fullstack.yaml
   - greenfield-service.yaml
   - greenfield-ui.yaml
+  - greenfield-security.yaml
+  - greenfield-architecture.yaml

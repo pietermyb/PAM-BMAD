@@ -11,3 +11,7 @@ agents:
 workflows:
   - greenfield-service.yaml
   - brownfield-service.yaml
+  - brownfield-architecture.yaml
+  - greenfield-architecture.yaml
+  - brownfield-security.yaml
+  - greenfield-security.yaml

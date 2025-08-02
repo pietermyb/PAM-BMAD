@@ -1,3 +1,19 @@
+# PAM BMAD Method v1.0.0
+
+This is the first version of the PAM BMAD Method, forked from the original BMAD Method created by Brian Madison and available at https://github.com/bmadcode/BMAD-METHOD/.
+
+### Added
+
+*   Initial fork of the BMAD Method for PAM.
+*   Removed the `bmad-2d-phaser-game-dev` and `bmad-2d-unity-game-dev` expansion packs.
+*   Added PAM Domain Architect Agent (domain-architect.md)
+    *   Added Tasks, Templates, Checklists and Principles.
+    *   Added EAP, TOGAF and Zachman Frameworks.
+
+---
+
+# Original BMAD Method Changelog
+
 ## [4.33.1](https://github.com/bmadcode/BMAD-METHOD/compare/v4.33.0...v4.33.1) (2025-07-29)
 
 
@@ -530,20 +546,6 @@
 🤖 Generated with [Claude Code](https://claude.ai/code)
 
 Co-Authored-By: Claude <noreply@anthropic.com>
-
-# [4.2.0](https://github.com/bmadcode/BMAD-METHOD/compare/v4.1.0...v4.2.0) (2025-06-15)
-
-### Bug Fixes
-
-- add docs ([48ef875](https://github.com/bmadcode/BMAD-METHOD/commit/48ef875f5ec5b0f0211baa43bbc04701e54824f4))
-- auto semantic versioning fix ([166ed04](https://github.com/bmadcode/BMAD-METHOD/commit/166ed047671cccab2874fd327efb1ac293ae7276))
-- auto semantic versioning fix again ([11260e4](https://github.com/bmadcode/BMAD-METHOD/commit/11260e43950b6bf78d68c759dc3ac278bc13f8a8))
-- resolve NPM token configuration ([620b09a](https://github.com/bmadcode/BMAD-METHOD/commit/620b09a556ce8d61ad1a4d8ee7c523d263abd69c))
-- resolve NPM token configuration ([b447a8b](https://github.com/bmadcode/BMAD-METHOD/commit/b447a8bd57625d02692d7e2771241bacd120c631))
-
-### Features
-
-- update badges to use dynamic NPM version ([5a6fe36](https://github.com/bmadcode/BMAD-METHOD/commit/5a6fe361d085fcaef891a1862fc67878e726949c))
 
 # [4.2.0](https://github.com/bmadcode/BMAD-METHOD/compare/v4.1.0...v4.2.0) (2025-06-15)
 

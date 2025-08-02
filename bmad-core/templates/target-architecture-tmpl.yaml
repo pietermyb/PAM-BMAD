@@ -1,0 +1,583 @@
+template:
+  id: target-architecture-template-v1
+  name: Target Architecture Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/target-architecture.md
+    title: "{{project_name}} Target Architecture"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: |
+      Review any provided relevant documents to gather enterprise context before beginning. This document defines the target architecture for the enterprise.
+    sections:
+      - id: intro-content
+        content: |
+          This document defines the target architecture for {{project_name}}, outlining the desired future state architecture that addresses current challenges and supports business objectives.
+          
+          **Purpose:**
+          The target architecture provides a clear vision of the desired future state, guiding transformation initiatives and architectural decisions.
+      - id: document-status
+        title: Document Status
+        instruction: |
+          Define the document status and metadata:
+          
+          1. Document Name and Scope
+          2. Architecture Level (Platform, Domain, Sub-Domain, Capability, Topic)
+          3. Current Status (DRAFT, PROPOSED, ACCEPTED, SUPERSEDED, DECLINED, DEPRECATED)
+          4. Architect and Stakeholders
+          5. PAM Platform Domain
+          6. Effective Date
+        elicit: true
+      - id: changelog
+        title: Change Log
+        type: table
+        columns: [Date, Version, Description, Author]
+        instruction: Track document versions and changes
+
+  - id: context-and-problem
+    title: Context & Problem Statement
+    instruction: |
+      This section establishes the context and problem that the target architecture addresses.
+    sections:
+      - id: business-context
+        title: Business Context
+        instruction: |
+          Document the business context:
+          
+          1. Business Drivers and Motivations
+          2. Market Conditions and Competitive Landscape
+          3. Organizational Changes and Strategic Initiatives
+          4. Regulatory and Compliance Requirements
+          5. Business Performance Issues
+        elicit: true
+      - id: problem-statement
+        title: Problem Statement
+        instruction: |
+          Define the specific problem statement:
+          
+          1. Current State Challenges
+          2. Pain Points and Limitations
+          3. Business Impact of Current Issues
+          4. Root Cause Analysis
+          5. Problem Scope and Boundaries
+        elicit: true
+      - id: architecture-influencers
+        title: Architecture Influencers
+        instruction: |
+          Identify architecture influencers:
+          
+          1. Technology Trends and Constraints
+          2. Implementation Issues and Technical Debt
+          3. Previous Architectural Decisions
+          4. Political and Organizational Climate
+          5. External Dependencies and Partnerships
+        elicit: true
+
+  - id: summary
+    title: Summary
+    instruction: |
+      This section provides a high-level summary of the target architecture.
+    sections:
+      - id: executive-summary
+        title: Executive Summary
+        instruction: |
+          Create an executive summary:
+          
+          1. Key Objectives and Goals
+          2. Major Architectural Changes
+          3. Expected Business Benefits
+          4. Implementation Timeline Overview
+          5. Risk Mitigation Strategy
+        elicit: true
+      - id: architecture-overview
+        title: Architecture Overview
+        instruction: |
+          Provide architecture overview:
+          
+          1. High-Level Architecture Vision
+          2. Key Architectural Patterns
+          3. Technology Strategy
+          4. Integration Approach
+          5. Success Criteria
+        elicit: true
+      - id: summary-diagram
+        title: Target Architecture Overview Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a high-level target architecture diagram showing:
+          
+          1. Major architectural components
+          2. Key relationships and dependencies
+          3. Integration patterns
+          4. Technology stack overview
+          5. Business capabilities
+
+  - id: requirements-and-principles
+    title: Requirements, Considerations and Principles
+    instruction: |
+      This section defines the requirements, considerations, and principles that guide the target architecture.
+    sections:
+      - id: product-requirements
+        title: Product Requirements
+        instruction: |
+          Define product requirements:
+          
+          1. Functional Requirements
+          2. Non-Functional Requirements
+          3. Performance Requirements
+          4. Scalability Requirements
+          5. Security Requirements
+        elicit: true
+      - id: business-considerations
+        title: Business Considerations
+        instruction: |
+          Identify business considerations:
+          
+          1. Business Strategy Alignment
+          2. Market Requirements
+          3. Customer Needs
+          4. Competitive Positioning
+          5. Revenue and Cost Considerations
+        elicit: true
+      - id: technical-drivers
+        title: Technical Drivers
+        instruction: |
+          Define technical drivers:
+          
+          1. Technology Trends
+          2. Platform Evolution
+          3. Integration Requirements
+          4. Performance Objectives
+          5. Operational Requirements
+        elicit: true
+      - id: architecture-principles
+        title: Architecture Principles
+        instruction: |
+          Define applicable architecture principles:
+          
+          1. PAM Platform Principles
+          2. Enterprise Architecture Principles
+          3. Technology Principles
+          4. Security Principles
+          5. Integration Principles
+        elicit: true
+      - id: architecture-requirements
+        title: Architecture Requirements
+        instruction: |
+          Define architecture-specific requirements:
+          
+          1. Architectural Constraints
+          2. Integration Requirements
+          3. Data Architecture Requirements
+          4. Security Architecture Requirements
+          5. Operational Architecture Requirements
+        elicit: true
+
+  - id: business-architecture
+    title: Business Architecture
+    instruction: |
+      This section defines the business architecture aspects of the target architecture.
+    sections:
+      - id: business-capabilities
+        title: Business Capabilities
+        instruction: |
+          Define target business capabilities:
+          
+          1. Core Business Capabilities
+          2. Supporting Business Capabilities
+          3. Enabling Business Capabilities
+          4. Capability Maturity Targets
+          5. Capability Dependencies
+        elicit: true
+      - id: business-processes
+        title: Business Processes
+        instruction: |
+          Define target business processes:
+          
+          1. Core Business Processes
+          2. Supporting Business Processes
+          3. Management Business Processes
+          4. Process Optimization Targets
+          5. Process Automation Opportunities
+        elicit: true
+      - id: business-information
+        title: Business Information
+        instruction: |
+          Define business information requirements:
+          
+          1. Key Business Entities
+          2. Information Flows
+          3. Data Ownership
+          4. Information Quality Requirements
+          5. Business Intelligence Needs
+        elicit: true
+      - id: business-locations
+        title: Business Locations
+        instruction: |
+          Define business location considerations:
+          
+          1. Geographic Distribution
+          2. Regional Requirements
+          3. Compliance Requirements
+          4. Localization Needs
+          5. Infrastructure Considerations
+        elicit: true
+
+  - id: platform-component-architecture
+    title: Platform Component and Data Architecture
+    instruction: |
+      This section defines the platform component and data architecture.
+    sections:
+      - id: logical-component-architecture
+        title: Logical Component Architecture
+        instruction: |
+          Define logical component architecture:
+          
+          1. Logical Components
+          2. Component Responsibilities
+          3. Component Interfaces
+          4. Component Dependencies
+          5. Component Boundaries
+        elicit: true
+      - id: solution-component-architecture
+        title: Solution Component Architecture
+        instruction: |
+          Define solution component architecture:
+          
+          1. Solution Components
+          2. Technology Stack
+          3. Deployment Architecture
+          4. Component Communication
+          5. Component Scalability
+        elicit: true
+      - id: component-diagram
+        title: Component Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a component architecture diagram showing:
+          
+          1. Logical components
+          2. Solution components
+          3. Component relationships
+          4. Interface definitions
+          5. Data flows
+
+  - id: data-architecture
+    title: Data Architecture
+    instruction: |
+      This section defines the data architecture aspects.
+    sections:
+      - id: logical-data-architecture
+        title: Logical Data Architecture
+        instruction: |
+          Define logical data architecture:
+          
+          1. Logical Data Model
+          2. Data Entities and Relationships
+          3. Data Domains
+          4. Data Ownership
+          5. Data Governance
+        elicit: true
+      - id: physical-data-architecture
+        title: Physical Data Architecture
+        instruction: |
+          Define physical data architecture:
+          
+          1. Data Storage Solutions
+          2. Database Architecture
+          3. Data Distribution
+          4. Data Replication
+          5. Data Backup and Recovery
+        elicit: true
+      - id: data-diagram
+        title: Data Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a data architecture diagram showing:
+          
+          1. Data entities
+          2. Data relationships
+          3. Data stores
+          4. Data flows
+          5. Data integration points
+
+  - id: integration-architecture
+    title: Integration Architecture Aspects
+    instruction: |
+      This section defines the integration architecture aspects.
+    sections:
+      - id: integration-patterns
+        title: Integration Patterns
+        instruction: |
+          Define integration patterns:
+          
+          1. Synchronous Integration
+          2. Asynchronous Integration
+          3. Event-Driven Integration
+          4. API-First Integration
+          5. Data Integration
+        elicit: true
+      - id: integration-components
+        title: Integration Components
+        instruction: |
+          Define integration components:
+          
+          1. API Gateways
+          2. Message Brokers
+          3. Event Buses
+          4. Integration Services
+          5. Data Pipelines
+        elicit: true
+      - id: integration-diagram
+        title: Integration Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create an integration architecture diagram showing:
+          
+          1. Integration patterns
+          2. Integration components
+          3. Message flows
+          4. API endpoints
+          5. Event flows
+
+  - id: technology-architecture
+    title: Technology Architecture
+    instruction: |
+      This section defines the technology architecture.
+    sections:
+      - id: technology-stack
+        title: Technology Stack
+        instruction: |
+          Define technology stack:
+          
+          1. Programming Languages
+          2. Frameworks and Libraries
+          3. Databases and Storage
+          4. Middleware and Integration
+          5. Infrastructure and Platforms
+        elicit: true
+      - id: deployment-architecture
+        title: Deployment Architecture
+        instruction: |
+          Define deployment architecture:
+          
+          1. Cloud vs On-Premise Strategy
+          2. Containerization Strategy
+          3. Orchestration Platform
+          4. Infrastructure as Code
+          5. Deployment Pipelines
+        elicit: true
+      - id: baas-considerations
+        title: BaaS Considerations
+        instruction: |
+          Define BaaS (Backend as a Service) considerations:
+          
+          1. BaaS Platform Selection
+          2. BaaS Integration Strategy
+          3. BaaS Security Requirements
+          4. BaaS Performance Requirements
+          5. BaaS Cost Optimization
+        elicit: true
+      - id: technology-diagram
+        title: Technology Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a technology architecture diagram showing:
+          
+          1. Technology stack
+          2. Deployment architecture
+          3. Infrastructure components
+          4. Network topology
+          5. Security zones
+
+  - id: cross-cutting-concerns
+    title: Cross Cutting Concerns
+    instruction: |
+      This section addresses cross-cutting concerns across the architecture.
+    sections:
+      - id: security-architecture
+        title: Security Architecture
+        instruction: |
+          Define security architecture:
+          
+          1. Authentication and Authorization
+          2. Data Security
+          3. Network Security
+          4. Application Security
+          5. Compliance Requirements
+        elicit: true
+      - id: compliance-architecture
+        title: Compliance Architecture
+        instruction: |
+          Define compliance architecture:
+          
+          1. Regulatory Compliance
+          2. Industry Standards
+          3. Audit Requirements
+          4. Data Privacy
+          5. Risk Management
+        elicit: true
+      - id: developer-enablement
+        title: Developer Enablement
+        instruction: |
+          Define developer enablement:
+          
+          1. Development Tools and Platforms
+          2. API Documentation
+          3. Development Standards
+          4. Testing Frameworks
+          5. CI/CD Pipelines
+        elicit: true
+      - id: operational-management
+        title: Operational Management
+        instruction: |
+          Define operational management:
+          
+          1. Monitoring and Observability
+          2. Logging and Tracing
+          3. Incident Management
+          4. Performance Management
+          5. Capacity Planning
+        elicit: true
+
+  - id: architecture-roadmap
+    title: Architecture Roadmap
+    instruction: |
+      This section provides the architecture roadmap for implementation.
+    sections:
+      - id: roadmap-phases
+        title: Roadmap Phases
+        instruction: |
+          Define roadmap phases:
+          
+          1. Phase 1: Foundation and Core Infrastructure
+          2. Phase 2: Platform Components
+          3. Phase 3: Integration and APIs
+          4. Phase 4: Advanced Capabilities
+          5. Phase 5: Optimization and Scale
+        elicit: true
+      - id: dependencies
+        title: Dependencies
+        instruction: |
+          Define implementation dependencies:
+          
+          1. Technical Dependencies
+          2. Business Dependencies
+          3. Resource Dependencies
+          4. External Dependencies
+          5. Risk Dependencies
+        elicit: true
+      - id: roadmap-diagram
+        title: Architecture Roadmap
+        type: mermaid
+        mermaid_type: gantt
+        instruction: |
+          Create a roadmap Gantt chart showing:
+          
+          1. Implementation phases
+          2. Key milestones
+          3. Dependencies
+          4. Resource requirements
+          5. Success criteria
+
+  - id: risks-and-mitigation
+    title: Risks and Mitigation
+    instruction: |
+      This section identifies and addresses architectural risks.
+    sections:
+      - id: risk-assessment
+        title: Risk Assessment
+        type: table
+        columns: [Risk, Impact, Probability, Mitigation Strategy, Owner]
+        instruction: |
+          Identify and assess architectural risks
+      - id: risk-mitigation
+        title: Risk Mitigation Strategies
+        instruction: |
+          Define detailed risk mitigation strategies:
+          
+          1. Technical Risks
+          2. Business Risks
+          3. Operational Risks
+          4. External Risks
+          5. Contingency Plans
+        elicit: true
+
+  - id: success-criteria
+    title: Success Criteria
+    instruction: |
+      This section defines success criteria for the target architecture.
+    sections:
+      - id: business-success
+        title: Business Success Criteria
+        instruction: |
+          Define business success criteria:
+          
+          1. Business Value Achievement
+          2. Performance Improvements
+          3. Cost Reduction
+          4. User Satisfaction
+          5. Market Position
+        elicit: true
+      - id: technical-success
+        title: Technical Success Criteria
+        instruction: |
+          Define technical success criteria:
+          
+          1. System Performance
+          2. Scalability Achievement
+          3. Security Compliance
+          4. Integration Success
+          5. Operational Efficiency
+        elicit: true
+      - id: measurement-framework
+        title: Measurement Framework
+        instruction: |
+          Define measurement framework:
+          
+          1. Key Performance Indicators
+          2. Measurement Methods
+          3. Reporting Frequency
+          4. Review Process
+          5. Continuous Improvement
+        elicit: true
+
+  - id: references
+    title: References
+    instruction: |
+      This section provides references and supporting documentation.
+    sections:
+      - id: reference-documents
+        title: Reference Documents
+        instruction: |
+          List reference documents:
+          
+          1. Architecture Principles
+          2. Technical Standards
+          3. Business Requirements
+          4. Industry Standards
+          5. Best Practices
+        elicit: true
+      - id: related-architectures
+        title: Related Architectures
+        instruction: |
+          List related architectures:
+          
+          1. Current State Architecture
+          2. Domain Architectures
+          3. Reference Architectures
+          4. Industry Architectures
+          5. Technology Architectures
+        elicit: true 

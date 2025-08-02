@@ -2,7 +2,7 @@
 
 ## Overview
 
-BMad-Method (Breakthrough Method of Agile AI-driven Development) is a framework that combines AI agents with Agile development methodologies. The v4 system introduces a modular architecture with improved dependency management, bundle optimization, and support for both web and IDE environments.
+PAM BMad (Breakthrough Method of Agile AI-driven Development) is a framework that combines AI agents with Agile development methodologies. The v4 system introduces a modular architecture with improved dependency management, bundle optimization, and support for both web and IDE environments.
 
 ### Key Features
 
@@ -86,7 +86,7 @@ BMad transforms you into a "Vibe CEO" - directing a team of specialized AI agent
 
 ```bash
 # Interactive installation (recommended)
-npx bmad-method install
+npx PAM-bmad install
 ```
 
 **Installation Steps**:
@@ -101,7 +101,7 @@ npx bmad-method install
   - **Roo Code**: Web-based IDE with agent support
   - **GitHub Copilot**: VS Code extension with AI peer programming assistant
 
-**Note for VS Code Users**: BMad-Method assumes when you mention "VS Code" that you're using it with an AI-powered extension like GitHub Copilot, Cline, or Roo. Standard VS Code without AI capabilities cannot run BMad agents. The installer includes built-in support for Cline and Roo.
+**Note for VS Code Users**: PAM BMad assumes when you mention "VS Code" that you're using it with an AI-powered extension like GitHub Copilot, Cline, or Roo. Standard VS Code without AI capabilities cannot run BMad agents. The installer includes built-in support for Cline and Roo.
 
 **Verify Installation**:
 
@@ -109,7 +109,7 @@ npx bmad-method install
 - IDE-specific integration files created
 - All agent commands/rules/modes available
 
-**Remember**: At its core, BMad-Method is about mastering and harnessing prompt engineering. Any IDE with AI agent support can use BMad - the framework provides the structured prompts and workflows that make AI development effective
+**Remember**: At its core, PAM BMad is about mastering and harnessing prompt engineering. Any IDE with AI agent support can use BMad - the framework provides the structured prompts and workflows that make AI development effective
 
 ### Environment Selection Guide
 
@@ -353,7 +353,7 @@ You are the "Vibe CEO" - thinking like a CEO with unlimited resources and a sing
 
 ### System Overview
 
-The BMad-Method is built around a modular architecture centered on the `bmad-core` directory, which serves as the brain of the entire system. This design enables the framework to operate effectively in both IDE environments (like Cursor, VS Code) and web-based AI interfaces (like ChatGPT, Gemini).
+The PAM BMad is built around a modular architecture centered on the `bmad-core` directory, which serves as the brain of the entire system. This design enables the framework to operate effectively in both IDE environments (like Cursor, VS Code) and web-based AI interfaces (like ChatGPT, Gemini).
 
 ### Key Architectural Components
 
@@ -542,7 +542,7 @@ Each status change requires user verification and approval before proceeding.
 #### Greenfield Development
 
 - Business analysis and market research
-- Product requirements and feature definition  
+- Product requirements and feature definition
 - System architecture and design
 - Development execution
 - Testing and deployment
@@ -651,8 +651,11 @@ Templates with Level 2 headings (`##`) can be automatically sharded:
 
 ```markdown
 ## Goals and Background Context
-## Requirements  
+
+## Requirements
+
 ## User Interface Design Goals
+
 ## Success Metrics
 ```
 
@@ -705,7 +708,7 @@ Use the `shard-doc` task or `@kayvan/markdown-tree-parser` tool for automatic sh
 - **Keep conversations focused** - One agent, one task per conversation
 - **Review everything** - Always review and approve before marking complete
 
-## Contributing to BMad-Method
+## Contributing to PAM BMad
 
 ### Quick Contribution Guidelines
 
@@ -737,7 +740,7 @@ For full details, see `CONTRIBUTING.md`. Key points:
 
 ### What Are Expansion Packs?
 
-Expansion packs extend BMad-Method beyond traditional software development into ANY domain. They provide specialized agent teams, templates, and workflows while keeping the core framework lean and focused on development.
+Expansion packs extend PAM BMad beyond traditional software development into ANY domain. They provide specialized agent teams, templates, and workflows while keeping the core framework lean and focused on development.
 
 ### Why Use Expansion Packs?
 
@@ -777,7 +780,7 @@ Expansion packs extend BMad-Method beyond traditional software development into 
 3. **Install via CLI**:
 
    ```bash
-   npx bmad-method install
+   npx PAM-bmad install
    # Select "Install expansion pack" option
    ```
 

@@ -1,11 +1,11 @@
 {
-  "name": "bmad-method",
-  "version": "4.33.1",
-  "description": "BMad Method installer - AI-powered Agile development framework",
+  "name": "PAM-bmad",
+  "version": "1.0.0",
+  "description": "PAM BMad Method installer - AI-powered Agile development framework",
   "main": "lib/installer.js",
   "bin": {
     "bmad": "./bin/bmad.js",
-    "bmad-method": "./bin/bmad.js"
+    "PAM-bmad": "./bin/bmad.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,7 +19,7 @@
     "installer",
     "agents"
   ],
-  "author": "BMad Team",
+  "author": "PAM AIR Team",
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.4.1",
@@ -34,10 +34,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bmad-team/bmad-method.git"
+    "url": "https://github.com/pieterm_PAM/PAM-bmad"
   },
   "bugs": {
-    "url": "https://github.com/bmad-team/bmad-method/issues"
+    "url": "https://github.com/pieterm_PAM/PAM-bmad/issues"
   },
-  "homepage": "https://github.com/bmad-team/bmad-method#readme"
+  "homepage": "https://github.com/pieterm_PAM/PAM-bmad#readme"
 }

@@ -12,3 +12,7 @@ workflows:
   - greenfield-fullstack.yaml
   - greenfield-service.yaml
   - greenfield-ui.yaml
+  - brownfield-architecture.yaml
+  - greenfield-architecture.yaml
+  - brownfield-security.yaml
+  - greenfield-security.yaml

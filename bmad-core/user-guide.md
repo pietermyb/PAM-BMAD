@@ -1,18 +1,27 @@
-# BMad-Method BMAd Code User Guide
+# PAM BMad Method User Guide
 
-This guide will help you understand and effectively use the BMad Method for agile AI driven planning and development.
+This guide will help you understand and effectively use the PAM BMad Method for agile AI driven planning and development.
 
-## The BMad Plan and Execute Workflow
+## Quick Links
 
-First, here is the full standard Greenfield Planning + Execution Workflow. Brownfield is very similar, but it's suggested to understand this greenfield first, even if on a simple project before tackling a brownfield project. The BMad Method needs to be installed to the root of your new project folder. For the planning phase, you can optionally perform it with powerful web agents, potentially resulting in higher quality results at a fraction of the cost it would take to complete if providing your own API key or credits in some Agentic tools. For planning, powerful thinking models and larger context - along with working as a partner with the agents will net the best results.
+- [Installation](#installation)
+- [The PAM BMad Plan and Execute Workflow](#the-PAM-bmad-plan-and-execute-workflow)
+- [Special Agents](#special-agents)
+- [IDE Integration](#ide-integration)
+- [Technical Preferences System](#technical-preferences-system)
+- [Core Configuration](#core-configuration)
 
-If you are going to use the BMad Method with a Brownfield project (an existing project), review **[Working in the Brownfield](./working-in-the-brownfield.md)**.
+## The PAM BMad Plan and Execute Workflow
+
+First, here is the full standard Greenfield Planning + Execution Workflow. Brownfield is very similar, but it's suggested to understand this greenfield first, even if on a simple project before tackling a brownfield project. The PAM BMad Method needs to be installed to the root of your new project folder. For the planning phase, you can optionally perform it with powerful web agents, potentially resulting in higher quality results at a fraction of the cost it would take to complete if providing your own API key or credits in some Agentic tools. For planning, powerful thinking models and larger context - along with working as a partner with the agents will net the best results.
+
+If you are going to use the PAM BMad Method with a Brownfield project (an existing project), review **[Working in the Brownfield](./working-in-the-brownfield.md)**.
 
 If you do not see the diagrams that following rendering, you can install Markdown All in One along with the Markdown Preview Mermaid Support plugins to VSCode (or one of the forked clones). With these plugin's, if you right click on the tab when open, there should be a Open Preview option, or check the IDE documentation.
 
 ### The Planning Workflow (Web UI or Powerful IDE Agents)
 
-Before development begins, BMad follows a structured planning workflow that's ideally done in web UI for cost efficiency:
+Before development begins, PAM BMad follows a structured planning workflow that's ideally done in web UI for cost efficiency:
 
 ```mermaid
 graph TD
@@ -79,7 +88,7 @@ graph TD
 
 ### The Core Development Cycle (IDE)
 
-Once planning is complete and documents are sharded, BMad follows a structured development workflow:
+Once planning is complete and documents are sharded, PAM BMad follows a structured development workflow:
 
 ```mermaid
 graph TD
@@ -127,22 +136,22 @@ graph TD
 
 ## Installation
 
-### Optional
-
-If you want to do the planning in the Web with Claude (Sonnet 4 or Opus), Gemini Gem (2.5 Pro), or Custom GPT's:
-
-1. Navigate to `dist/teams/`
-2. Copy `team-fullstack.txt`
-3. Create new Gemini Gem or CustomGPT
-4. Upload file with instructions: "Your critical operating instructions are attached, do not break character as directed"
-5. Type `/help` to see available commands
-
 ### IDE Project Setup
 
 ```bash
 # Interactive installation (recommended)
-npx bmad-method install
+npx PAM-bmad install
 ```
+
+### Optional
+
+If you want to do the planning in the Web with Claude (Sonnet 4 or Opus), Gemini Gem (2.5 Pro), or Custom GPT's:
+
+1. Navigate to `.bmad-core/teams/`
+2. Copy `team-fullstack.yaml` into your IDE's AI Chat window (e.g. CoPilot, Cursor, Roo, Cline etc)
+3. With the file uploaded, add these instructions: "Your critical operating instructions are attached, do not break character as directed"
+4. Type `/help` to see available commands
+
 
 ## Special Agents
 
@@ -192,9 +201,14 @@ dependencies:
 @architect Design the system architecture
 @dev Implement the user authentication
 
-# Some, like Claude Code use slash commands instead
+# Claude Code use slash commands instead
 /pm Create user stories
 /dev Fix the login bug
+
+# Gemini CLI use * commands instead
+*pm Create user stories
+*dev Fix the login bug
+
 ```
 
 #### Interactive Modes
@@ -214,7 +228,7 @@ dependencies:
 
 ## Technical Preferences System
 
-BMad includes a personalization system through the `technical-preferences.md` file located in `.bmad-core/data/` - this can help bias the PM and Architect to recommend your preferences for design patterns, technology selection, or anything else you would like to put in here.
+PAM BMad includes a personalization system through the `technical-preferences.md` file located in `.bmad-core/data/` - this can help bias the PM and Architect to recommend your preferences for design patterns, technology selection, or anything else you would like to put in here.
 
 ### Using with Web Bundles
 
@@ -222,7 +236,7 @@ When creating custom web bundles or uploading to AI platforms, include your `tec
 
 ## Core Configuration
 
-The `bmad-core/core-config.yaml` file is a critical config that enables BMad to work seamlessly with differing project structures, more options will be made available in the future. Currently the most important is the devLoadAlwaysFiles list section in the yaml.
+The `bmad-core/core-config.yaml` file is a critical config that enables PAM BMad to work seamlessly with differing project structures, more options will be made available in the future. Currently the most important is the devLoadAlwaysFiles list section in the yaml.
 
 ### Developer Context Files
 
@@ -239,13 +253,6 @@ You will want to verify from sharding your architecture that these documents exi
 
 As your project grows and the code starts to build consistent patterns, coding standards should be reduced to include only the standards that the agent still makes with. The agent will look at surrounding code in files to infer the coding standards that are relevant to the current task.
 
-## Getting Help
-
-- **Discord Community**: [Join Discord](https://discord.gg/gk8jAdXWmj)
-- **GitHub Issues**: [Report bugs](https://github.com/bmadcode/bmad-method/issues)
-- **Documentation**: [Browse docs](https://github.com/bmadcode/bmad-method/docs)
-- **YouTube**: [BMadCode Channel](https://www.youtube.com/@BMadCode)
-
 ## Conclusion
 
-Remember: BMad is designed to enhance your development process, not replace your expertise. Use it as a powerful tool to accelerate your projects while maintaining control over design decisions and implementation details.
+Remember: PAM BMad is designed to enhance your development process, not replace your expertise. Use it as a powerful tool to accelerate your projects while maintaining control over design decisions and implementation details.

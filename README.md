@@ -1,17 +1,14 @@
-# BMad-Method: Universal AI Agent Framework
+# PAM BMad-Method: Universal AI Agent Framework
 
-[![Version](https://img.shields.io/npm/v/bmad-method?color=blue&label=version)](https://www.npmjs.com/package/bmad-method)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](1.0.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289da?logo=discord&logoColor=white)](https://discord.gg/gk8jAdXWmj)
 
 Foundations in Agentic Agile Driven Development, known as the Breakthrough Method of Agile AI-Driven Development, yet so much more. Transform any domain with specialized AI expertise: software development, entertainment, creative writing, business strategy to personal wellness just to name a few.
 
-**[Subscribe to BMadCode on YouTube](https://www.youtube.com/@BMadCode?sub_confirmation=1)**
+This is a fork of the original [BMad-Method repository](https://github.com/bmadcode/BMAD-METHOD). All credits to the original author.
 
-**[Join our Discord Community](https://discord.gg/gk8jAdXWmj)** - A growing community for AI enthusiasts! Get help, share ideas, explore AI agents & frameworks, collaborate on tech projects, enjoy hobbies, and help each other succeed. Whether you're stuck on BMad, building your own agents, or just want to chat about the latest in AI - we're here for you! **Some mobile and VPN may have issue joining the discord, this is a discord issue - if the invite does not work, try from your own internet or another network, or non-VPN.**
-
-⭐ **If you find this project helpful or useful, please give it a star in the upper right hand corner!** It helps others discover BMad-Method and you will be notified of updates!
+It has been modified to for personal use.
 
 ## Overview
 
@@ -42,69 +39,46 @@ This two-phase approach eliminates both **planning inconsistency** and **context
 - **[Learn how to use BMad](bmad-core/user-guide.md)** → Complete user guide and walkthrough
 - **[See available AI agents](/bmad-core/agents))** → Specialized roles for your team
 - **[Explore non-technical uses](#-beyond-software-development---expansion-packs)** → Creative writing, business, wellness, education
-- **[Create my own AI agents](#creating-your-own-expansion-pack)** → Build agents for your domain
-- **[Browse ready-made expansion packs](expansion-packs/)** → Game dev, DevOps, infrastructure and get inspired with ideas and examples
+- **[Create my own AI agents](docs/creating-expansion-pack.md)** → Build agents for your domain
+- **[Browse ready-made expansion packs](expansion-packs/)** → DevOps, infrastructure and get inspired with ideas and examples
 - **[Understand the architecture](docs/core-architecture.md)** → Technical deep dive
-- **[Join the community](https://discord.gg/gk8jAdXWmj)** → Get help and share ideas
 
-## Important: Keep Your BMad Installation Updated
+## Quick Start & Updates
 
-**Stay up-to-date effortlessly!** If you already have BMad-Method installed in your project, simply run:
+### One Command for Everything
 
-```bash
-npx bmad-method install
-# OR
-git pull
-npm run install:bmad
-```
-
-This will:
-
-- ✅ Automatically detect your existing v4 installation
-- ✅ Update only the files that have changed and add new files
-- ✅ Create `.bak` backup files for any custom modifications you've made
-- ✅ Preserve your project-specific configurations
-
-This makes it easy to benefit from the latest improvements, bug fixes, and new agents without losing your customizations!
-
-## Quick Start
-
-### One Command for Everything (IDE Installation)
-
-**Just run one of these commands:**
+Whether you're installing for the first time, upgrading an existing installation, or adding expansion packs, just run this single command in your project's directory:
 
 ```bash
-npx bmad-method install
-# OR if you already have BMad installed:
-git pull
-npm run install:bmad
+npx PAM-bmad install
 ```
 
-This single command handles:
+This command handles everything automatically:
+- ✅ **New Installations:** Sets up BMad in your project.
+- ✅ **Upgrades:** Updates existing installations, preserving your custom configurations by creating `.bak` files for any modified files.
+- ✅ **Expansion Packs:** Installs any expansion packs you've added to `package.json`.
 
-- **New installations** - Sets up BMad in your project
-- **Upgrades** - Updates existing installations automatically
-- **Expansion packs** - Installs any expansion packs you've added to package.json
+**Prerequisites**: [Node.js](https://nodejs.org) v20+ required.
 
-> **That's it!** Whether you're installing for the first time, upgrading, or adding expansion packs - these commands do everything.
+### For BMad Developers (Contributing)
 
-**Prerequisites**: [Node.js](https://nodejs.org) v20+ required
+If you have cloned the `PAM-bmad` repository to contribute to its development, use the following commands to update your local clone and run the installer:
+
+```bash
+git pull
+npm run install:PAM-bmad
+```
 
 ### Fastest Start: Web UI Full Stack Team at your disposal (2 minutes)
 
 1. **Get the bundle**: Save or clone the [full stack team file](dist/teams/team-fullstack.txt) or choose another team
-2. **Create AI agent**: Create a new Gemini Gem or CustomGPT
+2. **Create AI agent**: Start a new Chat with your IDEs AI Agent.
 3. **Upload & configure**: Upload the file and set instructions: "Your critical operating instructions are attached, do not break character as directed"
 4. **Start Ideating and Planning**: Start chatting! Type `*help` to see available commands or pick an agent like `*analyst` to start right in on creating a brief.
 5. **CRITICAL**: Talk to BMad Orchestrator in the web at ANY TIME (#bmad-orchestrator command) and ask it questions about how this all works!
 6. **When to move to the IDE**: Once you have your PRD, Architecture, optional UX and Briefs - its time to switch over to the IDE to shard your docs, and start implementing the actual code! See the [User guide](bmad-core/user-guide.md) for more details
 
-### Alternative: Clone and Build
 
-```bash
-git clone https://github.com/bmadcode/bmad-method.git
-npm run install:bmad # build and install all to a destination folder
-```
 
 ## 🌟 Beyond Software Development - Expansion Packs
 
@@ -126,18 +100,21 @@ The BMad-Method includes a powerful codebase flattener tool designed to prepare 
 
 ```bash
 # Basic usage - creates flattened-codebase.xml in current directory
-npx bmad-method flatten
+npx PAM-bmad flatten
+
+# Minimal output - only file paths and metadata, no code content
+npx PAM-bmad flatten --minimal
 
 # Specify custom input directory
-npx bmad-method flatten --input /path/to/source/directory
-npx bmad-method flatten -i /path/to/source/directory
+npx PAM-bmad flatten --input /path/to/source/directory
+npx PAM-bmad flatten -i /path/to/source/directory
 
 # Specify custom output file
-npx bmad-method flatten --output my-project.xml
-npx bmad-method flatten -o /path/to/output/codebase.xml
+npx PAM-bmad flatten --output my-project.xml
+npx PAM-bmad flatten -o /path/to/output/codebase.xml
 
 # Combine input and output options
-npx bmad-method flatten --input /path/to/source --output /path/to/output/codebase.xml
+npx PAM-bmad flatten --input /path/to/source --output /path/to/output/codebase.xml
 ```
 
 ### Example Output
@@ -165,11 +142,17 @@ The generated XML file contains all your project's source code in a structured f
 - 🏗️ **[Core Architecture](docs/core-architecture.md)** - Technical deep dive and system design
 - 🚀 **[Expansion Packs Guide](docs/expansion-packs.md)** - Extend BMad to any domain beyond software development
 
-## Support
+## PAM BMad-Method Support
+
+- 💬 [Slack Channel](https://PAM.slack.com/archives/C09428DBHKQ)
+- 🐛 [Issue Tracker](https://github.com/PAM-rnd/PAM-bmad/issues)
+- 💬 [Discussions](https://github.com/PAM-rnd/PAM-bmad/discussions)
+
+## Original BMAD Method Support
 
 - 💬 [Discord Community](https://discord.gg/gk8jAdXWmj)
-- 🐛 [Issue Tracker](https://github.com/bmadcode/bmad-method/issues)
-- 💬 [Discussions](https://github.com/bmadcode/bmad-method/discussions)
+- 🐛 [Issue Tracker](https://github.com/bmadcode/bmad/issues)
+- 💬 [Discussions](https://github.com/bmadcode/bmad/discussions)
 
 ## Contributing
 
@@ -180,7 +163,5 @@ The generated XML file contains all your project's source code in a structured f
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
-
-[![Contributors](https://contrib.rocks/image?repo=bmadcode/bmad-method)](https://github.com/bmadcode/bmad-method/graphs/contributors)
 
 <sub>Built with ❤️ for the AI-assisted development community</sub>

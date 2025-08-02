@@ -1,0 +1,354 @@
+template:
+  id: domain-architecture-template-v1
+  name: Domain Architecture Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/domain-architecture.md
+    title: "{{project_name}} Domain Architecture Document"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: |
+      Review any provided relevant documents to gather enterprise context before beginning. If no enterprise context is available, ask the user for business strategy, organizational structure, and current state information.
+    sections:
+      - id: intro-content
+        content: |
+          This document outlines the domain architecture for {{project_name}}, focusing on business domain modeling, capability mapping, and strategic alignment. It serves as the foundation for enterprise architecture decisions and guides the development of business-aligned technical solutions.
+          
+          **Relationship to Enterprise Architecture:**
+          This domain architecture document should align with broader enterprise architecture frameworks (TOGAF, Zachman, EAP) and support the overall business strategy and objectives.
+      - id: enterprise-context
+        title: Enterprise Context
+        instruction: |
+          Document the broader enterprise context that influences this domain architecture:
+          
+          1. Business Strategy and Objectives
+          2. Organizational Structure and Governance
+          3. Current State Assessment
+          4. Target State Vision
+          5. Key Stakeholders and Decision Makers
+          6. Enterprise Standards and Policies
+        elicit: true
+      - id: changelog
+        title: Change Log
+        type: table
+        columns: [Date, Version, Description, Author]
+        instruction: Track document versions and changes
+
+  - id: business-context
+    title: Business Context
+    instruction: |
+      This section establishes the business foundation for the domain architecture.
+    sections:
+      - id: business-strategy
+        title: Business Strategy Alignment
+        instruction: |
+          Document how this domain architecture supports the overall business strategy:
+          
+          1. Strategic Objectives and Goals
+          2. Business Drivers and Motivations
+          3. Market Position and Competitive Landscape
+          4. Value Proposition and Success Metrics
+          5. Risk Tolerance and Constraints
+        elicit: true
+      - id: stakeholder-analysis
+        title: Stakeholder Analysis
+        instruction: |
+          Identify and analyze key stakeholders:
+          
+          1. Primary Stakeholders (Business Owners, Users, Customers)
+          2. Secondary Stakeholders (IT Teams, Vendors, Regulators)
+          3. Stakeholder Interests and Concerns
+          4. Communication and Engagement Strategy
+          5. Decision-Making Authority and Escalation Paths
+        elicit: true
+
+  - id: domain-modeling
+    title: Domain Modeling
+    instruction: |
+      This section defines the core business domains and their relationships.
+    sections:
+      - id: business-domains
+        title: Business Domains
+        instruction: |
+          Define the core business domains:
+          
+          1. Domain Identification and Naming
+          2. Domain Boundaries and Responsibilities
+          3. Domain Relationships and Dependencies
+          4. Domain Ownership and Governance
+          5. Domain Evolution Strategy
+        elicit: true
+      - id: domain-diagram
+        title: Domain Relationship Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a Mermaid diagram showing:
+          
+          1. Business domains as nodes
+          2. Relationships between domains
+          3. Integration points and interfaces
+          4. Data flow between domains
+          5. External systems and boundaries
+      - id: bounded-contexts
+        title: Bounded Contexts
+        instruction: |
+          Define bounded contexts within each domain:
+          
+          1. Context Mapping Strategy
+          2. Context Boundaries and Contracts
+          3. Shared Kernel Identification
+          4. Anti-Corruption Layer Requirements
+          5. Context Integration Patterns
+        elicit: true
+
+  - id: business-capabilities
+    title: Business Capabilities
+    instruction: |
+      This section maps business capabilities to domains and technology.
+    sections:
+      - id: capability-model
+        title: Business Capability Model
+        instruction: |
+          Define the business capability model:
+          
+          1. Core Business Capabilities
+          2. Supporting Capabilities
+          3. Capability Maturity Assessment
+          4. Capability Dependencies
+          5. Capability Roadmap
+        elicit: true
+      - id: capability-mapping
+        title: Capability to Domain Mapping
+        type: table
+        columns: [Capability, Domain, Maturity Level, Priority, Dependencies]
+        instruction: |
+          Map business capabilities to domains and assess current state
+      - id: capability-diagram
+        title: Capability Heat Map
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a capability heat map showing:
+          
+          1. Capabilities by domain
+          2. Maturity levels (color-coded)
+          3. Priority levels
+          4. Investment requirements
+
+  - id: data-architecture
+    title: Data Architecture
+    instruction: |
+      This section defines the data architecture within and across domains.
+    sections:
+      - id: data-domains
+        title: Data Domains
+        instruction: |
+          Define data domains and ownership:
+          
+          1. Master Data Domains
+          2. Transactional Data Domains
+          3. Reference Data Management
+          4. Data Ownership and Stewardship
+          5. Data Quality Standards
+        elicit: true
+      - id: data-flow
+        title: Data Flow Architecture
+        instruction: |
+          Document data flow patterns:
+          
+          1. Data Integration Patterns
+          2. Event-Driven Data Flow
+          3. Batch Processing Requirements
+          4. Real-Time Data Requirements
+          5. Data Governance and Compliance
+        elicit: true
+      - id: data-diagram
+        title: Data Flow Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create a data flow diagram showing:
+          
+          1. Data sources and sinks
+          2. Data transformation points
+          3. Data storage locations
+          4. Data movement patterns
+          5. Integration touchpoints
+
+  - id: integration-architecture
+    title: Integration Architecture
+    instruction: |
+      This section defines how domains integrate and communicate.
+    sections:
+      - id: integration-patterns
+        title: Integration Patterns
+        instruction: |
+          Define integration patterns between domains:
+          
+          1. Synchronous Integration Patterns
+          2. Asynchronous Integration Patterns
+          3. Event-Driven Integration
+          4. API-First Integration Strategy
+          5. Integration Governance
+        elicit: true
+      - id: api-strategy
+        title: API Strategy
+        instruction: |
+          Define the API strategy for domain integration:
+          
+          1. API Design Principles
+          2. API Governance and Standards
+          3. API Versioning Strategy
+          4. API Security and Authentication
+          5. API Documentation and Discovery
+        elicit: true
+      - id: integration-diagram
+        title: Integration Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create an integration architecture diagram showing:
+          
+          1. Domain boundaries
+          2. Integration patterns
+          3. Message flows
+          4. API gateways
+          5. Event buses
+
+  - id: governance
+    title: Governance and Standards
+    instruction: |
+      This section defines governance models and architectural standards.
+    sections:
+      - id: architectural-governance
+        title: Architectural Governance
+        instruction: |
+          Define architectural governance:
+          
+          1. Governance Structure and Roles
+          2. Decision-Making Processes
+          3. Review and Approval Workflows
+          4. Compliance and Auditing
+          5. Change Management Process
+        elicit: true
+      - id: architectural-principles
+        title: Architectural Principles
+        instruction: |
+          Define domain-specific architectural principles:
+          
+          1. Design Principles
+          2. Technology Principles
+          3. Security Principles
+          4. Performance Principles
+          5. Scalability Principles
+        elicit: true
+      - id: standards-compliance
+        title: Standards Compliance
+        instruction: |
+          Document standards compliance requirements:
+          
+          1. Industry Standards
+          2. Enterprise Standards
+          3. Regulatory Compliance
+          4. Security Standards
+          5. Quality Standards
+        elicit: true
+
+  - id: roadmap
+    title: Implementation Roadmap
+    instruction: |
+      This section provides a roadmap for implementing the domain architecture.
+    sections:
+      - id: implementation-phases
+        title: Implementation Phases
+        instruction: |
+          Define implementation phases:
+          
+          1. Phase 1: Foundation and Core Domains
+          2. Phase 2: Integration and APIs
+          3. Phase 3: Advanced Capabilities
+          4. Phase 4: Optimization and Scale
+          5. Success Criteria for Each Phase
+        elicit: true
+      - id: migration-strategy
+        title: Migration Strategy
+        instruction: |
+          Define migration strategy from current state:
+          
+          1. Current State Assessment
+          2. Target State Definition
+          3. Migration Approach (Big Bang vs Incremental)
+          4. Risk Mitigation Strategies
+          5. Rollback Plans
+        elicit: true
+      - id: roadmap-diagram
+        title: Implementation Roadmap
+        type: mermaid
+        mermaid_type: gantt
+        instruction: |
+          Create a Gantt chart showing:
+          
+          1. Implementation phases
+          2. Key milestones
+          3. Dependencies
+          4. Resource requirements
+          5. Success criteria
+
+  - id: risks-and-mitigation
+    title: Risks and Mitigation
+    instruction: |
+      This section identifies and addresses architectural risks.
+    sections:
+      - id: risk-assessment
+        title: Risk Assessment
+        type: table
+        columns: [Risk, Impact, Probability, Mitigation Strategy, Owner]
+        instruction: |
+          Identify and assess architectural risks
+      - id: risk-mitigation
+        title: Risk Mitigation Strategies
+        instruction: |
+          Define detailed risk mitigation strategies:
+          
+          1. Technical Risks
+          2. Business Risks
+          3. Organizational Risks
+          4. External Risks
+          5. Contingency Plans
+        elicit: true
+
+  - id: success-metrics
+    title: Success Metrics
+    instruction: |
+      This section defines how success will be measured.
+    sections:
+      - id: kpis
+        title: Key Performance Indicators
+        instruction: |
+          Define KPIs for the domain architecture:
+          
+          1. Business KPIs
+          2. Technical KPIs
+          3. Operational KPIs
+          4. Quality KPIs
+          5. User Experience KPIs
+        elicit: true
+      - id: measurement-framework
+        title: Measurement Framework
+        instruction: |
+          Define how metrics will be measured:
+          
+          1. Data Collection Methods
+          2. Reporting Frequency
+          3. Review and Analysis Process
+          4. Continuous Improvement
+          5. Stakeholder Communication
+        elicit: true 

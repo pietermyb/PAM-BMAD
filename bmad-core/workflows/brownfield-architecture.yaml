@@ -1,0 +1,79 @@
+workflow:
+  id: brownfield-architecture
+  name: Brownfield Architecture Enhancement
+  description: >-
+    Agent workflow for analyzing and redesigning the architecture of an existing application to align with enterprise standards and strategic goals.
+  type: brownfield
+  project_types:
+    - architectural-refactoring
+    - technology-modernization
+    - enterprise-alignment
+
+  sequence:
+    - agent: architect
+      action: document-project
+      creates: brownfield-architecture-current.md
+      notes: "Documents the current state of the existing application's architecture."
+
+    - agent: domain-architect
+      action: analyze-current-state
+      notes: "Analyzes the current enterprise landscape to understand the context of the existing application."
+
+    - agent: domain-architect
+      action: gap-analysis
+      requires:
+        - brownfield-architecture-current.md
+      notes: "Performs a gap analysis between the application's current state and the enterprise's target state."
+
+    - agent: domain-architect
+      creates: target-architecture.md
+      uses: create-target-architecture
+      notes: "Defines the target domain architecture for the application. SAVE OUTPUT: Copy final target-architecture.md to your project's docs/ folder."
+
+    - agent: architect
+      creates: brownfield-architecture-updated.md
+      uses: create-brownfield-architecture
+      requires:
+        - target-architecture.md
+      notes: "Creates the updated system-level architecture to align with the target state. SAVE OUTPUT: Copy final brownfield-architecture-updated.md to your project's docs/ folder."
+
+    - agent: security
+      action: review-architecture
+      requires: brownfield-architecture-updated.md
+      notes: "Reviews the proposed architectural changes for security implications."
+
+    - agent: po
+      validates: all_artifacts
+      uses: po-master-checklist
+      notes: "Validates all architecture documents for consistency and feasibility."
+
+    - agent: various
+      updates: any_flagged_documents
+      condition: po_checklist_issues
+      notes: "If PO finds issues, return to the relevant architect to fix and re-export updated documents."
+
+    - workflow_end:
+      action: architecture_complete
+      notes: "All architecture enhancement artifacts are complete and validated. The project can now move to PRD and story creation."
+
+  flow_diagram: |
+    ```mermaid
+    graph TD
+        A[Start: Brownfield Architecture] --> B[architect: document-project]
+        B --> C[domain-architect: analyze-current-state]
+        C --> D[domain-architect: gap-analysis]
+        D --> E[domain-architect: create-target-architecture]
+        E --> F[architect: create-brownfield-architecture]
+        F --> G[security: review-architecture]
+        G --> H[po: validate artifacts]
+        H --> I{PO finds issues?}
+        I -->|Yes| J[Fix issues]
+        I -->|No| K[Architecture Complete]
+        J --> H
+
+        style K fill:#90EE90
+        style B fill:#FFE4B5
+        style E fill:#FFE4B5
+        style F fill:#FFE4B5
+        style G fill:#FFC0CB
+    ```

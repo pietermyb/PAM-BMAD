@@ -223,7 +223,7 @@ class Installer {
   }
 
   async performFreshInstall(config, installDir, spinner, options = {}) {
-    spinner.text = "Installing BMad Method...";
+    spinner.text = "Installing PAM BMad Method...";
 
     let files = [];
 
@@ -795,7 +795,7 @@ class Installer {
   }
 
   async performReinstall(config, installDir, spinner) {
-    spinner.start("Preparing to reinstall BMad Method...");
+    spinner.start("Preparing to reinstall PAM BMad Method...");
 
     // Remove existing .bmad-core
     const bmadCorePath = path.join(installDir, ".bmad-core");
@@ -815,7 +815,7 @@ class Installer {
   }
 
   showSuccessMessage(config, installDir, options = {}) {
-    console.log(chalk.green("\n✓ BMad Method installed successfully!\n"));
+    console.log(chalk.green("\n✓ PAM BMad Method installed successfully!\n"));
 
     const ides = config.ides || (config.ide ? [config.ide] : []);
     if (ides.length > 0) {
@@ -881,11 +881,11 @@ class Installer {
     if (config.installType === "single-agent") {
       console.log(
         chalk.dim(
-          "\nNeed other agents? Run: npx bmad-method install --agent=<name>"
+          "\nNeed other agents? Run: npx PAM-bmad install --agent=<name>"
         )
       );
       console.log(
-        chalk.dim("Need everything? Run: npx bmad-method install --full")
+        chalk.dim("Need everything? Run: npx PAM-bmad install --full")
       );
     }
 
@@ -929,7 +929,7 @@ class Installer {
     }
 
     console.log(
-      chalk.dim("\nInstall with: npx bmad-method install --agent=<id>\n")
+      chalk.dim("\nInstall with: npx PAM-bmad install --agent=<id>\n")
     );
   }
 
@@ -954,7 +954,7 @@ class Installer {
     }
 
     console.log(
-      chalk.dim("Install with: npx bmad-method install --full --expansion-packs <id>\n")
+      chalk.dim("Install with: npx PAM-bmad install --full --expansion-packs <id>\n")
     );
   }
 

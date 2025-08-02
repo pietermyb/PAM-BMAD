@@ -16,7 +16,7 @@ async function initializeModules() {
 }
 
 /**
- * YAML Formatter and Linter for BMad-Method
+ * YAML Formatter and Linter for PAM BMad
  * Formats and validates YAML files and YAML embedded in Markdown
  */
 

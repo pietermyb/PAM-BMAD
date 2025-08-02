@@ -1,0 +1,80 @@
+workflow:
+  id: greenfield-architecture
+  name: Greenfield Architecture Design
+  description: >-
+    Agent workflow for designing the architecture of a new application, from enterprise alignment to detailed system design.
+  type: greenfield
+  project_types:
+    - enterprise-app
+    - saas
+    - platform-component
+
+  sequence:
+    - agent: domain-architect
+      action: analyze-current-state
+      notes: "Analyzes the current enterprise landscape to understand the context for the new application."
+
+    - agent: domain-architect
+      creates: domain-architecture.md
+      uses: create-domain-architecture
+      notes: "Defines the new application's role and boundaries within the enterprise domain. SAVE OUTPUT: Copy final domain-architecture.md to your project's docs/ folder."
+
+    - agent: domain-architect
+      action: analyze-solution-principles
+      requires: domain-architecture.md
+      notes: "Ensures the proposed domain architecture aligns with established enterprise principles."
+
+    - agent: architect
+      creates: fullstack-architecture.md
+      uses: create-full-stack-architecture
+      requires: domain-architecture.md
+      notes: "Creates the detailed system-level architecture for the new application. SAVE OUTPUT: Copy final fullstack-architecture.md to your project's docs/ folder."
+
+    - agent: security
+      action: conduct-threat-model
+      requires: fullstack-architecture.md
+      notes: "Performs a threat modeling exercise on the proposed system architecture."
+
+    - agent: architect
+      updates: fullstack-architecture.md
+      requires: threat-model.md
+      condition: threat_model_suggests_changes
+      notes: "Updates the architecture to mitigate any threats identified."
+
+    - agent: po
+      validates: all_artifacts
+      uses: po-master-checklist
+      notes: "Validates all architecture documents for consistency and completeness."
+
+    - agent: various
+      updates: any_flagged_documents
+      condition: po_checklist_issues
+      notes: "If PO finds issues, return to the relevant architect to fix and re-export updated documents."
+
+    - workflow_end:
+      action: architecture_complete
+      notes: "All architecture planning artifacts are complete and validated. The project can now move to PRD and story creation."
+
+  flow_diagram: |
+    ```mermaid
+    graph TD
+        A[Start: Greenfield Architecture] --> B[domain-architect: analyze-current-state]
+        B --> C[domain-architect: create-domain-architecture]
+        C --> D[domain-architect: analyze-solution-principles]
+        D --> E[architect: create-full-stack-architecture]
+        E --> F[security: conduct-threat-model]
+        F --> G{Threats identified?}
+        G -->|Yes| H[architect: update architecture]
+        G -->|No| I[po: validate artifacts]
+        H --> I
+        I --> J{PO finds issues?}
+        J -->|Yes| K[Fix issues]
+        J -->|No| L[Architecture Complete]
+        K --> I
+
+        style L fill:#90EE90
+        style C fill:#FFE4B5
+        style E fill:#FFE4B5
+        style H fill:#FFE4B5
+        style F fill:#FFC0CB
+    ```

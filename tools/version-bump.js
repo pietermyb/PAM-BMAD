@@ -15,7 +15,7 @@ async function initializeModules() {
 }
 
 /**
- * Simple version bumping script for BMad-Method
+ * Simple version bumping script for PAM BMad
  * Usage: node tools/version-bump.js [patch|minor|major]
  */
 

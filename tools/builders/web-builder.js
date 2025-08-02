@@ -48,47 +48,7 @@ class WebBuilder {
     const utilsExample = packName ? `.${packName}/utils/template-format.md` : '.bmad-core/utils/template-format.md';
     const tasksRef = packName ? `.${packName}/tasks/create-story.md` : '.bmad-core/tasks/create-story.md';
 
-    return `# Web Agent Bundle Instructions
-
-You are now operating as a specialized AI agent from the BMad-Method framework. This is a bundled web-compatible version containing all necessary resources for your role.
-
-## Important Instructions
-
-1. **Follow all startup commands**: Your agent configuration includes startup instructions that define your behavior, personality, and approach. These MUST be followed exactly.
-
-2. **Resource Navigation**: This bundle contains all resources you need. Resources are marked with tags like:
-
-- \`==================== START: ${examplePath} ====================\`
-- \`==================== END: ${examplePath} ====================\`
-
-When you need to reference a resource mentioned in your instructions:
-
-- Look for the corresponding START/END tags
-- The format is always the full path with dot prefix (e.g., \`${personasExample}\`, \`${tasksExample}\`)
-- If a section is specified (e.g., \`{root}/tasks/create-story.md#section-name\`), navigate to that section within the file
-
-**Understanding YAML References**: In the agent configuration, resources are referenced in the dependencies section. For example:
-
-\`\`\`yaml
-dependencies:
-  utils:
-    - template-format
-  tasks:
-    - create-story
-\`\`\`
-
-These references map directly to bundle sections:
-
-- \`utils: template-format\` → Look for \`==================== START: ${utilsExample} ====================\`
-- \`tasks: create-story\` → Look for \`==================== START: ${tasksRef} ====================\`
-
-3. **Execution Context**: You are operating in a web environment. All your capabilities and knowledge are contained within this bundle. Work within these constraints to provide the best possible assistance.
-
-4. **Primary Directive**: Your primary goal is defined in your agent configuration below. Focus on fulfilling your designated role according to the BMad-Method framework.
-
----
-
-`;
+    return `# Web Agent Bundle Instructions\n\nYou are now operating as a specialized AI agent from the PAM BMad framework. This is a bundled web-compatible version containing all necessary resources for your role.\n\n## Important Instructions\n\n1. **Follow all startup commands**: Your agent configuration includes startup instructions that define your behavior, personality, and approach. These MUST be followed exactly.\n\n2. **Resource Navigation**: This bundle contains all resources you need. Resources are marked with tags like:\n\n- \`==================== START: ${examplePath} ====================\`\n- \`==================== END: ${examplePath} ====================\`\n\nWhen you need to reference a resource mentioned in your instructions:\n\n- Look for the corresponding START/END tags\n- The format is always the full path with dot prefix (e.g., \`${personasExample}\`, \`${tasksExample}\`)\n- If a section is specified (e.g., \`{root}/tasks/create-story.md#section-name\`), navigate to that section within the file\n\n**Understanding YAML References**: In the agent configuration, resources are referenced in the dependencies section. For example:\n\n\`\`\`yaml\ndependencies:\n  utils:\n    - template-format\n  tasks:\n    - create-story\n\`\`\`\n\nThese references map directly to bundle sections:\n\n- \`utils: template-format\` → Look for \`==================== START: ${utilsExample} ====================\`\n- \`tasks: create-story\` → Look for \`==================== START: ${tasksRef} ====================\`\n\n3. **Execution Context**: You are operating in a web environment. All your capabilities and knowledge are contained within this bundle. Work within these constraints to provide the best possible assistance.\n\n4. **Primary Directive**: Your primary goal is defined in your agent configuration below. Focus on fulfilling your designated role according to the PAM BMad framework.\n\n---\n\n`;
   }
 
   async cleanOutputDirs() {
@@ -124,6 +84,8 @@ These references map directly to bundle sections:
 
   async buildTeams() {
     const teams = await this.resolver.listTeams();
+    const coreTeamsDir = path.join(this.rootDir, 'bmad-core', 'teams');
+    await fs.mkdir(coreTeamsDir, { recursive: true });
 
     for (const teamId of teams) {
       console.log(`  Building team: ${teamId}`);
@@ -135,10 +97,15 @@ These references map directly to bundle sections:
         await fs.mkdir(outputPath, { recursive: true });
         const outputFile = path.join(outputPath, `${teamId}.txt`);
         await fs.writeFile(outputFile, bundle, "utf8");
+
+        // Also copy to bmad-core/teams
+        const coreDestPath = path.join(coreTeamsDir, `${teamId}.txt`);
+        await fs.copyFile(outputFile, coreDestPath);
+        console.log(`  Copied ${teamId}.txt to bmad-core/teams`);
       }
     }
 
-    console.log(`Built ${teams.length} team bundles in ${this.outputDirs.length} locations`);
+    console.log(`Built ${teams.length} team bundles in ${this.outputDirs.length} locations and updated bmad-core/teams`);
   }
 
   async buildAgentBundle(agentId) {
@@ -170,10 +137,20 @@ These references map directly to bundle sections:
     const teamPath = this.convertToWebPath(dependencies.team.path, 'bmad-core');
     sections.push(this.formatSection(teamPath, dependencies.team.content, 'bmad-core'));
 
+    // Generate dynamic help template
+    const helpTemplate = this.generateHelpTemplate(dependencies);
+
     // Add all agents
     for (const agent of dependencies.agents) {
+      let agentContent = agent.content;
+      if (agent.id === 'bmad-orchestrator') {
+        agentContent = agentContent.replace(
+          /help-display-template: \|[\s\S]*?(?=\n\s*\w+:|$)/,
+          `help-display-template: |\n${helpTemplate}`
+        );
+      }
       const agentPath = this.convertToWebPath(agent.path, 'bmad-core');
-      sections.push(this.formatSection(agentPath, agent.content, 'bmad-core'));
+      sections.push(this.formatSection(agentPath, agentContent, 'bmad-core'));
     }
 
     // Add all deduplicated resources
@@ -183,6 +160,34 @@ These references map directly to bundle sections:
     }
 
     return sections.join("\n");
+  }
+
+  generateHelpTemplate(dependencies) {
+    const agentList = dependencies.agents
+      .filter(agent => agent.id !== 'bmad-orchestrator')
+      .map(agent => {
+        const yamlContent = yamlUtils.extractYamlFromAgent(agent.content);
+        if (!yamlContent) return '';
+        try {
+          const parsed = this.parseYaml(yamlContent);
+          const { id, title, whenToUse } = parsed.agent;
+          return `  *agent ${id}: ${title}\n    When to use: ${whenToUse}`;
+        } catch (error) {
+          console.warn(`Failed to parse agent YAML for help template: ${agent.id}`);
+          return '';
+        }
+      })
+      .join('\n');
+
+    const workflowList = (dependencies.team.workflows || [])
+      .map(workflow => {
+        const workflowId = workflow.replace('.yaml', '');
+        const workflowName = workflowId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        return `  *workflow ${workflowId}: ${workflowName}`;
+      })
+      .join('\n');
+
+    return `\n  === BMad Orchestrator Commands ===\n  All commands must start with * (asterisk)\n\n  Core Commands:\n  *help ............... Show this guide\n  *chat-mode .......... Start conversational mode for detailed assistance\n  *kb-mode ............ Load full BMad knowledge base\n  *status ............. Show current context, active agent, and progress\n  *exit ............... Return to BMad or exit session\n\n  Agent & Task Management:\n  *agent [name] ....... Transform into specialized agent (list if no name)\n  *task [name] ........ Run specific task (list if no name, requires agent)\n  *checklist [name] ... Execute checklist (list if no name, requires agent)\n\n  Workflow Commands:\n  *workflow [name] .... Start specific workflow (list if no name)\n  *workflow-guidance .. Get personalized help selecting the right workflow\n  *plan ............... Create detailed workflow plan before starting\n  *plan-status ........ Show current workflow plan progress\n  *plan-update ........ Update workflow plan status\n\n  Other Commands:\n  *yolo ............... Toggle skip confirmations mode\n  *party-mode ......... Group chat with all agents\n  *doc-out ............ Output full document\n\n  === Available Specialist Agents ===\n${agentList}\n\n  === Available Workflows ===\n${workflowList}\n\n  💡 Tip: Each agent has unique tasks, templates, and checklists. Switch to an agent to access their capabilities!\n`;
   }
 
   processAgentContent(content) {
@@ -352,7 +357,7 @@ These references map directly to bundle sections:
         console.log(`    Building team bundle for ${packName}`);
         const teamConfigPath = path.join(agentTeamsDir, teamFile);
 
-        // Build expansion pack as a team bundle
+        // Build expansion pack as a a team bundle
         const bundle = await this.buildExpansionTeamBundle(packName, packDir, teamConfigPath);
 
         // Write to all output directories
@@ -618,11 +623,18 @@ These references map directly to bundle sections:
 
       // If not found in core, try common folder
       if (!found) {
-        const commonPath = path.join(this.rootDir, "common", dep.type, dep.name);
+        const commonPath = path.join(
+          this.rootDir,
+          "common",
+          dep.type,
+          dep.name
+        );
         try {
           const content = await fs.readFile(commonPath, "utf8");
           const commonWebPath = this.convertToWebPath(commonPath, packName);
-          sections.push(this.formatSection(commonWebPath, content, packName));
+          sections.push(
+            this.formatSection(commonWebPath, content, packName)
+          );
           found = true;
         } catch (error) {
           // Not in common either, continue

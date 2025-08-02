@@ -4,5 +4,5 @@
 
 ```bash
 # Interactive installation
-npx bmad-method install
+npx PAM-bmad install
 ```

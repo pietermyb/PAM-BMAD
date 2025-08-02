@@ -1,44 +1,32 @@
 # How to Contribute with Pull Requests
 
-**New to GitHub and pull requests?** This guide will walk you through the basics step by step.
+This guide will walk you through the basics of creating a pull request for this project.
 
 ## What is a Pull Request?
 
-A pull request (PR) is how you propose changes to a project on GitHub. Think of it as saying "Here are some changes I'd like to make - please review and consider adding them to the main project."
-
-## Before You Start
-
-⚠️ **Important**: Please keep your contributions small and focused! We prefer many small, clear changes rather than one massive change.
-
-**Required before submitting PRs:**
-
-- **For bug fixes**: Create an issue using the [bug report template](https://github.com/bmadcode/bmad-method/issues/new?template=bug_report.md)
-- **For new features**:
-  1. Discuss in Discord [#general-dev channel](https://discord.gg/gk8jAdXWmj)
-  2. Create an issue using the [feature request template](https://github.com/bmadcode/bmad-method/issues/new?template=feature_request.md)
-- **For large changes**: Always open an issue first to discuss alignment
+A pull request (PR) is how you propose changes to the project. It allows others to review your work before it's merged into the main codebase.
 
 ## Step-by-Step Guide
 
-### 1. Fork the Repository
+### 1. Clone the Repository
 
-1. Go to the [BMad-Method repository](https://github.com/bmadcode/bmad-method)
-2. Click the "Fork" button in the top-right corner
-3. This creates your own copy of the project
-
-### 2. Clone Your Fork
+If you haven't already, clone the repository to your local machine:
 
 ```bash
-# Replace YOUR-USERNAME with your actual GitHub username
-git clone https://github.com/YOUR-USERNAME/bmad-method.git
-cd bmad-method
+# Clone the repository
+git clone <repository-url>
+cd PAM-bmad
 ```
 
-### 3. Create a New Branch
+### 2. Create a New Branch
 
 **Never work directly on the `main` branch!** Always create a new branch for your changes:
 
 ```bash
+# Make sure you are on the main branch and have the latest changes
+git checkout main
+git pull
+
 # Create and switch to a new branch
 git checkout -b fix/typo-in-readme
 # or
@@ -51,108 +39,68 @@ git checkout -b feature/add-new-agent
 - `feature/description` - for new features
 - `docs/description` - for documentation changes
 
-### 4. Make Your Changes
+### 3. Make Your Changes
 
-- Edit the files you want to change
-- Keep changes small and focused on one thing
-- Test your changes if possible
+- Edit the files you want to change.
+- Keep your changes small and focused on a single task.
 
-### 5. Commit Your Changes
+### 4. Commit Your Changes
+
+Commit your changes with a clear and descriptive message.
 
 ```bash
-# Add your changes
+# Add your changes to be staged for commit
 git add .
 
 # Commit with a clear message
-git commit -m "Fix typo in README.md"
+git commit -m "Fix: Correct typo in README.md"
+# or for a feature
+git commit -m "Feat: Add new agent for XYZ"
 ```
 
 **Good commit messages:**
 
-- "Fix typo in installation instructions"
-- "Add example for new agent usage"
-- "Update broken link in docs"
+- "Fix: Correct typo in installation instructions"
+- "Feat: Add example for new agent usage"
+- "Docs: Update broken link"
 
-**Bad commit messages:**
+### 5. Push Your Branch
 
-- "stuff"
-- "changes"
-- "update"
-
-### 6. Push to Your Fork
+Push your new branch to the central repository:
 
 ```bash
-# Push your branch to your fork
+# Push your branch
 git push origin fix/typo-in-readme
 ```
 
-### 7. Create the Pull Request
+### 6. Create the Pull Request
 
-1. Go to your fork on GitHub
-2. You'll see a green "Compare & pull request" button - click it
-3. Select the correct target branch:
-   - **`next` branch** for most contributions (features, docs, enhancements)
-   - **`main` branch** only for critical fixes
-4. Fill out the PR description using the template in CONTRIBUTING.md:
-   - **What**: 1-2 sentences describing what changed
-   - **Why**: 1-2 sentences explaining why
-   - **How**: 2-3 bullets on implementation
-   - **Testing**: How you tested
-5. Reference the related issue number (e.g., "Fixes #123")
+1.  Go to the repository in your web browser.
+2.  GitHub will usually show a prompt to create a pull request for your recently pushed branch. Click the "Compare & pull request" button.
+3.  If you don't see the prompt, go to the "Pull requests" tab and click "New pull request".
+4.  Set the base branch to `main` and the compare branch to your new branch (e.g., `fix/typo-in-readme`).
+5.  Write a clear title and description for your pull request. Explain *what* you changed and *why*.
+6.  Click "Create pull request".
 
-### 8. Wait for Review
+### 7. Request a Review
 
-- A maintainer will review your PR
-- They might ask for changes
-- Be patient and responsive to feedback
+Once your pull request is created, please request a review from one of the project maintainers. They will review your changes and may request modifications before merging.
 
 ## What Makes a Good Pull Request?
 
 ✅ **Good PRs:**
 
-- Change one thing at a time
-- Have clear, descriptive titles
-- Explain what and why in the description
-- Include only the files that need to change
+-   Change one thing at a time.
+-   Have clear, descriptive titles.
+-   Explain what and why in the description.
+-   Include only the files that need to change.
 
 ❌ **Avoid:**
 
-- Changing formatting of entire files
-- Multiple unrelated changes in one PR
-- Copying your entire project/repo into the PR
-- Changes without explanation
-
-## Common Mistakes to Avoid
-
-1. **Don't reformat entire files** - only change what's necessary
-2. **Don't include unrelated changes** - stick to one fix/feature per PR
-3. **Don't paste code in issues** - create a proper PR instead
-4. **Don't submit your whole project** - contribute specific improvements
-
-## Need Help?
-
-- 💬 Join our [Discord Community](https://discord.gg/gk8jAdXWmj) for real-time help:
-  - **#general-dev** - Technical questions and feature discussions
-  - **#bugs-issues** - Get help with bugs before filing issues
-- 💬 Ask questions in [GitHub Discussions](https://github.com/bmadcode/bmad-method/discussions)
-- 🐛 Report bugs using the [bug report template](https://github.com/bmadcode/bmad-method/issues/new?template=bug_report.md)
-- 💡 Suggest features using the [feature request template](https://github.com/bmadcode/bmad-method/issues/new?template=feature_request.md)
-- 📖 Read the full [Contributing Guidelines](../CONTRIBUTING.md)
-
-## Example: Good vs Bad PRs
-
-### 😀 Good PR Example
-
-**Title**: "Fix broken link to installation guide"
-**Changes**: One file, one line changed
-**Description**: "The link in README.md was pointing to the wrong file. Updated to point to correct installation guide."
-
-### 😞 Bad PR Example
-
-**Title**: "Updates"
-**Changes**: 50 files, entire codebase reformatted
-**Description**: "Made some improvements"
+-   Changing formatting of entire files.
+-   Multiple unrelated changes in one PR.
+-   Changes without explanation.
 
 ---
 
-**Remember**: We're here to help! Don't be afraid to ask questions. Every expert was once a beginner.
+**Remember**: If you have questions about the process, please reach out to one of the project maintainers.

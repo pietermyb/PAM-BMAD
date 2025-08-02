@@ -1,0 +1,507 @@
+template:
+  id: eap-roadmap-template-v1
+  name: EAP Roadmap Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/eap-roadmap.md
+    title: "{{project_name}} EAP Roadmap"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: |
+      Review any provided relevant documents to gather enterprise context before beginning. This document follows Enterprise Architecture Planning (EAP) methodology.
+    sections:
+      - id: intro-content
+        content: |
+          This document provides the Enterprise Architecture Planning (EAP) roadmap for {{project_name}}, outlining the strategic planning approach for enterprise architecture development and implementation.
+          
+          **EAP Methodology Overview:**
+          Enterprise Architecture Planning provides a structured approach to developing enterprise architecture through strategic planning, current state analysis, and future state design.
+      - id: eap-overview
+        title: EAP Methodology Overview
+        instruction: |
+          Document the EAP methodology approach:
+          
+          1. EAP Framework Application
+          2. Planning Methodology
+          3. Strategic Alignment
+          4. Implementation Approach
+          5. Success Criteria
+        elicit: true
+      - id: changelog
+        title: Change Log
+        type: table
+        columns: [Date, Version, Description, Author]
+        instruction: Track document versions and changes
+
+  - id: strategic-context
+    title: Strategic Context
+    instruction: |
+      This section establishes the strategic context for EAP.
+    sections:
+      - id: business-strategy
+        title: Business Strategy
+        instruction: |
+          Document business strategy:
+          
+          1. Strategic Objectives
+          2. Business Goals
+          3. Market Position
+          4. Competitive Landscape
+          5. Value Proposition
+        elicit: true
+      - id: strategic-drivers
+        title: Strategic Drivers
+        instruction: |
+          Define strategic drivers:
+          
+          1. Business Drivers
+          2. Technology Drivers
+          3. Market Drivers
+          4. Regulatory Drivers
+          5. Innovation Drivers
+        elicit: true
+      - id: strategic-constraints
+        title: Strategic Constraints
+        instruction: |
+          Identify strategic constraints:
+          
+          1. Business Constraints
+          2. Technology Constraints
+          3. Resource Constraints
+          4. Regulatory Constraints
+          5. Timeline Constraints
+        elicit: true
+
+  - id: current-state-analysis
+    title: Current State Analysis
+    instruction: |
+      This section analyzes the current state of the enterprise.
+    sections:
+      - id: business-current-state
+        title: Current Business State
+        instruction: |
+          Analyze current business state:
+          
+          1. Business Functions
+          2. Business Processes
+          3. Business Capabilities
+          4. Business Performance
+          5. Business Challenges
+        elicit: true
+      - id: technology-current-state
+        title: Current Technology State
+        instruction: |
+          Analyze current technology state:
+          
+          1. Technology Portfolio
+          2. Technology Infrastructure
+          3. Technology Performance
+          4. Technology Challenges
+          5. Technology Debt
+        elicit: true
+      - id: data-current-state
+        title: Current Data State
+        instruction: |
+          Analyze current data state:
+          
+          1. Data Architecture
+          2. Data Quality
+          3. Data Governance
+          4. Data Challenges
+          5. Data Opportunities
+        elicit: true
+      - id: current-state-diagram
+        title: Current State Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create current state diagram showing:
+          
+          1. Business functions
+          2. Technology systems
+          3. Data flows
+          4. Integration points
+          5. Current challenges
+
+  - id: future-state-vision
+    title: Future State Vision
+    instruction: |
+      This section defines the future state vision for the enterprise.
+    sections:
+      - id: business-future-state
+        title: Future Business State
+        instruction: |
+          Define future business state:
+          
+          1. Target Business Functions
+          2. Target Business Processes
+          3. Target Business Capabilities
+          4. Target Business Performance
+          5. Target Business Value
+        elicit: true
+      - id: technology-future-state
+        title: Future Technology State
+        instruction: |
+          Define future technology state:
+          
+          1. Target Technology Portfolio
+          2. Target Technology Infrastructure
+          3. Target Technology Performance
+          4. Target Technology Capabilities
+          5. Target Technology Value
+        elicit: true
+      - id: data-future-state
+        title: Future Data State
+        instruction: |
+          Define future data state:
+          
+          1. Target Data Architecture
+          2. Target Data Quality
+          3. Target Data Governance
+          4. Target Data Capabilities
+          5. Target Data Value
+        elicit: true
+      - id: future-state-diagram
+        title: Future State Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create future state diagram showing:
+          
+          1. Target business architecture
+          2. Target technology architecture
+          3. Target data architecture
+          4. Target integration patterns
+          5. Target capabilities
+
+  - id: gap-analysis
+    title: Gap Analysis
+    instruction: |
+      This section analyzes gaps between current and future state.
+    sections:
+      - id: business-gaps
+        title: Business Gaps
+        instruction: |
+          Identify business gaps:
+          
+          1. Business Function Gaps
+          2. Business Process Gaps
+          3. Business Capability Gaps
+          4. Business Performance Gaps
+          5. Business Value Gaps
+        elicit: true
+      - id: technology-gaps
+        title: Technology Gaps
+        instruction: |
+          Identify technology gaps:
+          
+          1. Technology Portfolio Gaps
+          2. Technology Infrastructure Gaps
+          3. Technology Performance Gaps
+          4. Technology Capability Gaps
+          5. Technology Value Gaps
+        elicit: true
+      - id: data-gaps
+        title: Data Gaps
+        instruction: |
+          Identify data gaps:
+          
+          1. Data Architecture Gaps
+          2. Data Quality Gaps
+          3. Data Governance Gaps
+          4. Data Capability Gaps
+          5. Data Value Gaps
+        elicit: true
+      - id: gap-analysis-table
+        title: Gap Analysis Summary
+        type: table
+        columns: [Gap Category, Current State, Target State, Gap Description, Impact, Priority]
+        instruction: |
+          Create gap analysis summary table
+
+  - id: strategic-initiatives
+    title: Strategic Initiatives
+    instruction: |
+      This section defines strategic initiatives to address identified gaps.
+    sections:
+      - id: initiative-identification
+        title: Initiative Identification
+        instruction: |
+          Identify strategic initiatives:
+          
+          1. Business Transformation Initiatives
+          2. Technology Modernization Initiatives
+          3. Data Management Initiatives
+          4. Integration Initiatives
+          5. Innovation Initiatives
+        elicit: true
+      - id: initiative-prioritization
+        title: Initiative Prioritization
+        instruction: |
+          Prioritize strategic initiatives:
+          
+          1. Strategic Alignment
+          2. Business Value
+          3. Implementation Complexity
+          4. Resource Requirements
+          5. Risk Assessment
+        elicit: true
+      - id: initiative-dependencies
+        title: Initiative Dependencies
+        instruction: |
+          Analyze initiative dependencies:
+          
+          1. Direct Dependencies
+          2. Indirect Dependencies
+          3. Critical Path Dependencies
+          4. Resource Dependencies
+          5. Risk Dependencies
+        elicit: true
+
+  - id: implementation-roadmap
+    title: Implementation Roadmap
+    instruction: |
+      This section provides the implementation roadmap for strategic initiatives.
+    sections:
+      - id: roadmap-phases
+        title: Roadmap Phases
+        instruction: |
+          Define roadmap phases:
+          
+          1. Phase 1: Foundation and Core Infrastructure
+          2. Phase 2: Business Process Optimization
+          3. Phase 3: Technology Modernization
+          4. Phase 4: Advanced Capabilities
+          5. Phase 5: Innovation and Optimization
+        elicit: true
+      - id: phase-details
+        title: Phase Details
+        instruction: |
+          Define phase details:
+          
+          1. Phase Objectives
+          2. Phase Deliverables
+          3. Phase Timeline
+          4. Phase Resources
+          5. Phase Success Criteria
+        elicit: true
+      - id: roadmap-diagram
+        title: Implementation Roadmap
+        type: mermaid
+        mermaid_type: gantt
+        instruction: |
+          Create implementation roadmap showing:
+          
+          1. Roadmap phases
+          2. Strategic initiatives
+          3. Dependencies
+          4. Milestones
+          5. Success criteria
+
+  - id: investment-planning
+    title: Investment Planning
+    instruction: |
+      This section provides investment planning for strategic initiatives.
+    sections:
+      - id: investment-categories
+        title: Investment Categories
+        instruction: |
+          Define investment categories:
+          
+          1. Business Transformation Investments
+          2. Technology Infrastructure Investments
+          3. Application Development Investments
+          4. Data Management Investments
+          5. Innovation Investments
+        elicit: true
+      - id: investment-prioritization
+        title: Investment Prioritization
+        instruction: |
+          Prioritize investments:
+          
+          1. Strategic Priority
+          2. Business Value
+          3. Risk Mitigation
+          4. Resource Availability
+          5. Implementation Readiness
+        elicit: true
+      - id: investment-timeline
+        title: Investment Timeline
+        instruction: |
+          Define investment timeline:
+          
+          1. Short-term Investments (0-12 months)
+          2. Medium-term Investments (1-3 years)
+          3. Long-term Investments (3-5 years)
+          4. Investment Phasing
+          5. Return on Investment
+        elicit: true
+
+  - id: risk-management
+    title: Risk Management
+    instruction: |
+      This section defines risk management for the EAP roadmap.
+    sections:
+      - id: risk-identification
+        title: Risk Identification
+        instruction: |
+          Identify risks:
+          
+          1. Strategic Risks
+          2. Operational Risks
+          3. Technology Risks
+          4. Financial Risks
+          5. External Risks
+        elicit: true
+      - id: risk-assessment
+        title: Risk Assessment
+        type: table
+        columns: [Risk, Impact, Probability, Mitigation Strategy, Owner]
+        instruction: |
+          Create risk assessment table
+      - id: risk-mitigation
+        title: Risk Mitigation
+        instruction: |
+          Define risk mitigation strategies:
+          
+          1. Risk Avoidance
+          2. Risk Transfer
+          3. Risk Mitigation
+          4. Risk Acceptance
+          5. Contingency Planning
+        elicit: true
+
+  - id: governance-framework
+    title: Governance Framework
+    instruction: |
+      This section defines governance for EAP implementation.
+    sections:
+      - id: governance-structure
+        title: Governance Structure
+        instruction: |
+          Define governance structure:
+          
+          1. Executive Steering Committee
+          2. Architecture Review Board
+          3. Program Management Office
+          4. Technical Review Board
+          5. Change Management Board
+        elicit: true
+      - id: governance-processes
+        title: Governance Processes
+        instruction: |
+          Define governance processes:
+          
+          1. Strategic Planning Process
+          2. Architecture Review Process
+          3. Investment Decision Process
+          4. Change Management Process
+          5. Performance Monitoring Process
+        elicit: true
+      - id: governance-tools
+        title: Governance Tools
+        instruction: |
+          Define governance tools:
+          
+          1. Strategic Planning Tools
+          2. Architecture Repository
+          3. Portfolio Management Tools
+          4. Performance Dashboards
+          5. Communication Platforms
+        elicit: true
+
+  - id: success-metrics
+    title: Success Metrics
+    instruction: |
+      This section defines success metrics for EAP implementation.
+    sections:
+      - id: strategic-metrics
+        title: Strategic Metrics
+        instruction: |
+          Define strategic metrics:
+          
+          1. Strategic Alignment
+          2. Business Value Achievement
+          3. Competitive Advantage
+          4. Innovation Achievement
+          5. Market Position
+        elicit: true
+      - id: operational-metrics
+        title: Operational Metrics
+        instruction: |
+          Define operational metrics:
+          
+          1. Operational Efficiency
+          2. Cost Reduction
+          3. Quality Improvement
+          4. Performance Enhancement
+          5. Risk Reduction
+        elicit: true
+      - id: technical-metrics
+        title: Technical Metrics
+        instruction: |
+          Define technical metrics:
+          
+          1. Technology Modernization
+          2. System Performance
+          3. Integration Success
+          4. Data Quality
+          5. Security Compliance
+        elicit: true
+      - id: measurement-framework
+        title: Measurement Framework
+        instruction: |
+          Define measurement framework:
+          
+          1. Data Collection Methods
+          2. Reporting Frequency
+          3. Review and Analysis Process
+          4. Continuous Improvement
+          5. Stakeholder Communication
+        elicit: true
+
+  - id: communication-plan
+    title: Communication Plan
+    instruction: |
+      This section defines communication for EAP implementation.
+    sections:
+      - id: stakeholder-communication
+        title: Stakeholder Communication
+        instruction: |
+          Define stakeholder communication:
+          
+          1. Executive Communication
+          2. Business Communication
+          3. Technical Communication
+          4. External Communication
+          5. Change Communication
+        elicit: true
+      - id: communication-channels
+        title: Communication Channels
+        instruction: |
+          Define communication channels:
+          
+          1. Executive Presentations
+          2. Business Workshops
+          3. Technical Forums
+          4. Progress Reports
+          5. Success Stories
+        elicit: true
+      - id: communication-schedule
+        title: Communication Schedule
+        instruction: |
+          Define communication schedule:
+          
+          1. Regular Updates
+          2. Milestone Communications
+          3. Progress Reviews
+          4. Success Celebrations
+          5. Lessons Learned
+        elicit: true 

@@ -1,11 +1,10 @@
 {
-  "name": "bmad-method",
-  "version": "4.33.1",
-  "description": "Breakthrough Method of Agile AI-driven Development",
+  "name": "PAM-bmad",
+  "version": "1.0.0",
+  "description": "Breakthrough Method of Agile AI-driven Development, adapted for PAM",
   "main": "tools/cli.js",
   "bin": {
-    "bmad": "tools/bmad-npx-wrapper.js",
-    "bmad-method": "tools/bmad-npx-wrapper.js"
+    "PAM-bmad": "tools/PAM-bmad-npx-wrapper.js"
   },
   "scripts": {
     "build": "node tools/cli.js build",
@@ -14,7 +13,7 @@
     "list:agents": "node tools/cli.js list:agents",
     "validate": "node tools/cli.js validate",
     "flatten": "node tools/flattener/main.js",
-    "install:bmad": "node tools/installer/bin/bmad.js install",
+    "install:PAM-bmad": "node tools/installer/bin/bmad.js install",
     "format": "prettier --write \"**/*.md\"",
     "version:patch": "node tools/version-bump.js patch",
     "version:minor": "node tools/version-bump.js minor",
@@ -35,7 +34,6 @@
   },
   "dependencies": {
     "@kayvan/markdown-tree-parser": "^1.5.0",
-    "bmad-method": "^4.30.3",
     "chalk": "^4.1.2",
     "commander": "^14.0.0",
     "fs-extra": "^11.3.0",
@@ -52,13 +50,15 @@
     "development",
     "methodology",
     "agents",
-    "bmad"
+    "bmad",
+    "PAM"
   ],
-  "author": "Brian (BMad) Madison",
+  "original author": "Brian (BMad) Madison",
+  "fork author": "Pieter Myburgh (pieterm_PAM) PAM",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bmadcode/BMAD-METHOD.git"
+    "url": "git+https://github.com/pieterm_PAM/PAM-bmad.git"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -67,10 +67,10 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "husky": "^9.1.7",
-    "jest": "^30.0.4",
+    "jest": "^30.0.5",
     "lint-staged": "^16.1.1",
     "prettier": "^3.5.3",
-    "semantic-release": "^22.0.0",
+    "semantic-release": "^24.2.7",
     "yaml-lint": "^1.7.0"
   },
   "lint-staged": {

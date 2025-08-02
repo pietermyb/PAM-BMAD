@@ -782,7 +782,7 @@ class IdeSetup extends BaseIdeSetup {
 
   async setupGeminiCli(installDir) {
     const geminiDir = path.join(installDir, ".gemini");
-    const bmadMethodDir = path.join(geminiDir, "bmad-method");
+    const bmadMethodDir = path.join(geminiDir, "PAM-bmad");
     await fileManager.ensureDirectory(bmadMethodDir);
 
     // Update logic for existing settings.json

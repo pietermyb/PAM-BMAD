@@ -1,0 +1,456 @@
+template:
+  id: domain-integration-template-v1
+  name: Domain Integration Strategy Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/domain-integration-strategy.md
+    title: "{{project_name}} Domain Integration Strategy"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: |
+      Review any provided relevant documents to gather domain context before beginning. This document focuses on cross-domain integration strategies.
+    sections:
+      - id: intro-content
+        content: |
+          This document defines the domain integration strategy for {{project_name}}, establishing patterns and approaches for seamless integration between business domains while maintaining domain autonomy.
+          
+          **Purpose:**
+          The domain integration strategy ensures that domains can collaborate effectively while preserving their independence and clear boundaries.
+      - id: integration-overview
+        title: Integration Strategy Overview
+        instruction: |
+          Document the integration strategy approach:
+          
+          1. Integration Philosophy
+          2. Domain Autonomy Principles
+          3. Integration Patterns
+          4. Governance Model
+          5. Success Criteria
+        elicit: true
+      - id: changelog
+        title: Change Log
+        type: table
+        columns: [Date, Version, Description, Author]
+        instruction: Track document versions and changes
+
+  - id: integration-principles
+    title: Integration Principles
+    instruction: |
+      This section defines the principles that guide domain integration.
+    sections:
+      - id: autonomy-principles
+        title: Domain Autonomy Principles
+        instruction: |
+          Define principles for maintaining domain autonomy:
+          
+          1. Domain Independence
+          2. Clear Boundaries
+          3. Self-Containment
+          4. Local Decision Making
+          5. Minimal Dependencies
+        elicit: true
+      - id: integration-principles
+        title: Integration Design Principles
+        instruction: |
+          Define principles for effective integration:
+          
+          1. Loose Coupling
+          2. High Cohesion
+          3. Explicit Contracts
+          4. Fault Tolerance
+          5. Observability
+        elicit: true
+      - id: governance-principles
+        title: Integration Governance Principles
+        instruction: |
+          Define governance principles for integration:
+          
+          1. Centralized Governance
+          2. Decentralized Execution
+          3. Standardization
+          4. Compliance
+          5. Continuous Improvement
+        elicit: true
+
+  - id: integration-patterns
+    title: Integration Patterns
+    instruction: |
+      This section defines the integration patterns used between domains.
+    sections:
+      - id: synchronous-patterns
+        title: Synchronous Integration Patterns
+        instruction: |
+          Define synchronous integration patterns:
+          
+          1. Request-Response Pattern
+          2. Remote Procedure Call (RPC)
+          3. API Gateway Pattern
+          4. Circuit Breaker Pattern
+          5. Bulkhead Pattern
+        elicit: true
+      - id: asynchronous-patterns
+        title: Asynchronous Integration Patterns
+        instruction: |
+          Define asynchronous integration patterns:
+          
+          1. Event-Driven Architecture
+          2. Message Queue Pattern
+          3. Publish-Subscribe Pattern
+          4. Saga Pattern
+          5. Outbox Pattern
+        elicit: true
+      - id: data-integration-patterns
+        title: Data Integration Patterns
+        instruction: |
+          Define data integration patterns:
+          
+          1. Data Replication
+          2. Data Federation
+          3. Data Virtualization
+          4. Change Data Capture
+          5. Event Sourcing
+        elicit: true
+
+  - id: integration-architecture
+    title: Integration Architecture
+    instruction: |
+      This section defines the overall integration architecture.
+    sections:
+      - id: integration-layers
+        title: Integration Layers
+        instruction: |
+          Define the layers of integration architecture:
+          
+          1. Presentation Layer
+          2. API Gateway Layer
+          3. Service Layer
+          4. Message Layer
+          5. Data Layer
+        elicit: true
+      - id: integration-components
+        title: Integration Components
+        instruction: |
+          Define key integration components:
+          
+          1. API Gateways
+          2. Message Brokers
+          3. Event Stores
+          4. Integration Services
+          5. Monitoring Tools
+        elicit: true
+      - id: integration-diagram
+        title: Integration Architecture Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: |
+          Create an integration architecture diagram showing:
+          
+          1. Domain boundaries
+          2. Integration components
+          3. Message flows
+          4. API gateways
+          5. Event buses
+
+  - id: api-strategy
+    title: API Strategy
+    instruction: |
+      This section defines the API strategy for domain integration.
+    sections:
+      - id: api-design-principles
+        title: API Design Principles
+        instruction: |
+          Define API design principles:
+          
+          1. RESTful Design
+          2. GraphQL Design
+          3. gRPC Design
+          4. Event-Driven APIs
+          5. API-First Design
+        elicit: true
+      - id: api-governance
+        title: API Governance
+        instruction: |
+          Define API governance:
+          
+          1. API Standards
+          2. API Versioning
+          3. API Documentation
+          4. API Testing
+          5. API Monitoring
+        elicit: true
+      - id: api-security
+        title: API Security
+        instruction: |
+          Define API security requirements:
+          
+          1. Authentication
+          2. Authorization
+          3. Rate Limiting
+          4. Data Encryption
+          5. Audit Logging
+        elicit: true
+
+  - id: event-strategy
+    title: Event Strategy
+    instruction: |
+      This section defines the event-driven integration strategy.
+    sections:
+      - id: event-design
+        title: Event Design
+        instruction: |
+          Define event design principles:
+          
+          1. Event Naming Conventions
+          2. Event Schema Design
+          3. Event Versioning
+          4. Event Documentation
+          5. Event Testing
+        elicit: true
+      - id: event-routing
+        title: Event Routing
+        instruction: |
+          Define event routing strategies:
+          
+          1. Topic-Based Routing
+          2. Content-Based Routing
+          3. Priority-Based Routing
+          4. Dead Letter Queues
+          5. Event Replay
+        elicit: true
+      - id: event-governance
+        title: Event Governance
+        instruction: |
+          Define event governance:
+          
+          1. Event Ownership
+          2. Event Lifecycle
+          3. Event Monitoring
+          4. Event Compliance
+          5. Event Optimization
+        elicit: true
+
+  - id: data-integration
+    title: Data Integration
+    instruction: |
+      This section defines data integration strategies between domains.
+    sections:
+      - id: data-sharing-patterns
+        title: Data Sharing Patterns
+        instruction: |
+          Define data sharing patterns:
+          
+          1. Shared Database
+          2. Database per Service
+          3. Shared Data Service
+          4. Data Mesh
+          5. Data Fabric
+        elicit: true
+      - id: data-synchronization
+        title: Data Synchronization
+        instruction: |
+          Define data synchronization strategies:
+          
+          1. Real-Time Synchronization
+          2. Batch Synchronization
+          3. Change Data Capture
+          4. Event-Driven Synchronization
+          5. Hybrid Approaches
+        elicit: true
+      - id: data-governance
+        title: Data Governance
+        instruction: |
+          Define data governance for integration:
+          
+          1. Data Ownership
+          2. Data Quality
+          3. Data Lineage
+          4. Data Privacy
+          5. Data Compliance
+        elicit: true
+
+  - id: integration-implementation
+    title: Integration Implementation
+    instruction: |
+      This section provides implementation guidance for domain integration.
+    sections:
+      - id: implementation-phases
+        title: Implementation Phases
+        instruction: |
+          Define implementation phases:
+          
+          1. Phase 1: Foundation Infrastructure
+          2. Phase 2: Core Integration Patterns
+          3. Phase 3: Advanced Integration Features
+          4. Phase 4: Optimization and Scale
+          5. Success Criteria for Each Phase
+        elicit: true
+      - id: technology-selection
+        title: Technology Selection
+        instruction: |
+          Define technology selection criteria:
+          
+          1. Integration Platforms
+          2. Message Brokers
+          3. API Gateways
+          4. Event Stores
+          5. Monitoring Tools
+        elicit: true
+      - id: implementation-roadmap
+        title: Implementation Roadmap
+        type: mermaid
+        mermaid_type: gantt
+        instruction: |
+          Create a Gantt chart showing:
+          
+          1. Implementation phases
+          2. Key milestones
+          3. Dependencies
+          4. Resource requirements
+          5. Success criteria
+
+  - id: monitoring-and-observability
+    title: Monitoring and Observability
+    instruction: |
+      This section defines monitoring and observability for integration.
+    sections:
+      - id: monitoring-strategy
+        title: Monitoring Strategy
+        instruction: |
+          Define monitoring strategy:
+          
+          1. Health Checks
+          2. Performance Monitoring
+          3. Error Tracking
+          4. Dependency Monitoring
+          5. Business Metrics
+        elicit: true
+      - id: observability-patterns
+        title: Observability Patterns
+        instruction: |
+          Define observability patterns:
+          
+          1. Distributed Tracing
+          2. Centralized Logging
+          3. Metrics Collection
+          4. Alert Management
+          5. Dashboard Design
+        elicit: true
+      - id: troubleshooting
+        title: Troubleshooting Strategy
+        instruction: |
+          Define troubleshooting strategy:
+          
+          1. Root Cause Analysis
+          2. Incident Response
+          3. Debugging Tools
+          4. Knowledge Base
+          5. Continuous Learning
+        elicit: true
+
+  - id: governance
+    title: Integration Governance
+    instruction: |
+      This section defines governance for domain integration.
+    sections:
+      - id: governance-structure
+        title: Governance Structure
+        instruction: |
+          Define governance structure:
+          
+          1. Integration Board
+          2. Domain Representatives
+          3. Technical Architects
+          4. Operations Team
+          5. Security Team
+        elicit: true
+      - id: governance-processes
+        title: Governance Processes
+        instruction: |
+          Define governance processes:
+          
+          1. Integration Review Process
+          2. Change Management Process
+          3. Performance Review Process
+          4. Security Review Process
+          5. Continuous Improvement Process
+        elicit: true
+      - id: governance-tools
+        title: Governance Tools
+        instruction: |
+          Define governance tools:
+          
+          1. Integration Repository
+          2. API Management Platform
+          3. Monitoring Dashboards
+          4. Documentation Tools
+          5. Collaboration Platforms
+        elicit: true
+
+  - id: risks-and-mitigation
+    title: Risks and Mitigation
+    instruction: |
+      This section identifies and addresses integration-related risks.
+    sections:
+      - id: risk-assessment
+        title: Risk Assessment
+        type: table
+        columns: [Risk, Impact, Probability, Mitigation Strategy, Owner]
+        instruction: |
+          Identify and assess integration-related risks
+      - id: risk-mitigation
+        title: Risk Mitigation Strategies
+        instruction: |
+          Define detailed risk mitigation strategies:
+          
+          1. Technical Risks
+          2. Operational Risks
+          3. Security Risks
+          4. Performance Risks
+          5. Business Continuity Risks
+        elicit: true
+
+  - id: success-metrics
+    title: Success Metrics
+    instruction: |
+      This section defines how integration success will be measured.
+    sections:
+      - id: technical-metrics
+        title: Technical Metrics
+        instruction: |
+          Define technical success metrics:
+          
+          1. Performance Metrics
+          2. Reliability Metrics
+          3. Scalability Metrics
+          4. Security Metrics
+          5. Quality Metrics
+        elicit: true
+      - id: business-metrics
+        title: Business Metrics
+        instruction: |
+          Define business success metrics:
+          
+          1. Integration Efficiency
+          2. Time to Market
+          3. Cost Reduction
+          4. User Satisfaction
+          5. Business Agility
+        elicit: true
+      - id: measurement-framework
+        title: Measurement Framework
+        instruction: |
+          Define measurement framework:
+          
+          1. Data Collection Methods
+          2. Reporting Frequency
+          3. Review and Analysis Process
+          4. Continuous Improvement
+          5. Stakeholder Communication
+        elicit: true 
