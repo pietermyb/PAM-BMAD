@@ -1,0 +1,94 @@
+template:
+  id: user-guide-template
+  name: User Guide Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/user-guide.md
+    title: "{{product_name}} User Guide"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the user guide and the product.
+    sections:
+      - id: welcome
+        title: Welcome to {{product_name}}
+        instruction: Briefly introduce the product and its main purpose.
+      - id: what-you-will-learn
+        title: What You Will Learn
+        instruction: Outline the key topics covered in this guide.
+      - id: conventions
+        title: Document Conventions
+        instruction: Explain any special formatting or symbols used in the guide.
+
+  - id: getting-started
+    title: Getting Started
+    instruction: Guide users through the initial setup and first use of the product.
+    sections:
+      - id: system-requirements
+        title: System Requirements
+        instruction: List any hardware, software, or network requirements.
+      - id: installation
+        title: Installation Guide
+        instruction: Provide step-by-step instructions for installing the product.
+      - id: first-login
+        title: First Login / Setup
+        instruction: Guide users through their initial access and configuration.
+
+  - id: core-features
+    title: Core Features
+    instruction: Explain the main functionalities of the product.
+    sections:
+      - id: feature-overview
+        title: Feature Overview
+        instruction: Provide a high-level summary of the product's key features.
+      - id: detailed-feature-1
+        title: {{feature_name_1}}
+        instruction: Describe the feature in detail, including its purpose and how to use it.
+      - id: detailed-feature-2
+        title: {{feature_name_2}}
+        instruction: Describe the feature in detail, including its purpose and how to use it.
+
+  - id: advanced-usage
+    title: Advanced Usage
+    instruction: Cover more complex functionalities and tips for experienced users.
+    sections:
+      - id: customization
+        title: Customization Options
+        instruction: Explain how users can customize the product to their needs.
+      - id: integrations
+        title: Integrations
+        instruction: Describe how the product integrates with other systems.
+      - id: best-practices
+        title: Best Practices
+        instruction: Provide tips and recommendations for optimal use.
+
+  - id: troubleshooting
+    title: Troubleshooting
+    instruction: Help users resolve common issues.
+    sections:
+      - id: common-issues
+        title: Common Issues and Solutions
+        instruction: List frequently encountered problems and their resolutions.
+      - id: error-messages
+        title: Understanding Error Messages
+        instruction: Explain common error messages and what they mean.
+      - id: contact-support
+        title: Contacting Support
+        instruction: Provide information on how to get further assistance.
+
+  - id: faqs
+    title: Frequently Asked Questions (FAQs)
+    instruction: Answer common questions about the product.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information.
+    sections:
+      - id: glossary
+        title: Glossary
+        instruction: Define key terms used in the guide.
+      - id: legal-notices
+        title: Legal Notices
+        instruction: Include any necessary legal disclaimers or notices.

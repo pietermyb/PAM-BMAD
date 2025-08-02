@@ -1,0 +1,113 @@
+template:
+  id: performance-report-template
+  name: Performance Test Report
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/performance-report.md
+    title: "{{project_name}} Performance Test Report"
+
+sections:
+  - id: executive-summary
+    title: Executive Summary
+    instruction: Provide a high-level overview of the performance test results and key findings.
+    sections:
+      - id: overview
+        title: Overview
+        instruction: Briefly summarize the purpose of the test, the system under test, and the main conclusions.
+      - id: key-findings
+        title: Key Findings
+        instruction: Highlight the most important performance observations and issues.
+      - id: recommendations
+        title: Recommendations
+        instruction: Provide high-level recommendations for performance improvements.
+
+  - id: test-objectives
+    title: Test Objectives
+    instruction: Reiterate the performance objectives defined in the test plan.
+    sections:
+      - id: objectives-list
+        title: Objectives
+        instruction: List the specific performance objectives that the testing aimed to achieve.
+
+  - id: test-environment
+    title: Test Environment
+    instruction: Describe the environment where the performance tests were executed.
+    sections:
+      - id: environment-details
+        title: Environment Details
+        instruction: Provide details of the hardware, software, and network configuration of the test environment.
+      - id: test-data
+        title: Test Data
+        instruction: Describe the test data used during the performance tests.
+
+  - id: test-execution-summary
+    title: Test Execution Summary
+    instruction: Provide a summary of the test execution.
+    sections:
+      - id: test-scenarios
+        title: Test Scenarios Executed
+        instruction: List the performance test scenarios that were executed (e.g., Load, Stress, Endurance).
+      - id: execution-dates
+        title: Execution Dates
+        instruction: Specify the dates and times when the tests were conducted.
+      - id: test-tool
+        title: Test Tool Used
+        instruction: Name the performance testing tool used.
+
+  - id: performance-results
+    title: Performance Results
+    instruction: Present the detailed results of the performance tests.
+    sections:
+      - id: response-times
+        title: Response Times
+        instruction: Show average, min, max, and percentile response times for key transactions.
+      - id: throughput
+        title: Throughput
+        instruction: Present transactions per second (TPS) or requests per second (RPS).
+      - id: resource-utilization
+        title: Resource Utilization
+        instruction: Show CPU, memory, disk I/O, and network utilization metrics.
+      - id: error-rates
+        title: Error Rates
+        instruction: Report any errors encountered during testing.
+      - id: graphs-charts
+        title: Graphs and Charts
+        instruction: Include relevant graphs and charts to visualize performance trends.
+
+  - id: bottleneck-analysis
+    title: Bottleneck Analysis
+    instruction: Detail the identified performance bottlenecks and their root causes.
+    sections:
+      - id: identified-bottlenecks
+        title: Identified Bottlenecks
+        instruction: Describe each bottleneck and its impact on performance.
+      - id: root-cause-analysis
+        title: Root Cause Analysis
+        instruction: Explain the underlying reasons for each bottleneck.
+
+  - id: recommendations
+    title: Recommendations
+    instruction: Provide specific recommendations for addressing the identified bottlenecks and improving performance.
+    sections:
+      - id: short-term
+        title: Short-Term Recommendations
+        instruction: List immediate actions that can be taken.
+      - id: long-term
+        title: Long-Term Recommendations
+        instruction: Suggest strategic improvements for sustained performance.
+
+  - id: conclusion
+    title: Conclusion
+    instruction: Summarize the overall outcome of the performance testing.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information.
+    sections:
+      - id: raw-data
+        title: Raw Data
+        instruction: Link to or include raw performance data.
+      - id: test-scripts
+        title: Test Scripts
+        instruction: Link to or include performance test scripts.

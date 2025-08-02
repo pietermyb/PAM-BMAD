@@ -1,0 +1,85 @@
+template:
+  id: api-docs-template
+  name: API Documentation
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/api-docs.md
+    title: "{{api_name}} API Documentation"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the API.
+    sections:
+      - id: purpose
+        title: Purpose
+        instruction: Explain the purpose and functionality of the API.
+      - id: base-url
+        title: Base URL
+        instruction: Specify the base URL for all API endpoints.
+      - id: versioning
+        title: Versioning
+        instruction: Describe the API versioning strategy.
+
+  - id: authentication
+    title: Authentication
+    instruction: Detail the authentication methods supported by the API.
+    sections:
+      - id: auth-methods
+        title: Supported Authentication Methods
+        instruction: List and describe the authentication methods (e.g., API Key, OAuth2, JWT).
+      - id: how-to-authenticate
+        title: How to Authenticate
+        instruction: Provide step-by-step instructions on how to authenticate with the API.
+
+  - id: endpoints
+    title: Endpoints
+    instruction: Document each API endpoint with its details.
+    sections:
+      - id: endpoint-structure
+        title: Endpoint Structure
+        instruction: Explain the general structure of API endpoints.
+      - id: get-resource
+        title: GET /resource
+        instruction: Document a sample GET endpoint, including parameters, responses, and examples.
+      - id: post-resource
+        title: POST /resource
+        instruction: Document a sample POST endpoint, including parameters, request body, responses, and examples.
+
+  - id: data-models
+    title: Data Models
+    instruction: Define the data structures used in API requests and responses.
+    sections:
+      - id: model-overview
+        title: Overview
+        instruction: Provide a high-level overview of the data models.
+      - id: user-model
+        title: User Model
+        instruction: Define a sample data model (e.g., User), including fields, data types, and descriptions.
+
+  - id: error-handling
+    title: Error Handling
+    instruction: Explain how errors are handled and communicated by the API.
+    sections:
+      - id: error-codes
+        title: Error Codes
+        instruction: List common error codes and their meanings.
+      - id: error-response-format
+        title: Error Response Format
+        instruction: Describe the structure of error responses.
+
+  - id: rate-limiting
+    title: Rate Limiting
+    instruction: Detail any rate limiting policies.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information.
+    sections:
+      - id: glossary
+        title: Glossary
+        instruction: Define key terms used in the API documentation.
+      - id: references
+        title: References
+        instruction: List any external resources or related documentation.

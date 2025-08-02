@@ -1,0 +1,84 @@
+template:
+  id: release-notes-template
+  name: Release Notes Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/release-notes-{{version}}.md
+    title: "{{product_name}} Release Notes - {{version}}"
+
+sections:
+  - id: release-overview
+    title: Release Overview
+    instruction: Provide a high-level summary of the release.
+    sections:
+      - id: version
+        title: Version
+        instruction: Specify the release version number.
+      - id: release-date
+        title: Release Date
+        instruction: Indicate the date of the release.
+      - id: summary
+        title: Summary
+        instruction: Briefly describe the main focus or theme of this release.
+
+  - id: new-features
+    title: New Features
+    instruction: Detail all new functionalities introduced in this release.
+    sections:
+      - id: feature-1
+        title: {{feature_name_1}}
+        instruction: Describe the new feature, its benefits, and how to use it.
+      - id: feature-2
+        title: {{feature_name_2}}
+        instruction: Describe the new feature, its benefits, and how to use it.
+
+  - id: enhancements
+    title: Enhancements
+    instruction: List improvements to existing features.
+    sections:
+      - id: enhancement-1
+        title: {{enhancement_name_1}}
+        instruction: Describe the enhancement and its impact.
+      - id: enhancement-2
+        title: {{enhancement_name_2}}
+        instruction: Describe the enhancement and its impact.
+
+  - id: bug-fixes
+    title: Bug Fixes
+    instruction: Document all resolved issues.
+    sections:
+      - id: bug-fix-1
+        title: {{bug_id_1}}: {{bug_summary_1}}
+        instruction: Describe the bug that was fixed and its impact.
+      - id: bug-fix-2
+        title: {{bug_id_2}}: {{bug_summary_2}}
+        instruction: Describe the bug that was fixed and its impact.
+
+  - id: known-issues
+    title: Known Issues
+    instruction: List any unresolved issues or limitations.
+    sections:
+      - id: known-issue-1
+        title: {{known_issue_name_1}}
+        instruction: Describe the known issue and any workarounds.
+
+  - id: breaking-changes
+    title: Breaking Changes (if any)
+    instruction: Detail any changes that might require user action or code modification.
+    sections:
+      - id: breaking-change-1
+        title: {{breaking_change_name_1}}
+        instruction: Describe the breaking change, its impact, and migration steps.
+
+  - id: upgrade-notes
+    title: Upgrade Notes
+    instruction: Provide instructions for upgrading to this version.
+
+  - id: acknowledgements
+    title: Acknowledgements
+    instruction: Thank contributors or third-party libraries.
+
+  - id: support
+    title: Support
+    instruction: Provide information on how to get support.

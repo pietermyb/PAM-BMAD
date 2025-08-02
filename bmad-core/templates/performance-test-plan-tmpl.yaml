@@ -1,0 +1,107 @@
+template:
+  id: performance-test-plan-template
+  name: Performance Test Plan Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/performance-test-plan.md
+    title: "{{project_name}} Performance Test Plan"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the performance test plan.
+    sections:
+      - id: purpose
+        title: Purpose
+        instruction: Clearly state the purpose and objectives of this performance test plan.
+      - id: scope
+        title: Scope
+        instruction: Define the scope of performance testing, including systems, modules, and functionalities to be tested.
+      - id: objectives
+        title: Performance Objectives
+        instruction: List the specific performance objectives (e.g., response time, throughput, resource utilization).
+
+  - id: test-environment
+    title: Test Environment
+    instruction: Describe the environment where performance tests will be executed.
+    sections:
+      - id: architecture
+        title: Environment Architecture
+        instruction: Detail the architecture of the test environment, including hardware, software, and network.
+      - id: data-setup
+        title: Test Data Setup
+        instruction: Explain how test data will be prepared and managed.
+      - id: tools
+        title: Tools Used
+        instruction: List the performance testing tools, monitoring tools, and analysis tools.
+
+  - id: workload-modeling
+    title: Workload Modeling
+    instruction: Define the simulated user behavior and load characteristics.
+    sections:
+      - id: user-journeys
+        title: Key User Journeys/Scenarios
+        instruction: Identify and describe the critical user journeys or business transactions to be simulated.
+      - id: user-load
+        title: User Load Profile
+        instruction: Define the number of virtual users, ramp-up period, and test duration.
+      - id: transaction-mix
+        title: Transaction Mix
+        instruction: Specify the percentage of each transaction type in the workload.
+
+  - id: test-scenarios
+    title: Test Scenarios
+    instruction: Detail the different types of performance tests to be conducted.
+    sections:
+      - id: load-test
+        title: Load Test
+        instruction: Describe the load test scenario (e.g., steady state, peak load).
+      - id: stress-test
+        title: Stress Test
+        instruction: Describe the stress test scenario to find system breaking points.
+      - id: endurance-test
+        title: Endurance Test
+        instruction: Describe the endurance test scenario to check for memory leaks or resource degradation.
+      - id: spike-test
+        title: Spike Test
+        instruction: Describe the spike test scenario to simulate sudden increases in load.
+
+  - id: success-criteria
+    title: Success Criteria
+    instruction: Define the metrics and thresholds for successful performance.
+    sections:
+      - id: response-times
+        title: Response Times
+        instruction: Specify acceptable response times for key transactions.
+      - id: throughput
+        title: Throughput
+        instruction: Define the required transaction per second (TPS) or requests per second (RPS).
+      - id: resource-utilization
+        title: Resource Utilization
+        instruction: Set thresholds for CPU, memory, disk I/O, and network utilization.
+      - id: error-rates
+        title: Error Rates
+        instruction: Define acceptable error rates.
+
+  - id: reporting-analysis
+    title: Reporting and Analysis
+    instruction: Describe how test results will be reported and analyzed.
+    sections:
+      - id: report-format
+        title: Report Format
+        instruction: Specify the format of the performance test report.
+      - id: analysis-approach
+        title: Analysis Approach
+        instruction: Explain how bottlenecks will be identified and root causes determined.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information.
+    sections:
+      - id: glossary
+        title: Glossary
+        instruction: Provide a glossary of terms related to performance testing.
+      - id: references
+        title: References
+        instruction: List any external documents or resources referenced.

@@ -1,0 +1,143 @@
+template:
+  id: ci-cd-pipeline-template
+  name: CI/CD Pipeline Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/ci-cd-pipeline.md
+    title: "{{project_name}} CI/CD Pipeline"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the CI/CD pipeline.
+    sections:
+      - id: purpose
+        title: Purpose of the CI/CD Pipeline
+        instruction: Clearly state the purpose and objectives of this CI/CD pipeline.
+      - id: scope
+        title: Scope of the CI/CD Pipeline
+        instruction: Define the boundaries and scope of the pipeline, including what applications or services it covers.
+      - id: target-audience
+        title: Target Audience
+        instruction: Identify the intended audience for this document (e.g., developers, operations, QA).
+
+  - id: pipeline-overview
+    title: Pipeline Overview
+    instruction: Describe the high-level flow of the CI/CD pipeline.
+    sections:
+      - id: stages
+        title: Pipeline Stages
+        instruction: Outline the main stages of the pipeline (e.g., Build, Test, Deploy, Release).
+      - id: tools
+        title: Tools and Technologies
+        instruction: List the primary tools and technologies used in the pipeline (e.g., Jenkins, GitLab CI, GitHub Actions, Docker, Kubernetes).
+      - id: flow-diagram
+        title: Pipeline Flow Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: Create a Mermaid diagram visualizing the pipeline flow.
+
+  - id: build-stage
+    title: Build Stage
+    instruction: Detail the processes involved in the build stage.
+    sections:
+      - id: source-control-integration
+        title: Source Control Integration
+        instruction: Describe how the pipeline integrates with the source code repository.
+      - id: build-process
+        title: Build Process
+        instruction: Explain the steps involved in building the application (e.g., compiling code, packaging artifacts).
+      - id: artifact-management
+        title: Artifact Management
+        instruction: Detail how build artifacts are stored and managed.
+
+  - id: test-stage
+    title: Test Stage
+    instruction: Describe the testing processes within the pipeline.
+    sections:
+      - id: unit-testing
+        title: Unit Testing
+        instruction: Explain how unit tests are executed and reported.
+      - id: integration-testing
+        title: Integration Testing
+        instruction: Detail the integration testing process.
+      - id: code-quality-analysis
+        title: Code Quality Analysis
+        instruction: Describe tools and metrics used for code quality (e.g., SonarQube, linting).
+      - id: security-scanning
+        title: Security Scanning
+        instruction: Outline any static or dynamic application security testing (SAST/DAST) integrated.
+
+  - id: deployment-stage
+    title: Deployment Stage
+    instruction: Detail the deployment processes to various environments.
+    sections:
+      - id: environments
+        title: Environments
+        instruction: List and describe the different deployment environments (e.g., Dev, QA, Staging, Production).
+      - id: deployment-strategy
+        title: Deployment Strategy
+        instruction: Explain the deployment strategy (e.g., blue/green, canary, rolling updates).
+      - id: infrastructure-as-code
+        title: Infrastructure as Code (IaC)
+        instruction: Describe how infrastructure is provisioned and managed using IaC tools.
+      - id: configuration-management
+        title: Configuration Management
+        instruction: Detail how application configurations are managed across environments.
+
+  - id: release-management
+    title: Release Management
+    instruction: Describe the process for managing releases.
+    sections:
+      - id: release-cadence
+        title: Release Cadence
+        instruction: Define the frequency and schedule of releases.
+      - id: approval-process
+        title: Approval Process
+        instruction: Outline the steps and stakeholders involved in release approvals.
+      - id: rollback-strategy
+        title: Rollback Strategy
+        instruction: Document the procedure for rolling back a failed deployment.
+
+  - id: monitoring-observability
+    title: Monitoring and Observability
+    instruction: Detail how the deployed applications are monitored.
+    sections:
+      - id: logging
+        title: Logging
+        instruction: Describe the logging solution and log aggregation.
+      - id: metrics
+        title: Metrics
+        instruction: Detail the key metrics collected and monitoring tools used.
+      - id: alerting
+        title: Alerting
+        instruction: Explain the alerting mechanisms and on-call procedures.
+      - id: tracing
+        title: Tracing
+        instruction: Describe distributed tracing implementation.
+
+  - id: security-considerations
+    title: Security Considerations
+    instruction: Address security aspects within the CI/CD pipeline.
+    sections:
+      - id: access-control
+        title: Access Control
+        instruction: Detail access control mechanisms for the pipeline and environments.
+      - id: secrets-management
+        title: Secrets Management
+        instruction: Describe how sensitive information is managed and secured.
+      - id: vulnerability-management
+        title: Vulnerability Management
+        instruction: Outline the process for identifying and remediating vulnerabilities.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information and references.
+    sections:
+      - id: glossary
+        title: Glossary of Terms
+        instruction: Provide a glossary of terms used in this document.
+      - id: references
+        title: References
+        instruction: List any external documents or resources referenced.
