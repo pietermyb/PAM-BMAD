@@ -14,10 +14,21 @@ workflow:
       action: analyze-current-state
       notes: "Analyzes the current enterprise landscape to understand the context for the new application."
 
+    - agent: dba
+      action: analyze-data-performance
+      notes: "Analyzes data requirements and potential performance considerations for the new application."
+
     - agent: domain-architect
       creates: domain-architecture.md
       uses: create-domain-architecture
       notes: "Defines the new application's role and boundaries within the enterprise domain. SAVE OUTPUT: Copy final domain-architecture.md to your project's docs/ folder."
+
+    - agent: dba
+      creates: database-architecture.md
+      uses: create-database-architecture
+      requires:
+        - domain-architecture.md
+      notes: "Creates the database architecture based on the domain architecture and data analysis. SAVE OUTPUT: Copy final database-architecture.md to your project's docs/ folder."
 
     - agent: domain-architect
       action: analyze-solution-principles
@@ -27,8 +38,10 @@ workflow:
     - agent: architect
       creates: fullstack-architecture.md
       uses: create-full-stack-architecture
-      requires: domain-architecture.md
-      notes: "Creates the detailed system-level architecture for the new application. SAVE OUTPUT: Copy final fullstack-architecture.md to your project's docs/ folder."
+      requires:
+        - domain-architecture.md
+        - database-architecture.md
+      notes: "Creates the detailed system-level architecture for the new application, incorporating database architecture. SAVE OUTPUT: Copy final fullstack-architecture.md to your project's docs/ folder."
 
     - agent: security
       action: conduct-threat-model
@@ -59,8 +72,10 @@ workflow:
     ```mermaid
     graph TD
         A[Start: Greenfield Architecture] --> B[domain-architect: analyze-current-state]
-        B --> C[domain-architect: create-domain-architecture]
-        C --> D[domain-architect: analyze-solution-principles]
+        B --> B1[dba: analyze-data-performance]
+        B1 --> C[domain-architect: create-domain-architecture]
+        C --> C1[dba: create-database-architecture]
+        C1 --> D[domain-architect: analyze-solution-principles]
         D --> E[architect: create-full-stack-architecture]
         E --> F[security: conduct-threat-model]
         F --> G{Threats identified?}
@@ -74,7 +89,9 @@ workflow:
 
         style L fill:#90EE90
         style C fill:#FFE4B5
+        style C1 fill:#ADD8E6
         style E fill:#FFE4B5
         style H fill:#FFE4B5
         style F fill:#FFC0CB
+        style B1 fill:#ADD8E6
     ```

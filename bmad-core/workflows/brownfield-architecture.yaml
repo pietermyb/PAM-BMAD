@@ -15,6 +15,12 @@ workflow:
       creates: brownfield-architecture-current.md
       notes: "Documents the current state of the existing application's architecture."
 
+    - agent: dba
+      action: analyze-data-performance
+      requires:
+        - brownfield-architecture-current.md
+      notes: "Analyzes the current state of the database and data performance."
+
     - agent: domain-architect
       action: analyze-current-state
       notes: "Analyzes the current enterprise landscape to understand the context of the existing application."
@@ -30,12 +36,20 @@ workflow:
       uses: create-target-architecture
       notes: "Defines the target domain architecture for the application. SAVE OUTPUT: Copy final target-architecture.md to your project's docs/ folder."
 
+    - agent: dba
+      creates: database-architecture.md
+      uses: create-database-architecture
+      requires:
+        - target-architecture.md
+      notes: "Creates the database architecture based on the target architecture and data analysis. SAVE OUTPUT: Copy final database-architecture.md to your project's docs/ folder."
+
     - agent: architect
       creates: brownfield-architecture-updated.md
       uses: create-brownfield-architecture
       requires:
         - target-architecture.md
-      notes: "Creates the updated system-level architecture to align with the target state. SAVE OUTPUT: Copy final brownfield-architecture-updated.md to your project's docs/ folder."
+        - database-architecture.md
+      notes: "Creates the updated system-level architecture to align with the target state, incorporating database architecture."
 
     - agent: security
       action: review-architecture
@@ -60,10 +74,12 @@ workflow:
     ```mermaid
     graph TD
         A[Start: Brownfield Architecture] --> B[architect: document-project]
-        B --> C[domain-architect: analyze-current-state]
+        B --> B1[dba: analyze-data-performance]
+        B1 --> C[domain-architect: analyze-current-state]
         C --> D[domain-architect: gap-analysis]
         D --> E[domain-architect: create-target-architecture]
-        E --> F[architect: create-brownfield-architecture]
+        E --> E1[dba: create-database-architecture]
+        E1 --> F[architect: create-brownfield-architecture]
         F --> G[security: review-architecture]
         G --> H[po: validate artifacts]
         H --> I{PO finds issues?}
@@ -73,7 +89,9 @@ workflow:
 
         style K fill:#90EE90
         style B fill:#FFE4B5
+        style B1 fill:#ADD8E6
         style E fill:#FFE4B5
+        style E1 fill:#ADD8E6
         style F fill:#FFE4B5
         style G fill:#FFC0CB
     ```
