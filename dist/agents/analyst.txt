@@ -2237,7 +2237,8 @@ This configuration file acts as a map for BMad agents, telling them exactly wher
 #### Developer Files
 
 - **devLoadAlwaysFiles**: List of files the dev agent loads for every task
-- **devDebugLog**: Where dev agent logs repeated failures
+- **devDebugLog**: Where dev agent logs all prompts and file changes
+- **devFailureLog**: Where dev agent logs repeated failures
 - **agentCoreDump**: Export location for chat conversations
 
 ### Why It Matters
