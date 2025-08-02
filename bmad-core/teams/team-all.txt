@@ -147,6 +147,8 @@ help-display-template: |
     When to use: Use for market research, brainstorming, competitive analysis, creating project briefs, initial project discovery, and documenting existing projects (brownfield)
   *agent architect: Architect
     When to use: Use for system design, architecture documents, technology selection, API design, and infrastructure planning
+  *agent dba: Database Architect & Data Analyst
+    When to use: Use for database design, data modeling, query optimization, data analysis, and reporting
   *agent dev: Full Stack Developer
     When to use: Use for code implementation, debugging, refactoring, and development best practices
   *agent domain-architect: Domain Architect
@@ -334,6 +336,71 @@ dependencies:
     - technical-preferences.md
 ```
 ==================== END: .bmad-core/agents/architect.md ====================
+
+==================== START: .bmad-core/agents/dba.md ====================
+# dba
+
+CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+
+```yaml
+activation-instructions:
+  - ONLY load dependency files when user selects them for execution via command or request of a task
+  - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
+  - STAY IN CHARACTER!
+  - When creating database architecture or analyzing data, always start by understanding the complete data lifecycle, business requirements, and performance needs.
+agent:
+  name: Athena
+  id: dba
+  title: Database Architect & Data Analyst
+  icon: 🗄️
+  whenToUse: Use for database design, data modeling, query optimization, data analysis, and reporting
+  customization: null
+persona:
+  role: Expert in Database Systems & Data Analysis
+  style: Precise, analytical, performance-oriented, data-driven, security-conscious
+  identity: Master of data integrity, performance, and insightful analysis
+  focus: Database design, data governance, query optimization, data warehousing, business intelligence
+  core_principles:
+    - Data Integrity First - Ensure data accuracy and consistency at all times
+    - Performance Optimization - Design for speed and efficiency in data access and processing
+    - Scalability & Reliability - Build systems that can grow and remain available
+    - Security by Design - Implement robust data security measures from the ground up
+    - Data-Driven Decisions - Empower insights through effective data analysis
+    - Business Alignment - Understand business needs to design relevant data solutions
+    - Lifecycle Management - Plan for data from creation to archival
+    - Standardization - Promote consistent data definitions and structures
+    - Continuous Improvement - Regularly review and optimize database and data processes
+    - Documentation - Maintain clear and comprehensive documentation for all data assets
+commands:
+  - help: Show numbered list of the following commands to allow selection
+  - create-database-architecture: use create-doc with database-architecture-tmpl.yaml
+  - create-data-model: use create-doc with data-model-tmpl.yaml
+  - analyze-data-performance: execute task analyze-data-performance.md
+  - generate-data-report: execute task generate-data-report.md
+  - doc-out: Output full document to current destination file
+  - document-data-assets: execute the task document-project.md (re-purpose for data assets)
+  - execute-checklist {checklist}: Run task execute-checklist (default->dba-checklist)
+  - research {topic}: execute task create-deep-research-prompt
+  - exit: Say goodbye as the Database Architect & Data Analyst, and then abandon inhabiting this persona
+dependencies:
+  tasks:
+    - create-doc.md
+    - create-deep-research-prompt.md
+    - document-project.md
+    - execute-checklist.md
+    - analyze-data-performance.md
+    - generate-data-report.md
+  templates:
+    - database-architecture-tmpl.yaml
+    - data-model-tmpl.yaml
+  checklists:
+    - dba-checklist.md
+  data:
+    - security-best-practices.md
+    - technical-preferences.md
+```
+==================== END: .bmad-core/agents/dba.md ====================
 
 ==================== START: .bmad-core/agents/dev.md ====================
 # dev
@@ -6565,6 +6632,591 @@ After presenting the report, ask the user if they would like detailed analysis o
 
 None Listed
 ==================== END: .bmad-core/data/technical-preferences.md ====================
+
+==================== START: .bmad-core/tasks/analyze-data-performance.md ====================
+# analyze-data-performance
+
+This task outlines the steps for analyzing data performance within a database system.
+
+## 1. Define Scope
+
+- Identify the specific database, tables, or queries to analyze.
+- Determine the performance metrics to focus on (e.g., query response time, CPU usage, I/O, memory).
+- Define the acceptable performance thresholds.
+
+## 2. Gather Data
+
+- Collect performance metrics using database monitoring tools.
+- Capture slow-running queries and their execution plans.
+- Gather system-level metrics (CPU, memory, disk I/O) during peak and off-peak hours.
+- Collect relevant database configuration parameters.
+
+## 3. Analyze Data
+
+- Review query execution plans to identify bottlenecks (e.g., full table scans, missing indexes).
+- Analyze I/O patterns to identify disk contention or inefficient data access.
+- Examine CPU and memory usage to pinpoint resource-intensive operations.
+- Compare current performance against established baselines.
+- Identify trends and anomalies in performance metrics.
+
+## 4. Identify Root Causes
+
+- Determine the underlying reasons for performance issues (e.g., inefficient queries, missing indexes, poor schema design, inadequate hardware, locking/blocking issues).
+
+## 5. Propose Solutions
+
+- Recommend specific optimizations (e.g., add/modify indexes, rewrite queries, optimize schema, adjust database configuration, upgrade hardware).
+- Prioritize solutions based on impact and effort.
+
+## 6. Implement and Verify
+
+- Apply the proposed solutions.
+- Re-test performance to ensure improvements and no new regressions.
+- Monitor performance after implementation to confirm sustained benefits.
+
+## 7. Document Findings
+
+- Document the analysis process, findings, proposed solutions, and results.
+- Update relevant documentation (e.g., database design, query optimization guidelines).
+==================== END: .bmad-core/tasks/analyze-data-performance.md ====================
+
+==================== START: .bmad-core/tasks/generate-data-report.md ====================
+# generate-data-report
+
+This task outlines the steps for generating a data report based on specified requirements.
+
+## 1. Understand Reporting Requirements
+
+- Clarify the purpose and audience of the report.
+- Identify key metrics, dimensions, and filters required.
+- Determine the desired output format (e.g., tabular, charts, dashboards, PDF, CSV).
+- Define the frequency and delivery method of the report.
+
+## 2. Identify Data Sources
+
+- Pinpoint the databases, tables, or external systems containing the necessary data.
+- Understand the data schema and relationships.
+
+## 3. Data Extraction
+
+- Write SQL queries or use data extraction tools to retrieve raw data.
+- Ensure data extraction is efficient and minimizes impact on source systems.
+
+## 4. Data Transformation and Preparation
+
+- Cleanse data (handle missing values, inconsistencies, duplicates).
+- Transform data into the required format for reporting (e.g., aggregations, calculations, joins).
+- Create derived metrics or features if necessary.
+
+## 5. Report Generation
+
+- Use reporting tools (e.g., SQL Reporting Services, Tableau, Power BI, Python scripts with libraries like Pandas/Matplotlib) to build the report.
+- Design visualizations (charts, graphs) that effectively convey insights.
+- Ensure the report is clear, concise, and easy to understand.
+- Add titles, labels, legends, and any necessary explanatory text.
+
+## 6. Validation and Review
+
+- Verify the accuracy of the data and calculations in the report.
+- Cross-check with source systems or known good data.
+- Review the report with stakeholders to ensure it meets their requirements.
+
+## 7. Distribution and Automation
+
+- Distribute the report to the intended audience.
+- Automate the report generation and distribution process if it's a recurring report.
+- Set up monitoring for automated reports to ensure successful execution.
+
+## 8. Documentation
+
+- Document the report's purpose, data sources, logic, and distribution method.
+- Maintain version control for report definitions and scripts.
+==================== END: .bmad-core/tasks/generate-data-report.md ====================
+
+==================== START: .bmad-core/templates/database-architecture-tmpl.yaml ====================
+template:
+  id: database-architecture-template
+  name: Database Architecture Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/database-architecture.md
+    title: "{{project_name}} Database Architecture Document"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the database architecture document.
+    sections:
+      - id: purpose
+        title: Purpose of the document
+        instruction: Clearly state the purpose and objectives of this database architecture document.
+      - id: scope
+        title: Scope of the database architecture
+        instruction: Define the boundaries and scope of the database architecture, including what is and isn't covered.
+      - id: target-audience
+        title: Target audience
+        instruction: Identify the intended audience for this document (e.g., developers, database administrators, architects).
+
+  - id: business-requirements
+    title: Business Requirements
+    instruction: Detail the business needs and constraints that influence the database design.
+    sections:
+      - id: goals
+        title: Business goals and objectives related to data
+        instruction: Outline the overarching business goals that the database will support.
+      - id: entities
+        title: Key data entities and their relationships
+        instruction: Identify and describe the core data entities and their relationships from a business perspective.
+      - id: volume-growth
+        title: Data volume and growth expectations
+        instruction: Provide estimates for current and future data volumes and growth rates.
+      - id: performance-availability
+        title: Performance and availability requirements
+        instruction: Specify the required performance metrics (e.g., response times, throughput) and availability targets (e.g., uptime, RTO, RPO).
+      - id: security-compliance
+        title: Security and compliance requirements
+        instruction: Document any security standards, regulatory compliance (e.g., GDPR, HIPAA), or data privacy requirements.
+
+  - id: current-state-architecture
+    title: Current State Architecture (if applicable)
+    instruction: Describe the existing database landscape if this is a brownfield project.
+    sections:
+      - id: overview
+        title: Overview of existing database systems
+        instruction: Provide a high-level overview of the current database systems in use.
+      - id: data-flow-integration
+        title: Data flow and integration points
+        instruction: Describe how data currently flows between systems and any existing integration mechanisms.
+      - id: challenges-limitations
+        title: Identified challenges and limitations
+        instruction: Document any known issues, bottlenecks, or limitations of the current database architecture.
+
+  - id: target-state-architecture
+    title: Target State Architecture
+    instruction: Define the future state of the database architecture.
+    sections:
+      - id: logical-data-model
+        title: Logical Data Model
+        instruction: Present the conceptual and logical design of the data, independent of physical implementation.
+        sections:
+          - id: erd
+            title: Entity-Relationship Diagram (ERD)
+            instruction: Include the Entity-Relationship Diagram (ERD) illustrating entities and their relationships.
+          - id: entity-definitions
+            title: Entity definitions and attributes
+            instruction: Define each entity and its attributes, including business descriptions.
+          - id: relationships-cardinality
+            title: Relationships and cardinality
+            instruction: Specify the relationships between entities, including cardinality and optionality.
+
+      - id: physical-data-model
+        title: Physical Data Model
+        instruction: Detail the physical implementation of the database design.
+        sections:
+          - id: db-selection
+            title: Database system selection (e.g., SQL Server, PostgreSQL, MongoDB)
+            instruction: Justify the choice of database system(s) based on requirements.
+          - id: schema-design
+            title: Schema design (tables, columns, data types, constraints)
+            instruction: Describe the database schema, including table structures, column definitions, data types, and constraints.
+          - id: indexing-strategy
+            title: Indexing strategy
+            instruction: Outline the indexing strategy for performance optimization.
+          - id: partitioning-strategy
+            title: Partitioning strategy (if applicable)
+            instruction: Detail any partitioning strategies used for large tables or performance.
+          - id: storage-considerations
+            title: Storage considerations
+            instruction: Address storage requirements, including disk types, capacity, and growth.
+
+      - id: data-flow-integration-target
+        title: Data Flow and Integration
+        instruction: Describe how data will flow and be integrated in the target state.
+        sections:
+          - id: sources-destinations
+            title: Data sources and destinations
+            instruction: Identify all data sources and where data will be consumed.
+          - id: etl-elt
+            title: ETL/ELT processes
+            instruction: Detail the Extract, Transform, Load (ETL) or Extract, Load, Transform (ELT) processes.
+          - id: api-design
+            title: API design for data access
+            instruction: Describe any APIs designed for accessing or manipulating data.
+          - id: data-sync
+            title: Data synchronization mechanisms
+            instruction: Explain mechanisms for synchronizing data across different systems or databases.
+
+      - id: security-architecture
+        title: Security Architecture
+        instruction: Outline the security measures for the database.
+        sections:
+          - id: auth-authz
+            title: Authentication and authorization mechanisms
+            instruction: Describe how users and applications will be authenticated and authorized to access data.
+          - id: encryption
+            title: Data encryption (at rest and in transit)
+            instruction: Detail encryption strategies for data at rest and in transit.
+          - id: auditing-logging
+            title: Auditing and logging
+            instruction: Specify auditing and logging requirements for database activities.
+          - id: data-masking
+            title: Data masking/redaction (if applicable)
+            instruction: Describe any data masking or redaction techniques used for sensitive data.
+
+      - id: high-availability-dr
+        title: High Availability and Disaster Recovery
+        instruction: Define strategies to ensure continuous operation and data recovery.
+        sections:
+          - id: redundancy-failover
+            title: Redundancy and failover mechanisms
+            instruction: Detail mechanisms for redundancy and automatic failover to ensure high availability.
+          - id: backup-restore
+            title: Backup and restore procedures
+            instruction: Outline the backup and restore procedures, including frequency and retention policies.
+          - id: rpo-rto
+            title: Recovery Point Objective (RPO) and Recovery Time Objective (RTO)
+            instruction: Define the RPO and RTO for disaster recovery scenarios.
+
+      - id: performance-scalability
+        title: Performance and Scalability
+        instruction: Address how the database will meet performance and scalability demands.
+        sections:
+          - id: performance-testing
+            title: Performance testing strategy
+            instruction: Describe the approach to performance testing and benchmarking.
+          - id: scaling-mechanisms
+            title: Scaling mechanisms (e.g., sharding, replication)
+            instruction: Explain how the database will scale to handle increased load (e.g., sharding, replication).
+          - id: caching-strategies
+            title: Caching strategies
+            instruction: Detail any caching strategies employed to improve performance.
+
+  - id: technology-stack
+    title: Technology Stack
+    instruction: List the specific technologies and tools used in the database architecture.
+    sections:
+      - id: db-technologies
+        title: Chosen database technologies
+        instruction: List the specific database systems (e.g., PostgreSQL, MongoDB, Cassandra) and their versions.
+      - id: tools-frameworks
+        title: Related tools and frameworks
+        instruction: Include any related tools, ORMs, or frameworks used for database interaction or management.
+
+  - id: deployment-operations
+    title: Deployment and Operations
+    instruction: Describe how the database will be deployed, monitored, and maintained.
+    sections:
+      - id: deployment-strategy
+        title: Deployment strategy
+        instruction: Outline the strategy for deploying the database (e.g., automated, manual, cloud-native).
+      - id: monitoring-alerting
+        title: Monitoring and alerting
+        instruction: Detail the monitoring tools and alerting mechanisms for database health and performance.
+      - id: maintenance-procedures
+        title: Maintenance procedures
+        instruction: Describe routine maintenance tasks such as patching, upgrades, and cleanups.
+
+  - id: future-considerations
+    title: Future Considerations
+    instruction: Discuss potential future enhancements or considerations for the database architecture.
+    sections:
+      - id: enhancements
+        title: Potential future enhancements
+        instruction: Suggest potential future improvements or features for the database.
+      - id: emerging-technologies
+        title: Emerging technologies
+        instruction: Discuss any emerging database technologies that might be relevant in the future.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information and references.
+    sections:
+      - id: glossary
+        title: Glossary of terms
+        instruction: Provide a glossary of technical and business terms used in the document.
+      - id: references
+        title: References
+        instruction: List any external documents, standards, or resources referenced.
+==================== END: .bmad-core/templates/database-architecture-tmpl.yaml ====================
+
+==================== START: .bmad-core/templates/data-model-tmpl.yaml ====================
+template:
+  id: data-model-template
+  name: Data Model Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/data-model.md
+    title: "{{project_name}} Data Model Document"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the data model document.
+    sections:
+      - id: purpose
+        title: Purpose of the data model
+        instruction: Clearly state the purpose and objectives of this data model.
+      - id: scope
+        title: Scope of the data model
+        instruction: Define the boundaries and scope of the data model, including what is and isn't covered.
+      - id: target-audience
+        title: Target audience
+        instruction: Identify the intended audience for this document (e.g., developers, business analysts, data scientists).
+
+  - id: business-context
+    title: Business Context
+    instruction: Describe the business environment and requirements that drive the data model.
+    sections:
+      - id: domain-overview
+        title: Business domain overview
+        instruction: Provide a high-level description of the business domain the data model supports.
+      - id: processes-supported
+        title: Key business processes supported by the data model
+        instruction: List and briefly describe the main business processes that rely on this data model.
+      - id: glossary
+        title: Business terms and definitions (glossary)
+        instruction: Include a glossary of key business terms and their definitions relevant to the data model.
+
+  - id: conceptual-data-model
+    title: Conceptual Data Model
+    instruction: Present the high-level, business-oriented view of the data.
+    sections:
+      - id: high-level-entities
+        title: High-level entities and their relationships
+        instruction: Illustrate the main entities and their relationships at a conceptual level, focusing on business meaning.
+      - id: business-concepts
+        title: Business concepts and their associations
+        instruction: Describe the core business concepts and how they relate to each other.
+      - id: no-technical-details
+        title: No technical details, focus on business understanding
+        instruction: Emphasize that this section is purely conceptual and avoids technical implementation details.
+
+  - id: logical-data-model
+    title: Logical Data Model
+    instruction: Detail the data structure independent of a specific database system.
+    sections:
+      - id: detailed-entities
+        title: Detailed entities with attributes
+        instruction: Define each entity with its attributes, including their names and conceptual data types.
+      - id: keys
+        title: Primary and foreign keys identified
+        instruction: Identify primary and foreign keys to establish relationships between entities.
+      - id: relationships
+        title: Relationships with cardinality and optionality
+        instruction: Specify the cardinality (one-to-one, one-to-many, many-to-many) and optionality of relationships.
+      - id: data-types
+        title: Data types (conceptual, e.g., string, number, date)
+        instruction: Assign conceptual data types to attributes.
+      - id: business-rules
+        title: Business rules and constraints
+        instruction: Document any business rules or constraints that apply to the data.
+      - id: normalization
+        title: Normalization level (e.g., 3NF, BCNF)
+        instruction: Indicate the chosen normalization level and its rationale.
+
+  - id: physical-data-model
+    title: Physical Data Model
+    instruction: Describe the data structure as implemented in a specific database system.
+    sections:
+      - id: database-system
+        title: Database system specific details (e.g., SQL Server, PostgreSQL, MongoDB)
+        instruction: Specify the target database system and any system-specific considerations.
+      - id: table-definitions
+        title: Table definitions with column names, precise data types, and lengths
+        instruction: Provide detailed table definitions, including column names, precise data types, and lengths.
+      - id: constraints
+        title: Primary key, foreign key, and unique constraints
+        instruction: Define all primary key, foreign key, and unique constraints.
+      - id: indexing
+        title: Indexing strategies
+        instruction: Outline the indexing strategy for performance optimization.
+      - id: partitioning
+        title: Partitioning strategies (if applicable)
+        instruction: Describe any partitioning strategies used for large tables.
+      - id: storage
+        title: Storage considerations (e.g., filegroups, tablespaces)
+        instruction: Detail storage considerations such as filegroups or tablespaces.
+      - id: views-procedures
+        title: Views, stored procedures, and functions related to the data model
+        instruction: Document any views, stored procedures, or functions that interact with the data model.
+
+  - id: data-dictionary
+    title: Data Dictionary
+    instruction: Provide a comprehensive reference for all data elements.
+    sections:
+      - id: comprehensive-list
+        title: Comprehensive list of all entities and attributes
+        instruction: List all entities and their attributes with detailed descriptions.
+      - id: attribute-description
+        title: Description of each attribute
+        instruction: Provide a clear and concise description for each attribute.
+      - id: attribute-details
+        title: Data type, length, nullability
+        instruction: Specify the data type, length, and nullability for each attribute.
+      - id: default-values
+        title: Default values, allowed values, and constraints
+        instruction: Document default values, allowed values, and any specific constraints.
+      - id: business-rules-attributes
+        title: Business rules associated with each attribute
+        instruction: Detail any business rules that apply to individual attributes.
+
+  - id: data-governance-security
+    title: Data Governance and Security
+    instruction: Address policies and measures for data management and protection.
+    sections:
+      - id: ownership-stewardship
+        title: Data ownership and stewardship
+        instruction: Define roles and responsibilities for data ownership and stewardship.
+      - id: classification
+        title: Data classification (e.g., sensitive, public)
+        instruction: Describe the data classification scheme and how data is categorized.
+      - id: access-control
+        title: Access control mechanisms
+        instruction: Detail the mechanisms used to control access to data.
+      - id: retention-policies
+        title: Data retention policies
+        instruction: Document policies for data retention and archival.
+      - id: audit-trails
+        title: Audit trails and logging requirements
+        instruction: Outline requirements for auditing and logging data access and modifications.
+
+  - id: data-flow-integration
+    title: Data Flow and Integration
+    instruction: Explain how data moves within and outside the system.
+    sections:
+      - id: data-entry-exit
+        title: How data enters and exits the system
+        instruction: Describe the entry and exit points for data within the system.
+      - id: etl-pipelines
+        title: ETL/ELT processes and data pipelines
+        instruction: Document the ETL/ELT processes and data pipelines used for data movement and transformation.
+      - id: integration-points
+        title: Integration points with other systems
+        instruction: Identify and describe integration points with external systems.
+
+  - id: version-control-change-management
+    title: Version Control and Change Management
+    instruction: Describe the process for managing changes to the data model.
+    sections:
+      - id: change-management
+        title: How changes to the data model are managed and tracked
+        instruction: Detail the procedures for tracking and managing changes to the data model.
+      - id: version-history
+        title: Version history
+        instruction: Maintain a history of data model versions and significant changes.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information and references.
+    sections:
+      - id: erds
+        title: Entity-Relationship Diagrams (ERDs) for conceptual, logical, and physical models
+        instruction: Provide ERDs for each level of the data model.
+      - id: sample-data
+        title: Sample data
+        instruction: Include sample data to illustrate the data model.
+      - id: references
+        title: References
+        instruction: List any external documents or resources referenced in this document.
+==================== END: .bmad-core/templates/data-model-tmpl.yaml ====================
+
+==================== START: .bmad-core/checklists/dba-checklist.md ====================
+# dba-checklist
+
+This checklist provides a guide for Database Architects and Data Analysts to ensure comprehensive coverage of database design, data analysis, and related tasks.
+
+## Database Design & Modeling
+
+- [ ] Data requirements gathered and documented.
+- [ ] Logical data model created and reviewed.
+- [ ] Physical data model designed, considering performance and storage.
+- [ ] Database schema defined (tables, views, indexes, stored procedures).
+- [ ] Data types and constraints appropriately applied.
+- [ ] Normalization/denormalization strategies evaluated and applied.
+- [ ] Referential integrity enforced.
+- [ ] Security considerations (access control, encryption) incorporated into design.
+- [ ] Backup and recovery strategies defined.
+- [ ] Disaster recovery plan outlined.
+
+## Data Analysis & Reporting
+
+- [ ] Data sources identified and understood.
+- [ ] Data quality assessed (completeness, accuracy, consistency).
+- [ ] Data cleansing and transformation processes defined.
+- [ ] Key performance indicators (KPIs) identified.
+- [ ] Reporting requirements gathered.
+- [ ] Data visualization needs understood.
+- [ ] Data analysis techniques (statistical analysis, machine learning) considered.
+- [ ] Data governance policies reviewed and adhered to.
+
+## Performance Optimization
+
+- [ ] Query performance analyzed and optimized.
+- [ ] Indexing strategy reviewed and adjusted.
+- [ ] Database configuration parameters tuned.
+- [ ] Hardware resources (CPU, memory, storage, network) assessed for bottlenecks.
+- [ ] Database monitoring tools implemented.
+- [ ] Regular performance baselines established.
+
+## Data Security
+
+- [ ] User roles and permissions defined and implemented.
+- [ ] Data encryption at rest and in transit considered.
+- [ ] Auditing and logging mechanisms in place.
+- [ ] Regular security audits performed.
+- [ ] Compliance requirements (GDPR, HIPAA, etc.) addressed.
+
+## Documentation
+
+- [ ] Database design documents maintained.
+- [ ] Data dictionary/glossary updated.
+- [ ] ETL processes documented.
+- [ ] Data flow diagrams created.
+- [ ] Performance tuning guidelines documented.
+- [ ] Security policies and procedures documented.
+==================== END: .bmad-core/checklists/dba-checklist.md ====================
+
+==================== START: .bmad-core/data/security-best-practices.md ====================
+# Security Best Practices
+
+A condensed guide focusing on key principles across different domains.
+
+## 1. General & Foundational
+
+- **Secure by Design & Default:** Integrate security from the start of the SDLC. Configure systems to be secure out-of-the-box.
+- **Principle of Least Privilege (PoLP):** Grant users, applications, and systems only the minimum permissions necessary.
+- **Defense in Depth:** Implement multiple, overlapping security controls (technical and procedural).
+- **Incident Response:** Develop, maintain, and test an incident response plan.
+- **Security Awareness:** Train all personnel on security policies and threat identification (e.g., phishing).
+- **Asset Management:** Keep all software, hardware, and third-party components patched and updated.
+
+## 2. Application & Web Security
+
+- **Input & Output Validation:** Treat all input as untrusted. Validate, sanitize, and encode all data to prevent Injection (SQLi, XSS) and SSRF.
+- **Authentication & Session Management:** Enforce strong, multi-factor authentication (MFA). Securely manage session tokens (e.g., using HttpOnly cookies).
+- **Access Control:** Implement and enforce robust, server-side access control (e.g., RBAC) to prevent broken access control vulnerabilities.
+- **Secure Coding & Configuration:** Follow secure coding standards. Avoid hardcoded secrets. Use secure configurations for frameworks, servers, and headers (CSP, HSTS).
+- **Dependency Management (SCA):** Use Software Composition Analysis (SCA) tools to find and remediate vulnerabilities in third-party libraries.
+- **Continuous Testing (SAST/DAST):** Integrate Static and Dynamic Application Security Testing into the CI/CD pipeline.
+
+## 3. Data Security
+
+- **Data Classification:** Identify and classify data based on its sensitivity to apply appropriate controls.
+- **Encryption:** Encrypt sensitive data at rest (e.g., in databases) and in transit (using TLS/HTTPS). Manage encryption keys securely.
+- **Data Minimization & Disposal:** Collect only necessary data and securely delete it when no longer required.
+- **Data Loss Prevention (DLP):** Use DLP tools to monitor and prevent unauthorized data exfiltration.
+- **Backups:** Maintain and test secure, isolated backups.
+
+## 4. Infrastructure & Network Security
+
+- **System Hardening:** Reduce the attack surface by removing unnecessary services, ports, and software.
+- **Network Segmentation:** Isolate critical systems by segmenting the network (e.g., using VLANs, firewalls).
+- **Secure Configuration (IaC):** Use Infrastructure as Code (IaC) scanning to find misconfigurations in cloud environments.
+- **Logging & Monitoring:** Aggregate logs and actively monitor for suspicious activity using tools like SIEM.
+- **Secure Remote Access:** Enforce secure and authenticated remote access, typically via VPN or Zero Trust Network Access (ZTNA).
+==================== END: .bmad-core/data/security-best-practices.md ====================
 
 ==================== START: .bmad-core/tasks/validate-next-story.md ====================
 # Validate Next Story Task
@@ -15660,46 +16312,6 @@ template: |
 10. **Server-Side Request Forgery (SSRF):** This vulnerability allows an attacker to induce the server-side application to make requests to an unintended location.
 ==================== END: .bmad-core/data/owasp-top-10.md ====================
 
-==================== START: .bmad-core/data/security-best-practices.md ====================
-# Security Best Practices
-
-A condensed guide focusing on key principles across different domains.
-
-## 1. General & Foundational
-
-- **Secure by Design & Default:** Integrate security from the start of the SDLC. Configure systems to be secure out-of-the-box.
-- **Principle of Least Privilege (PoLP):** Grant users, applications, and systems only the minimum permissions necessary.
-- **Defense in Depth:** Implement multiple, overlapping security controls (technical and procedural).
-- **Incident Response:** Develop, maintain, and test an incident response plan.
-- **Security Awareness:** Train all personnel on security policies and threat identification (e.g., phishing).
-- **Asset Management:** Keep all software, hardware, and third-party components patched and updated.
-
-## 2. Application & Web Security
-
-- **Input & Output Validation:** Treat all input as untrusted. Validate, sanitize, and encode all data to prevent Injection (SQLi, XSS) and SSRF.
-- **Authentication & Session Management:** Enforce strong, multi-factor authentication (MFA). Securely manage session tokens (e.g., using HttpOnly cookies).
-- **Access Control:** Implement and enforce robust, server-side access control (e.g., RBAC) to prevent broken access control vulnerabilities.
-- **Secure Coding & Configuration:** Follow secure coding standards. Avoid hardcoded secrets. Use secure configurations for frameworks, servers, and headers (CSP, HSTS).
-- **Dependency Management (SCA):** Use Software Composition Analysis (SCA) tools to find and remediate vulnerabilities in third-party libraries.
-- **Continuous Testing (SAST/DAST):** Integrate Static and Dynamic Application Security Testing into the CI/CD pipeline.
-
-## 3. Data Security
-
-- **Data Classification:** Identify and classify data based on its sensitivity to apply appropriate controls.
-- **Encryption:** Encrypt sensitive data at rest (e.g., in databases) and in transit (using TLS/HTTPS). Manage encryption keys securely.
-- **Data Minimization & Disposal:** Collect only necessary data and securely delete it when no longer required.
-- **Data Loss Prevention (DLP):** Use DLP tools to monitor and prevent unauthorized data exfiltration.
-- **Backups:** Maintain and test secure, isolated backups.
-
-## 4. Infrastructure & Network Security
-
-- **System Hardening:** Reduce the attack surface by removing unnecessary services, ports, and software.
-- **Network Segmentation:** Isolate critical systems by segmenting the network (e.g., using VLANs, firewalls).
-- **Secure Configuration (IaC):** Use Infrastructure as Code (IaC) scanning to find misconfigurations in cloud environments.
-- **Logging & Monitoring:** Aggregate logs and actively monitor for suspicious activity using tools like SIEM.
-- **Secure Remote Access:** Enforce secure and authenticated remote access, typically via VPN or Zero Trust Network Access (ZTNA).
-==================== END: .bmad-core/data/security-best-practices.md ====================
-
 ==================== START: .bmad-core/tasks/create-next-story.md ====================
 # Create Next Story Task
 
@@ -17775,6 +18387,12 @@ workflow:
       creates: brownfield-architecture-current.md
       notes: "Documents the current state of the existing application's architecture."
 
+    - agent: dba
+      action: analyze-data-performance
+      requires:
+        - brownfield-architecture-current.md
+      notes: "Analyzes the current state of the database and data performance."
+
     - agent: domain-architect
       action: analyze-current-state
       notes: "Analyzes the current enterprise landscape to understand the context of the existing application."
@@ -17790,12 +18408,20 @@ workflow:
       uses: create-target-architecture
       notes: "Defines the target domain architecture for the application. SAVE OUTPUT: Copy final target-architecture.md to your project's docs/ folder."
 
+    - agent: dba
+      creates: database-architecture.md
+      uses: create-database-architecture
+      requires:
+        - target-architecture.md
+      notes: "Creates the database architecture based on the target architecture and data analysis. SAVE OUTPUT: Copy final database-architecture.md to your project's docs/ folder."
+
     - agent: architect
       creates: brownfield-architecture-updated.md
       uses: create-brownfield-architecture
       requires:
         - target-architecture.md
-      notes: "Creates the updated system-level architecture to align with the target state. SAVE OUTPUT: Copy final brownfield-architecture-updated.md to your project's docs/ folder."
+        - database-architecture.md
+      notes: "Creates the updated system-level architecture to align with the target state, incorporating database architecture."
 
     - agent: security
       action: review-architecture
@@ -17820,10 +18446,12 @@ workflow:
     ```mermaid
     graph TD
         A[Start: Brownfield Architecture] --> B[architect: document-project]
-        B --> C[domain-architect: analyze-current-state]
+        B --> B1[dba: analyze-data-performance]
+        B1 --> C[domain-architect: analyze-current-state]
         C --> D[domain-architect: gap-analysis]
         D --> E[domain-architect: create-target-architecture]
-        E --> F[architect: create-brownfield-architecture]
+        E --> E1[dba: create-database-architecture]
+        E1 --> F[architect: create-brownfield-architecture]
         F --> G[security: review-architecture]
         G --> H[po: validate artifacts]
         H --> I{PO finds issues?}
@@ -17833,7 +18461,9 @@ workflow:
 
         style K fill:#90EE90
         style B fill:#FFE4B5
+        style B1 fill:#ADD8E6
         style E fill:#FFE4B5
+        style E1 fill:#ADD8E6
         style F fill:#FFE4B5
         style G fill:#FFC0CB
     ```
@@ -17856,10 +18486,21 @@ workflow:
       action: analyze-current-state
       notes: "Analyzes the current enterprise landscape to understand the context for the new application."
 
+    - agent: dba
+      action: analyze-data-performance
+      notes: "Analyzes data requirements and potential performance considerations for the new application."
+
     - agent: domain-architect
       creates: domain-architecture.md
       uses: create-domain-architecture
       notes: "Defines the new application's role and boundaries within the enterprise domain. SAVE OUTPUT: Copy final domain-architecture.md to your project's docs/ folder."
+
+    - agent: dba
+      creates: database-architecture.md
+      uses: create-database-architecture
+      requires:
+        - domain-architecture.md
+      notes: "Creates the database architecture based on the domain architecture and data analysis. SAVE OUTPUT: Copy final database-architecture.md to your project's docs/ folder."
 
     - agent: domain-architect
       action: analyze-solution-principles
@@ -17869,8 +18510,10 @@ workflow:
     - agent: architect
       creates: fullstack-architecture.md
       uses: create-full-stack-architecture
-      requires: domain-architecture.md
-      notes: "Creates the detailed system-level architecture for the new application. SAVE OUTPUT: Copy final fullstack-architecture.md to your project's docs/ folder."
+      requires:
+        - domain-architecture.md
+        - database-architecture.md
+      notes: "Creates the detailed system-level architecture for the new application, incorporating database architecture. SAVE OUTPUT: Copy final fullstack-architecture.md to your project's docs/ folder."
 
     - agent: security
       action: conduct-threat-model
@@ -17901,8 +18544,10 @@ workflow:
     ```mermaid
     graph TD
         A[Start: Greenfield Architecture] --> B[domain-architect: analyze-current-state]
-        B --> C[domain-architect: create-domain-architecture]
-        C --> D[domain-architect: analyze-solution-principles]
+        B --> B1[dba: analyze-data-performance]
+        B1 --> C[domain-architect: create-domain-architecture]
+        C --> C1[dba: create-database-architecture]
+        C1 --> D[domain-architect: analyze-solution-principles]
         D --> E[architect: create-full-stack-architecture]
         E --> F[security: conduct-threat-model]
         F --> G{Threats identified?}
@@ -17916,9 +18561,11 @@ workflow:
 
         style L fill:#90EE90
         style C fill:#FFE4B5
+        style C1 fill:#ADD8E6
         style E fill:#FFE4B5
         style H fill:#FFE4B5
         style F fill:#FFC0CB
+        style B1 fill:#ADD8E6
     ```
 ==================== END: .bmad-core/workflows/greenfield-architecture.yaml ====================
 

@@ -5,7 +5,6 @@ bundle:
 agents:
   - bmad-orchestrator
   - '*'
-  - dba
 workflows:
   - brownfield-fullstack.yaml
   - brownfield-service.yaml
