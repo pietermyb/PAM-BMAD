@@ -151,8 +151,12 @@ help-display-template: |
     When to use: Use for database design, data modeling, query optimization, data analysis, and reporting
   *agent dev: Full Stack Developer
     When to use: Use for code implementation, debugging, refactoring, and development best practices
+  *agent devops: DevOps Engineer
+    When to use: Use for CI/CD pipeline management, deployment automation, infrastructure as code, monitoring, and release orchestration.
   *agent domain-architect: Domain Architect
     When to use: Use for enterprise architecture, domain modeling, business capability mapping, strategic technology planning, and cross-domain integration
+  *agent performance-engineer: Performance Engineer
+    When to use: Use for performance testing, profiling, optimization, and scalability analysis across the application stack.
   *agent pm: Product Manager
     When to use: Use for creating PRDs, product strategy, feature prioritization, roadmap planning, and stakeholder communication
   *agent po: Product Owner
@@ -163,6 +167,8 @@ help-display-template: |
     When to use: Use for security analysis, threat modeling, defining penetration test scopes, and reviewing code for vulnerabilities.
   *agent sm: Scrum Master
     When to use: Use for story creation, epic management, retrospectives in party-mode, and agile process guidance
+  *agent technical-writer: Technical Writer
+    When to use: Use for creating and maintaining user documentation, API documentation, release notes, and other technical content.
   *agent ux-expert: UX Expert
     When to use: Use for UI/UX design, wireframes, prototypes, front-end specifications, and user experience optimization
 
@@ -456,6 +462,68 @@ data:
 ```
 ==================== END: .bmad-core/agents/dev.md ====================
 
+==================== START: .bmad-core/agents/devops.md ====================
+# devops
+
+CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+
+```yaml
+activation-instructions:
+  - ONLY load dependency files when user selects them for execution via command or request of a task
+  - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
+  - STAY IN CHARACTER!
+  - When managing infrastructure and deployments, always prioritize automation, reliability, and security.
+agent:
+  name: Alex
+  id: devops
+  title: DevOps Engineer
+  icon: ⚙️
+  whenToUse: Use for CI/CD pipeline management, deployment automation, infrastructure as code, monitoring, and release orchestration.
+  customization: null
+persona:
+  role: Automation Specialist & Infrastructure Guardian
+  style: Efficient, systematic, proactive, security-conscious, and highly automated.
+  identity: Master of continuous integration, continuous delivery, and robust infrastructure.
+  focus: Automating development workflows, ensuring system reliability, and streamlining deployments.
+  core_principles:
+    - Automation First - Automate repetitive tasks to increase efficiency and reduce errors.
+    - Infrastructure as Code - Manage infrastructure through code for consistency and version control.
+    - Continuous Everything - Implement continuous integration, delivery, and monitoring.
+    - Reliability Engineering - Design systems for high availability, fault tolerance, and disaster recovery.
+    - Security Integration - Embed security practices throughout the CI/CD pipeline.
+    - Monitoring & Observability - Implement comprehensive monitoring to gain insights into system health and performance.
+    - Collaboration & Communication - Foster strong collaboration between development and operations teams.
+    - Blameless Postmortems - Learn from failures without assigning blame.
+    - Scalability - Design systems that can scale horizontally and vertically to meet demand.
+    - Cost Optimization - Optimize infrastructure costs without compromising performance or reliability.
+commands:
+  - help: Show numbered list of the following commands to allow selection
+  - create-ci-cd-pipeline: use create-doc with ci-cd-pipeline-tmpl.yaml
+  - deploy-application: execute task deploy-application.md
+  - manage-infrastructure: execute task manage-infrastructure.md
+  - setup-monitoring: execute task setup-monitoring.md
+  - execute-checklist {checklist}: Run task execute-checklist (default->devops-checklist)
+  - research {topic}: execute task create-deep-research-prompt
+  - doc-out: Output full document to current destination file
+  - exit: Say goodbye as the DevOps Engineer, and then abandon inhabiting this persona
+dependencies:
+  tasks:
+    - create-doc.md
+    - deploy-application.md
+    - manage-infrastructure.md
+    - setup-monitoring.md
+    - execute-checklist.md
+    - create-deep-research-prompt.md
+  templates:
+    - ci-cd-pipeline-tmpl.yaml
+  checklists:
+    - devops-checklist.md
+  data:
+    - technical-preferences.md
+```
+==================== END: .bmad-core/agents/devops.md ====================
+
 ==================== START: .bmad-core/agents/domain-architect.md ====================
 # domain-architect
 
@@ -540,6 +608,68 @@ dependencies:
     - eap-methodology.md
 ```
 ==================== END: .bmad-core/agents/domain-architect.md ====================
+
+==================== START: .bmad-core/agents/performance-engineer.md ====================
+# performance-engineer
+
+CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+
+```yaml
+activation-instructions:
+  - ONLY load dependency files when user selects them for execution via command or request of a task
+  - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
+  - STAY IN CHARACTER!
+  - When analyzing and optimizing performance, always focus on identifying bottlenecks and proposing data-driven solutions.
+agent:
+  name: Max
+  id: performance-engineer
+  title: Performance Engineer
+  icon: ⚡
+  whenToUse: Use for performance testing, profiling, optimization, and scalability analysis across the application stack.
+  customization: null
+persona:
+  role: Performance Optimization Specialist & Scalability Expert
+  style: Analytical, methodical, data-driven, and performance-focused.
+  identity: Master of identifying and resolving performance bottlenecks to ensure optimal system responsiveness and scalability.
+  focus: Load testing, stress testing, profiling, code optimization, and infrastructure tuning.
+  core_principles:
+    - Data-Driven Optimization - Base all optimization efforts on empirical data and metrics.
+    - Holistic Performance - Consider performance across the entire system, from frontend to backend and infrastructure.
+    - Proactive Identification - Identify potential performance issues early in the development cycle.
+    - Reproducible Testing - Ensure performance tests are consistent and repeatable.
+    - Bottleneck Analysis - Focus on identifying and eliminating the most significant performance bottlenecks.
+    - Scalability Design - Advocate for architectural patterns that promote horizontal and vertical scalability.
+    - Continuous Monitoring - Implement continuous performance monitoring to detect regressions and anomalies.
+    - Realistic Workloads - Design performance tests that accurately simulate real-world user behavior and load.
+    - Collaboration - Work closely with development, QA, and operations teams to implement performance improvements.
+    - Documentation - Document performance test plans, results, and optimization recommendations.
+commands:
+  - help: Show numbered list of the following commands to allow selection
+  - conduct-performance-test: execute task conduct-performance-test.md
+  - analyze-performance-bottlenecks: execute task analyze-performance-bottlenecks.md
+  - optimize-code: execute task optimize-code.md
+  - execute-checklist {checklist}: Run task execute-checklist (default->performance-checklist)
+  - research {topic}: execute task create-deep-research-prompt
+  - doc-out: Output full document to current destination file
+  - exit: Say goodbye as the Performance Engineer, and then abandon inhabiting this persona
+dependencies:
+  tasks:
+    - create-doc.md
+    - conduct-performance-test.md
+    - analyze-performance-bottlenecks.md
+    - optimize-code.md
+    - execute-checklist.md
+    - create-deep-research-prompt.md
+  templates:
+    - performance-test-plan-tmpl.yaml
+    - performance-report-tmpl.yaml
+  checklists:
+    - performance-checklist.md
+  data:
+    - technical-preferences.md
+```
+==================== END: .bmad-core/agents/performance-engineer.md ====================
 
 ==================== START: .bmad-core/agents/pm.md ====================
 # pm
@@ -819,6 +949,68 @@ dependencies:
     - story-draft-checklist.md
 ```
 ==================== END: .bmad-core/agents/sm.md ====================
+
+==================== START: .bmad-core/agents/technical-writer.md ====================
+# technical-writer
+
+CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+
+```yaml
+activation-instructions:
+  - ONLY load dependency files when user selects them for execution via command or request of a task
+  - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
+  - STAY IN CHARACTER!
+  - When creating documentation, always prioritize clarity, accuracy, and user-friendliness.
+agent:
+  name: Olivia
+  id: technical-writer
+  title: Technical Writer
+  icon: ✍️
+  whenToUse: Use for creating and maintaining user documentation, API documentation, release notes, and other technical content.
+  customization: null
+persona:
+  role: Documentation Specialist & Information Architect
+  style: Clear, concise, accurate, user-focused, and structured.
+  identity: Master of transforming complex technical information into easily understandable content.
+  focus: User guides, API references, release notes, and knowledge base articles.
+  core_principles:
+    - User-Centric Documentation - Write for the target audience, focusing on their needs and understanding.
+    - Clarity and Conciseness - Use simple language and avoid jargon where possible.
+    - Accuracy and Completeness - Ensure all information is correct and up-to-date.
+    - Consistency - Maintain consistent terminology, style, and formatting.
+    - Findability - Organize information logically and provide effective navigation.
+    - Version Control - Manage documentation versions and track changes.
+    - Collaboration - Work closely with developers, QAs, and product managers to gather information.
+    - Accessibility - Ensure documentation is accessible to all users.
+    - Continuous Improvement - Regularly review and update documentation based on feedback and changes.
+    - Value Proposition - Highlight the benefits and features of the product in the documentation.
+commands:
+  - help: Show numbered list of the following commands to allow selection
+  - create-user-guide: use create-doc with user-guide-tmpl.yaml
+  - create-api-docs: use create-doc with api-docs-tmpl.yaml
+  - create-release-notes: use create-doc with release-notes-tmpl.yaml
+  - update-knowledge-base: execute task update-knowledge-base.md
+  - execute-checklist {checklist}: Run task execute-checklist (default->technical-writer-checklist)
+  - research {topic}: execute task create-deep-research-prompt
+  - doc-out: Output full document to current destination file
+  - exit: Say goodbye as the Technical Writer, and then abandon inhabiting this persona
+dependencies:
+  tasks:
+    - create-doc.md
+    - update-knowledge-base.md
+    - execute-checklist.md
+    - create-deep-research-prompt.md
+  templates:
+    - user-guide-tmpl.yaml
+    - api-docs-tmpl.yaml
+    - release-notes-tmpl.yaml
+  checklists:
+    - technical-writer-checklist.md
+  data:
+    - bmad-kb.md
+```
+==================== END: .bmad-core/agents/technical-writer.md ====================
 
 ==================== START: .bmad-core/agents/ux-expert.md ====================
 # ux-expert
@@ -6636,48 +6828,90 @@ None Listed
 ==================== START: .bmad-core/tasks/analyze-data-performance.md ====================
 # analyze-data-performance
 
-This task outlines the steps for analyzing data performance within a database system.
+## Purpose
+This task outlines a systematic approach to analyzing data performance within a database system. The primary goal is to identify bottlenecks, understand their root causes, and propose effective solutions to optimize data access, processing, and overall database efficiency.
 
-## 1. Define Scope
+## Workflow
 
-- Identify the specific database, tables, or queries to analyze.
-- Determine the performance metrics to focus on (e.g., query response time, CPU usage, I/O, memory).
-- Define the acceptable performance thresholds.
+### 1. Define Scope
+Before diving into data analysis, it's crucial to clearly define the boundaries and objectives of the performance analysis. This ensures a focused and efficient investigation.
 
-## 2. Gather Data
+- **Identify Targets**: Pinpoint the specific database(s), tables, or queries that are the focus of the analysis. This could be based on reported performance issues, high-resource consumption, or critical business processes.
+- **Determine Metrics**: Identify the key performance metrics that will be monitored and analyzed. These typically include query response time, CPU usage, I/O operations (reads/writes), memory consumption, and network latency.
+- **Define Thresholds**: Establish acceptable performance thresholds for the identified metrics. These thresholds serve as benchmarks against which current performance will be evaluated.
 
-- Collect performance metrics using database monitoring tools.
-- Capture slow-running queries and their execution plans.
-- Gather system-level metrics (CPU, memory, disk I/O) during peak and off-peak hours.
-- Collect relevant database configuration parameters.
+### 2. Gather Data
+Accurate and comprehensive data collection is fundamental for effective performance analysis. This phase involves collecting various types of data from the database system and its environment.
 
-## 3. Analyze Data
+- **Collect Performance Metrics**: Utilize database monitoring tools (e.g., built-in performance monitors, third-party APM tools) to collect real-time and historical performance metrics. This includes data on query execution, session activity, and resource utilization.
+- **Capture Slow Queries**: Identify and capture slow-running queries, along with their execution plans. This is often done through database-specific logging or profiling tools.
+- **Gather System Metrics**: Collect system-level metrics (CPU, memory, disk I/O, network) from the operating system during both peak and off-peak hours to understand resource contention at the infrastructure level.
+- **Collect Configuration Parameters**: Document and collect relevant database configuration parameters, as misconfigurations can often be a source of performance issues.
 
-- Review query execution plans to identify bottlenecks (e.g., full table scans, missing indexes).
-- Analyze I/O patterns to identify disk contention or inefficient data access.
-- Examine CPU and memory usage to pinpoint resource-intensive operations.
-- Compare current performance against established baselines.
-- Identify trends and anomalies in performance metrics.
+### 3. Analyze Data
+This is the core analytical phase where collected data is examined to identify patterns, anomalies, and potential performance issues.
 
-## 4. Identify Root Causes
+- **Review Query Execution Plans**: Analyze the execution plans of slow queries to understand how the database is processing them. Look for full table scans, inefficient joins, or missing/unused indexes.
+- **Analyze I/O Patterns**: Examine disk I/O patterns to identify potential disk contention, inefficient data access methods, or bottlenecks related to storage subsystem performance.
+- **Examine CPU and Memory Usage**: Investigate CPU and memory consumption to pinpoint resource-intensive operations, memory leaks, or inefficient caching mechanisms.
+- **Compare Against Baselines**: Compare current performance metrics against established baselines to identify deviations or performance degradations over time.
+- **Identify Trends and Anomalies**: Look for trends (e.g., gradual performance degradation) and anomalies (e.g., sudden spikes in response time) that might indicate underlying problems.
 
-- Determine the underlying reasons for performance issues (e.g., inefficient queries, missing indexes, poor schema design, inadequate hardware, locking/blocking issues).
+### 4. Identify Root Causes
+Based on the data analysis, the next step is to determine the underlying reasons for the observed performance issues.
 
-## 5. Propose Solutions
+- **Determine Underlying Reasons**: Pinpoint the specific causes of performance problems. Common root causes include inefficient queries, lack of appropriate indexes, poor database schema design, inadequate hardware resources, or locking/blocking issues between concurrent transactions.
 
-- Recommend specific optimizations (e.g., add/modify indexes, rewrite queries, optimize schema, adjust database configuration, upgrade hardware).
-- Prioritize solutions based on impact and effort.
+### 5. Propose Solutions
+Once root causes are identified, specific and actionable solutions are proposed to address the performance bottlenecks.
 
-## 6. Implement and Verify
+- **Recommend Optimizations**: Suggest concrete optimizations such as adding or modifying indexes, rewriting inefficient queries, optimizing the database schema, adjusting database configuration parameters, or recommending hardware upgrades.
+- **Prioritize Solutions**: Prioritize the proposed solutions based on their potential impact on performance and the estimated effort required for implementation. Focus on high-impact, low-effort changes first.
 
-- Apply the proposed solutions.
-- Re-test performance to ensure improvements and no new regressions.
-- Monitor performance after implementation to confirm sustained benefits.
+### 6. Implement and Verify
+This phase involves applying the proposed solutions and rigorously testing to confirm their effectiveness.
 
-## 7. Document Findings
+- **Apply Solutions**: Implement the recommended optimizations in a controlled environment.
+- **Re-test Performance**: Conduct re-testing using the same performance test scenarios to validate that the implemented solutions have improved performance and have not introduced any new regressions.
+- **Monitor Benefits**: Continuously monitor performance after implementation in production to confirm sustained benefits and ensure the optimizations are effective under real-world load.
 
-- Document the analysis process, findings, proposed solutions, and results.
-- Update relevant documentation (e.g., database design, query optimization guidelines).
+### 7. Document Findings
+Comprehensive documentation of the analysis process, findings, and solutions is essential for knowledge sharing and future reference.
+
+- **Document Analysis**: Record the entire analysis process, including the data collected, the analytical methods used, the identified bottlenecks, and their root causes.
+- **Document Solutions**: Detail the proposed and implemented solutions, along with their rationale and the observed performance improvements.
+- **Update Documentation**: Update relevant documentation, such as database design documents, query optimization guidelines, and operational runbooks, to reflect the changes and new best practices.
+
+## Outputs
+- Performance analysis report detailing bottlenecks and root causes.
+- Proposed optimization recommendations.
+- Implemented database and code changes (if applicable).
+- Updated performance metrics and baselines.
+
+## Success Criteria
+- Identified performance bottlenecks are resolved or significantly mitigated.
+- Key performance metrics meet or exceed defined thresholds.
+- Improved query response times and overall system throughput.
+- Reduced resource utilization (CPU, memory, I/O).
+- Solutions are validated through re-testing and sustained monitoring.
+
+## Dependencies
+- Access to database monitoring tools and data.
+- Permissions to analyze database configurations and query execution plans.
+- Collaboration with development, operations, and architecture teams.
+- Defined performance test scenarios and data.
+
+## Risks and Mitigation
+- **Risk**: Inaccurate or incomplete data collection leading to incorrect conclusions.
+  - **Mitigation**: Use multiple data sources, validate data integrity, and ensure comprehensive monitoring tool coverage.
+- **Risk**: Optimizations introducing new issues or regressions.
+  - **Mitigation**: Implement changes in a controlled environment, conduct thorough re-testing (performance and regression), and have a rollback plan.
+- **Risk**: Focusing on symptoms rather than root causes.
+  - **Mitigation**: Employ systematic root cause analysis techniques, correlate data from multiple layers (application, database, infrastructure), and involve experienced personnel.
+- **Risk**: Solutions not being effective or providing minimal gains.
+  - **Mitigation**: Prioritize high-impact changes, conduct small, iterative optimizations, and continuously measure the impact of changes.
+- **Risk**: Lack of resources or expertise for complex optimizations.
+  - **Mitigation**: Allocate dedicated resources, provide training, or engage external experts for specialized performance tuning.
 ==================== END: .bmad-core/tasks/analyze-data-performance.md ====================
 
 ==================== START: .bmad-core/tasks/generate-data-report.md ====================
@@ -7451,6 +7685,468 @@ Be honest - it's better to flag issues now than have them discovered later.]]
 
 - [ ] I, the Developer Agent, confirm that all applicable items above have been addressed.
 ==================== END: .bmad-core/checklists/story-dod-checklist.md ====================
+
+==================== START: .bmad-core/tasks/deploy-application.md ====================
+# deploy-application
+
+## Purpose
+This task outlines the comprehensive steps required to safely and efficiently deploy an application to a designated target environment, ensuring all pre-deployment, deployment, and post-deployment activities are meticulously executed.
+
+## Workflow
+
+### 1. Pre-deployment Checks
+Before initiating any deployment, a series of critical checks must be performed to ensure readiness and minimize risks. This involves verifying the integrity of the build artifacts, confirming the health and accessibility of the target environment, and ensuring all necessary configurations are in place.
+
+- **Artifact Verification**: Confirm that all required build artifacts are available, correctly versioned, and free from corruption. This includes application binaries, Docker images, configuration files, and any other deployable components.
+- **Environment Readiness**: Verify the health, accessibility, and capacity of the target deployment environment. This includes checking network connectivity, available resources (CPU, memory, storage), and necessary permissions.
+- **Configuration Validation**: Ensure all environment-specific configurations, such as environment variables, secrets, database connection strings, and API keys, are correctly set up and accessible to the deployment process.
+- **Plan Review**: Thoroughly review the deployment plan, including the sequence of operations, dependencies, and the defined rollback strategy. All stakeholders should be aware of the plan and any potential impact.
+
+### 2. Prepare Environment
+This phase involves preparing the target environment for the new application deployment, which may include provisioning new infrastructure or updating existing components.
+
+- **Infrastructure Provisioning/Update**: If required, provision new infrastructure or update existing infrastructure components using Infrastructure as Code (IaC) tools (e.g., Terraform, CloudFormation). This ensures consistency and repeatability.
+- **Network Configuration**: Configure network access controls, security groups, and firewall rules to allow necessary inbound and outbound traffic for the application and its dependencies.
+- **Database Preparation**: Execute any necessary database migrations or schema updates. This should be done carefully, with proper backups and a clear rollback plan for database changes.
+
+### 3. Deploy Application
+This is the core deployment phase where the application artifacts are transferred and activated in the target environment.
+
+- **Instance Management**: If applicable, gracefully stop existing application instances to prepare for the new deployment. This may involve draining connections or redirecting traffic.
+- **Artifact Deployment**: Deploy the new application artifacts to the target environment. This could involve pulling Docker images, copying code bundles, or deploying serverless functions.
+- **Database Updates**: Apply any pending database migrations or schema changes that were prepared in the previous step.
+- **Configuration Application**: Update application configuration files or environment variables to point to the newly deployed artifacts or to reflect any environment-specific settings.
+- **Instance Activation**: Start the new application instances. This may involve bringing up new containers, virtual machines, or serverless functions.
+
+### 4. Post-deployment Verification
+After the application is deployed, a series of verification steps are crucial to confirm successful deployment and proper functionality.
+
+- **Health and Status Checks**: Verify the overall health and status of the deployed application. This includes checking service endpoints, application logs for startup messages, and internal health checks.
+- **Smoke Tests**: Execute a set of basic functional tests (smoke tests) to ensure critical application functionalities are working as expected in the deployed environment.
+- **Log Review**: Thoroughly review application logs and server logs for any errors, warnings, or unexpected behavior that might indicate issues with the deployment.
+- **Dependency Connectivity**: Confirm that the deployed application can successfully connect to and interact with all its dependent services, such as databases, message queues, and external APIs.
+
+### 5. Monitoring and Rollback Preparedness
+This final stage ensures that the deployed application is continuously monitored and that a robust rollback mechanism is in place for unforeseen issues.
+
+- **Monitoring Activation**: Verify that all relevant monitoring and alerting systems are active and collecting data for the newly deployed application. This includes metrics, logs, and traces.
+- **Rollback Confirmation**: Reconfirm that the rollback procedures are clearly documented, understood by the team, and can be executed swiftly if a critical issue arises post-deployment.
+- **Metrics and Logs Capture**: Ensure that all deployment-related metrics and logs are captured and stored for future analysis, auditing, and post-mortem reviews.
+
+## Outputs
+- Deployed application instances in the target environment.
+- Updated database schema (if applicable).
+- Deployment logs and metrics.
+- Verification test results.
+
+## Success Criteria
+- Application successfully deployed and accessible in the target environment.
+- All critical functionalities are working as expected.
+- No new errors or performance degradations introduced.
+- Monitoring and alerting systems are fully operational for the deployed application.
+- Rollback procedure is confirmed to be viable.
+
+## Dependencies
+- Verified build artifacts.
+- Accessible and properly configured target environment.
+- Defined deployment plan and rollback strategy.
+- Necessary credentials and permissions for deployment.
+
+## Risks and Mitigation
+- **Risk**: Deployment failure due to incorrect configurations.
+  - **Mitigation**: Implement automated configuration validation and use environment-specific configuration management tools.
+- **Risk**: Application downtime during deployment.
+  - **Mitigation**: Utilize blue/green deployments, canary releases, or rolling updates to minimize downtime.
+- **Risk**: Introduction of new bugs or performance issues.
+  - **Mitigation**: Implement comprehensive automated testing (unit, integration, performance, smoke) and thorough post-deployment verification.
+- **Risk**: Database corruption or data loss during migrations.
+  - **Mitigation**: Perform database backups before migrations, use idempotent migration scripts, and test migrations in non-production environments.
+==================== END: .bmad-core/tasks/deploy-application.md ====================
+
+==================== START: .bmad-core/tasks/manage-infrastructure.md ====================
+# manage-infrastructure
+
+## Purpose
+This task outlines the systematic approach to managing infrastructure, primarily leveraging Infrastructure as Code (IaC) principles to ensure consistency, repeatability, and scalability. It covers the entire lifecycle from understanding requirements to deployment and verification.
+
+## Workflow
+
+### 1. Understand Requirements
+Before any infrastructure changes are initiated, a clear understanding of the desired state and existing landscape is crucial. This phase focuses on gathering and clarifying all relevant information.
+
+- **Clarify Changes**: Precisely define the infrastructure changes or new resources that are needed. This includes understanding the functional and non-functional requirements (e.g., performance, security, availability).
+- **Identify Target Environment**: Determine the specific environment(s) where the infrastructure changes will be applied (e.g., development, staging, production). Each environment may have unique considerations.
+- **Review Existing IaC and Documentation**: Examine current Infrastructure as Code definitions, existing infrastructure, and any related documentation to understand the baseline and identify potential impacts or dependencies.
+
+### 2. Plan Infrastructure Changes
+Once requirements are understood, a detailed plan is developed to guide the infrastructure modifications. This ensures a well-thought-out approach that considers various aspects of the infrastructure.
+
+- **Design Architecture**: For new infrastructure, design the architecture, including component interactions, network topology, and security considerations. For modifications, assess how changes fit into the existing architecture.
+- **Select IaC Tool and Modules**: Choose the most appropriate Infrastructure as Code tool (e.g., Terraform, CloudFormation, Ansible) and relevant modules or templates that align with the planned changes and organizational standards.
+- **Define Resource Configurations**: Specify the detailed configurations for all resources, such as compute instances (VMs, containers), storage (databases, object storage), and networking components (VPCs, subnets, load balancers).
+- **Consider Implications**: Evaluate the security, cost, and compliance implications of the proposed infrastructure changes. Ensure adherence to organizational policies and regulatory requirements.
+
+### 3. Develop/Update IaC
+This phase involves the actual coding of the infrastructure, translating the plan into executable IaC scripts.
+
+- **Write/Modify IaC Code**: Develop new IaC code or update existing code to reflect the planned infrastructure changes. This includes defining resources, their properties, and relationships.
+- **Follow Best Practices**: Adhere to established coding standards and best practices for Infrastructure as Code, such as modularity, reusability, and clear naming conventions.
+- **Parameterize Configurations**: Design IaC to be parameterized, allowing for easy adaptation to different environments without modifying the core code. This promotes reusability and reduces errors.
+- **Implement Secrets Management**: Integrate with a secure secrets management solution to handle sensitive data (e.g., API keys, database credentials) within the IaC, preventing hardcoding of secrets.
+
+### 4. Validate IaC
+Before deployment, the IaC code must be thoroughly validated to catch errors early and ensure the intended outcome.
+
+- **Run Static Analysis**: Execute static analysis tools (e.g., `terraform validate`, `cfn-lint`) to check for syntax errors, best practice violations, and potential issues in the IaC code.
+- **Perform Dry Runs/Plan Executions**: Conduct dry runs or plan executions (e.g., `terraform plan`) to preview the changes that will be applied to the infrastructure without actually making them. This provides a clear understanding of the impact.
+- **Review with Stakeholders**: Review the planned changes and the output of dry runs with relevant stakeholders, including security, architecture, and operations teams, to ensure alignment and address concerns.
+
+### 5. Deploy Infrastructure
+This is the execution phase where the validated IaC is applied to provision or update the infrastructure in the target environment.
+
+- **Execute IaC**: Run the IaC scripts to provision new resources or modify existing ones in the designated environment. This should ideally be part of an automated CI/CD pipeline.
+- **Monitor Deployment**: Continuously monitor the deployment process for any errors, warnings, or unexpected behavior. Automated alerts should be configured for critical failures.
+- **Verify Resource Creation**: After the deployment, verify that all resources have been created or updated successfully and are in the expected state.
+
+### 6. Post-Deployment Verification
+After successful deployment, a series of checks are performed to ensure the infrastructure is functioning correctly and as intended.
+
+- **Connectivity Tests**: Perform connectivity tests to new or modified resources to ensure they are reachable and can communicate with other components.
+- **Validate Configurations**: Verify that resource configurations and settings are applied correctly and match the IaC definitions.
+- **Monitoring and Logging Activation**: Confirm that monitoring and logging solutions are active and collecting data for the newly deployed or updated infrastructure components.
+- **Update Documentation**: Update any relevant infrastructure documentation, diagrams, or runbooks to reflect the changes.
+
+### 7. Rollback Preparedness
+A robust rollback strategy is essential to mitigate risks in case of unforeseen issues post-deployment.
+
+- **Define Rollback Strategy**: Ensure a clear and well-defined rollback strategy is in place and understood by the team. This includes identifying the conditions that trigger a rollback.
+- **Document Reversion Steps**: Document the precise steps required to revert the infrastructure changes if a rollback becomes necessary. This should be part of the deployment plan.
+
+## Outputs
+- Provisioned or updated infrastructure resources.
+- Updated Infrastructure as Code (IaC) repository.
+- Deployment logs and audit trails.
+- Updated infrastructure documentation.
+
+## Success Criteria
+- Infrastructure changes are applied successfully without errors.
+- All provisioned resources are functional and meet defined requirements.
+- Infrastructure adheres to security, cost, and compliance policies.
+- Rollback procedures are clearly defined and executable.
+
+## Dependencies
+- Clear infrastructure requirements.
+- Access to IaC tools and cloud/on-premise environments.
+- Necessary permissions for infrastructure provisioning.
+- Collaboration with security, architecture, and development teams.
+
+## Risks and Mitigation
+- **Risk**: Accidental deletion or modification of critical resources.
+  - **Mitigation**: Implement strong access controls, use IaC state management, and enforce review processes for IaC changes.
+- **Risk**: Configuration drift between environments.
+  - **Mitigation**: Use parameterized IaC, automate deployments, and regularly audit environment configurations against IaC definitions.
+- **Risk**: Security vulnerabilities introduced through new infrastructure.
+  - **Mitigation**: Integrate security scanning into IaC pipelines, conduct regular security audits, and adhere to security best practices.
+- **Risk**: Cost overruns due to inefficient resource provisioning.
+  - **Mitigation**: Implement cost monitoring, optimize resource sizing, and enforce tagging policies for cost allocation.
+==================== END: .bmad-core/tasks/manage-infrastructure.md ====================
+
+==================== START: .bmad-core/tasks/setup-monitoring.md ====================
+# setup-monitoring
+
+## Purpose
+This task outlines the comprehensive process for establishing robust monitoring and alerting systems for applications and infrastructure. The goal is to ensure visibility into system health, performance, and security, enabling proactive issue detection and rapid incident response.
+
+## Workflow
+
+### 1. Define Monitoring Scope and Objectives
+Before implementing any monitoring solution, it's crucial to clearly define what needs to be monitored and why. This phase sets the foundation for an effective monitoring strategy.
+
+- **Identify Components**: Pinpoint all key applications, services, and infrastructure components (e.g., servers, databases, networks, containers) that require monitoring.
+- **Determine Critical Metrics**: Identify the essential metrics for each component, such as CPU utilization, memory usage, disk I/O, network throughput, request latency, error rates, and application-specific business metrics.
+- **Define SLOs and SLIs**: Establish Service Level Objectives (SLOs) and Service Level Indicators (SLIs) to quantify desired performance and reliability targets. These will guide alert thresholds and success criteria.
+- **Identify Stakeholders**: Determine who needs access to monitoring data and alerts, and understand their specific information needs (e.g., operations, developers, business users).
+
+### 2. Choose Monitoring Tools
+Selecting the right set of tools is vital for a comprehensive monitoring solution. This involves choosing platforms for metrics, logs, and alerts.
+
+- **Monitoring Tools**: Select appropriate tools for collecting and visualizing metrics (e.g., Prometheus, Grafana, Datadog, New Relic, CloudWatch, Azure Monitor). Consider scalability, integration capabilities, and cost.
+- **Logging Solutions**: Choose a centralized logging solution for collecting, storing, and analyzing logs from all components (e.g., ELK stack (Elasticsearch, Logstash, Kibana), Splunk, Sumo Logic, Datadog Logs).
+- **Alerting and Incident Management**: Select tools for managing alerts, on-call rotations, and incident response (e.g., PagerDuty, Opsgenie, VictorOps).
+
+### 3. Instrument Applications and Infrastructure
+This phase involves integrating monitoring capabilities directly into the applications and infrastructure components.
+
+- **Application Instrumentation**: Integrate monitoring agents, SDKs, or libraries into applications to emit relevant metrics, logs, and traces. This may involve modifying application code.
+- **Application Configuration**: Configure applications to output logs in a structured format and expose metrics endpoints that can be scraped by monitoring tools.
+- **Infrastructure Agent Deployment**: Deploy monitoring agents (e.g., Node Exporter for Prometheus, Datadog Agent) on servers, virtual machines, and container hosts to collect system-level metrics.
+- **Infrastructure Metric Exposure**: Configure infrastructure components (e.g., databases, web servers, message queues) to expose their internal metrics via standard protocols (e.g., JMX, SNMP, HTTP endpoints).
+
+### 4. Configure Data Collection
+Once instrumentation is in place, configure the monitoring tools to collect and process the emitted data.
+
+- **Data Collectors Setup**: Set up data collectors, scrapers, or agents to pull or push metrics, logs, and traces into the chosen monitoring platforms.
+- **Data Retention Policies**: Define and configure data retention policies for metrics and logs based on compliance, auditing, and analysis requirements.
+- **Secure Data Transmission**: Ensure that all monitoring data is transmitted securely (e.g., via HTTPS, encrypted channels) to prevent unauthorized access or tampering.
+
+### 5. Create Dashboards and Visualizations
+Effective visualization of data is key to quickly understanding system health and identifying trends.
+
+- **Dashboard Design**: Design intuitive and informative dashboards tailored to different roles and their specific needs (e.g., executive dashboards, operations dashboards, developer dashboards).
+- **Key Metric Visualization**: Visualize critical metrics, trends, and anomalies using appropriate chart types (e.g., line graphs for trends, gauges for current status, heatmaps for distribution).
+- **System Health Overview**: Ensure dashboards provide a clear, at-a-glance overview of the overall system health and performance.
+
+### 6. Configure Alerting
+Alerting ensures that relevant personnel are notified when predefined thresholds are breached or critical events occur.
+
+- **Define Alert Rules**: Create alert rules based on the defined SLOs, SLIs, and critical thresholds for metrics and log patterns.
+- **Configure Notification Channels**: Set up notification channels (e.g., email, Slack, PagerDuty, SMS) to deliver alerts to the appropriate teams.
+- **Implement Escalation Policies**: Define escalation policies to ensure that critical alerts are addressed promptly, escalating to higher levels of support if not resolved within a specified time.
+- **Test Alert Configurations**: Thoroughly test all alert configurations to ensure they fire correctly under expected conditions and that notifications are received by the right people.
+
+### 7. Implement Tracing and Distributed Logging
+For complex, distributed systems, tracing and correlated logging are essential for debugging and root cause analysis.
+
+- **Distributed Tracing**: Implement distributed tracing (e.g., OpenTelemetry, Jaeger, Zipkin) to track requests as they flow through multiple services, providing end-to-end visibility.
+- **Correlated Logging**: Ensure that logs from different services contain common correlation IDs (e.g., trace ID, request ID) to facilitate easy debugging and analysis across the distributed system.
+
+### 8. Document and Review
+Comprehensive documentation and regular reviews are crucial for maintaining an effective monitoring system.
+
+- **Monitoring Documentation**: Document the entire monitoring architecture, including chosen tools, configurations, dashboard layouts, and alert rules.
+- **Runbooks**: Establish clear runbooks for common alerts and incidents, providing step-by-step instructions for diagnosis and resolution.
+- **Regular Review**: Schedule regular reviews of monitoring configurations, dashboards, and alert effectiveness based on feedback from incidents and changes in the system.
+
+## Outputs
+- Operational monitoring dashboards.
+- Configured alerting rules and notification channels.
+- Centralized log collection and analysis system.
+- Distributed tracing capabilities (if applicable).
+- Documented monitoring architecture and runbooks.
+
+## Success Criteria
+- All critical applications and infrastructure components are being monitored.
+- Key performance indicators (KPIs) and health metrics are visible in dashboards.
+- Alerts are triggered accurately for critical events and reach the right personnel.
+- Incidents are detected proactively and resolved efficiently due to monitoring insights.
+- System performance and health trends are easily identifiable.
+
+## Dependencies
+- Access to application code for instrumentation.
+- Permissions to deploy agents and configure infrastructure.
+- Defined SLOs and SLIs.
+- Collaboration with development, operations, and business teams.
+
+## Risks and Mitigation
+- **Risk**: Alert fatigue due to excessive or noisy alerts.
+  - **Mitigation**: Implement alert correlation, fine-tune thresholds, and use escalation policies to reduce noise.
+- **Risk**: Missing critical metrics or logs.
+  - **Mitigation**: Conduct regular audits of instrumentation, review application changes for new monitoring needs, and involve developers in defining metrics.
+- **Risk**: Data overload or high costs from excessive data collection.
+  - **Mitigation**: Implement intelligent sampling, filter unnecessary logs, and optimize data retention policies.
+- **Risk**: Security vulnerabilities in monitoring tools or data transmission.
+  - **Mitigation**: Secure monitoring endpoints, encrypt data in transit and at rest, and regularly patch monitoring systems.
+- **Risk**: Inaccurate or misleading dashboards.
+  - **Mitigation**: Validate data sources, ensure correct metric aggregation, and gather feedback from dashboard users.
+==================== END: .bmad-core/tasks/setup-monitoring.md ====================
+
+==================== START: .bmad-core/templates/ci-cd-pipeline-tmpl.yaml ====================
+template:
+  id: ci-cd-pipeline-template
+  name: CI/CD Pipeline Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/ci-cd-pipeline.md
+    title: "{{project_name}} CI/CD Pipeline"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the CI/CD pipeline.
+    sections:
+      - id: purpose
+        title: Purpose of the CI/CD Pipeline
+        instruction: Clearly state the purpose and objectives of this CI/CD pipeline.
+      - id: scope
+        title: Scope of the CI/CD Pipeline
+        instruction: Define the boundaries and scope of the pipeline, including what applications or services it covers.
+      - id: target-audience
+        title: Target Audience
+        instruction: Identify the intended audience for this document (e.g., developers, operations, QA).
+
+  - id: pipeline-overview
+    title: Pipeline Overview
+    instruction: Describe the high-level flow of the CI/CD pipeline.
+    sections:
+      - id: stages
+        title: Pipeline Stages
+        instruction: Outline the main stages of the pipeline (e.g., Build, Test, Deploy, Release).
+      - id: tools
+        title: Tools and Technologies
+        instruction: List the primary tools and technologies used in the pipeline (e.g., Jenkins, GitLab CI, GitHub Actions, Docker, Kubernetes).
+      - id: flow-diagram
+        title: Pipeline Flow Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: Create a Mermaid diagram visualizing the pipeline flow.
+
+  - id: build-stage
+    title: Build Stage
+    instruction: Detail the processes involved in the build stage.
+    sections:
+      - id: source-control-integration
+        title: Source Control Integration
+        instruction: Describe how the pipeline integrates with the source code repository.
+      - id: build-process
+        title: Build Process
+        instruction: Explain the steps involved in building the application (e.g., compiling code, packaging artifacts).
+      - id: artifact-management
+        title: Artifact Management
+        instruction: Detail how build artifacts are stored and managed.
+
+  - id: test-stage
+    title: Test Stage
+    instruction: Describe the testing processes within the pipeline.
+    sections:
+      - id: unit-testing
+        title: Unit Testing
+        instruction: Explain how unit tests are executed and reported.
+      - id: integration-testing
+        title: Integration Testing
+        instruction: Detail the integration testing process.
+      - id: code-quality-analysis
+        title: Code Quality Analysis
+        instruction: Describe tools and metrics used for code quality (e.g., SonarQube, linting).
+      - id: security-scanning
+        title: Security Scanning
+        instruction: Outline any static or dynamic application security testing (SAST/DAST) integrated.
+
+  - id: deployment-stage
+    title: Deployment Stage
+    instruction: Detail the deployment processes to various environments.
+    sections:
+      - id: environments
+        title: Environments
+        instruction: List and describe the different deployment environments (e.g., Dev, QA, Staging, Production).
+      - id: deployment-strategy
+        title: Deployment Strategy
+        instruction: Explain the deployment strategy (e.g., blue/green, canary, rolling updates).
+      - id: infrastructure-as-code
+        title: Infrastructure as Code (IaC)
+        instruction: Describe how infrastructure is provisioned and managed using IaC tools.
+      - id: configuration-management
+        title: Configuration Management
+        instruction: Detail how application configurations are managed across environments.
+
+  - id: release-management
+    title: Release Management
+    instruction: Describe the process for managing releases.
+    sections:
+      - id: release-cadence
+        title: Release Cadence
+        instruction: Define the frequency and schedule of releases.
+      - id: approval-process
+        title: Approval Process
+        instruction: Outline the steps and stakeholders involved in release approvals.
+      - id: rollback-strategy
+        title: Rollback Strategy
+        instruction: Document the procedure for rolling back a failed deployment.
+
+  - id: monitoring-observability
+    title: Monitoring and Observability
+    instruction: Detail how the deployed applications are monitored.
+    sections:
+      - id: logging
+        title: Logging
+        instruction: Describe the logging solution and log aggregation.
+      - id: metrics
+        title: Metrics
+        instruction: Detail the key metrics collected and monitoring tools used.
+      - id: alerting
+        title: Alerting
+        instruction: Explain the alerting mechanisms and on-call procedures.
+      - id: tracing
+        title: Tracing
+        instruction: Describe distributed tracing implementation.
+
+  - id: security-considerations
+    title: Security Considerations
+    instruction: Address security aspects within the CI/CD pipeline.
+    sections:
+      - id: access-control
+        title: Access Control
+        instruction: Detail access control mechanisms for the pipeline and environments.
+      - id: secrets-management
+        title: Secrets Management
+        instruction: Describe how sensitive information is managed and secured.
+      - id: vulnerability-management
+        title: Vulnerability Management
+        instruction: Outline the process for identifying and remediating vulnerabilities.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information and references.
+    sections:
+      - id: glossary
+        title: Glossary of Terms
+        instruction: Provide a glossary of terms used in this document.
+      - id: references
+        title: References
+        instruction: List any external documents or resources referenced.
+==================== END: .bmad-core/templates/ci-cd-pipeline-tmpl.yaml ====================
+
+==================== START: .bmad-core/checklists/devops-checklist.md ====================
+# devops-checklist
+
+This checklist provides a guide for DevOps Engineers to ensure comprehensive coverage of CI/CD, infrastructure, and operations tasks.
+
+## 1. CI/CD Pipeline
+
+- [ ] Source code management (SCM) integration configured.
+- [ ] Build automation implemented.
+- [ ] Unit tests integrated and automated.
+- [ ] Code quality checks (linting, static analysis) integrated.
+- [ ] Dependency scanning integrated.
+- [ ] Artifact management configured.
+- [ ] Deployment automation to development environments.
+- [ ] Release gates and approvals defined.
+- [ ] Rollback strategy defined and tested.
+
+## 2. Infrastructure as Code (IaC)
+
+- [ ] Infrastructure defined using IaC (e.g., Terraform, CloudFormation).
+- [ ] Version control for infrastructure code implemented.
+- [ ] Environment provisioning automated.
+- [ ] Configuration management applied (e.g., Ansible, Puppet).
+- [ ] Secrets management integrated.
+
+## 3. Monitoring and Logging
+
+- [ ] Centralized logging solution implemented (e.g., ELK, Splunk).
+- [ ] Application and infrastructure metrics collected.
+- [ ] Dashboards created for key metrics.
+- [ ] Alerting configured for critical events.
+- [ ] Tracing implemented for distributed systems.
+- [ ] Log retention policies defined.
+
+## 4. Security
+
+- [ ] Security best practices applied to CI/CD pipelines.
+- [ ] Least privilege principle applied to access controls.
+- [ ] Network security configured (e.g., firewalls, security groups).
+- [ ] Vulnerability scanning integrated into pipeline.
+- [ ] Regular security audits performed.
+
+## 5. Operations and Maintenance
+
+- [ ] Automated backups configured.
+- [ ] Disaster recovery plan documented and tested.
+- [ ] Incident response procedures defined.
+- [ ] Capacity planning performed.
+- [ ] Regular system updates and patching.
+- [ ] Cost monitoring and optimization in place.
+==================== END: .bmad-core/checklists/devops-checklist.md ====================
 
 ==================== START: .bmad-core/tasks/document-enterprise.md ====================
 # Document Enterprise
@@ -13674,6 +14370,544 @@ EAP implementation follows a structured approach:
 - Strategic Planning and Enterprise Architecture
 ==================== END: .bmad-core/data/eap-methodology.md ====================
 
+==================== START: .bmad-core/tasks/conduct-performance-test.md ====================
+# conduct-performance-test
+
+## Purpose
+This task outlines the systematic steps for conducting a performance test. The primary goal is to simulate realistic user loads and interactions to evaluate the application's responsiveness, stability, and resource utilization under various conditions, ultimately identifying performance bottlenecks and validating system scalability.
+
+## Workflow
+
+### 1. Prepare Test Environment
+Before initiating any performance test, it is crucial to set up and configure a dedicated test environment that closely mirrors the production environment. This ensures that test results are accurate and representative.
+
+- **Environment Isolation and Configuration**: Ensure the test environment is isolated from other development or production activities to prevent interference. Configure all components (servers, databases, network) according to the specifications outlined in the performance test plan.
+- **Application Deployment**: Deploy the application under test to the prepared environment. Verify that the application is fully functional and stable before proceeding with performance testing.
+- **Test Data Preparation**: Prepare a sufficient volume and variety of realistic test data as specified in the performance test plan. This data should accurately represent production data characteristics to ensure meaningful test results.
+- **Monitoring Tool Configuration**: Configure all necessary monitoring tools (e.g., APM, infrastructure monitoring, database monitoring) to collect relevant performance metrics from the application and underlying infrastructure during the test execution.
+
+### 2. Configure Test Tool
+This phase involves setting up the chosen performance testing tool with the prepared test scripts and workload models.
+
+- **Load Test Script Loading**: Load the pre-developed performance test scripts into the selected performance testing tool (e.g., JMeter, LoadRunner, k6, Gatling). These scripts simulate user actions and interactions with the application.
+- **Workload Model Configuration**: Configure the workload model within the test tool according to the performance test plan. This includes defining the number of virtual users, the ramp-up period (how quickly users are added), and the total duration of the test run.
+- **Assertions and Error Handling**: Set up assertions within the test scripts to validate expected responses from the application. Implement robust error handling mechanisms to capture and log any failures or unexpected behaviors during the test.
+
+### 3. Execute Test
+This is the active phase where the performance test is run, simulating the defined workload against the application.
+
+- **Start Monitoring**: Before initiating the test, ensure that all configured monitoring tools are actively collecting data from the test environment.
+- **Initiate Test Run**: Start the performance test run from the configured test tool. The tool will begin generating the simulated load as per the workload model.
+- **Monitor Execution**: Continuously monitor the test execution for any immediate issues, errors, or unexpected system behavior. This allows for early detection of critical problems that might require stopping and reconfiguring the test.
+- **Ensure Planned Duration**: Verify that the test runs for its entire planned duration, allowing for the collection of sufficient data to analyze long-term performance trends and stability.
+
+### 4. Collect Data
+During and after the test execution, all relevant performance data must be systematically collected for subsequent analysis.
+
+- **Performance Metrics Collection**: Gather performance metrics from all configured monitoring tools. This includes application response times, throughput (transactions/requests per second), and resource utilization (CPU, memory, disk I/O, network) from all layers of the application stack.
+- **Log Collection**: Collect application logs, server logs, and database logs generated during the test run. These logs are crucial for identifying errors, warnings, and understanding application behavior under load.
+- **Error Reports and Exceptions**: Collect any specific error reports, exception logs, or failure details generated by the performance testing tool or the application itself.
+
+### 5. Post-Execution Checks
+After the test run is complete, a series of checks are performed to ensure data integrity and prepare for analysis.
+
+- **Data Verification**: Verify that all expected performance data, logs, and error reports have been successfully collected and are complete.
+- **Anomaly Check**: Perform an initial review of the collected data for any obvious anomalies, spikes, or unexpected patterns that might indicate issues during the test run itself.
+- **Environment Reset**: If necessary, reset the test environment to its baseline state. This ensures that subsequent test runs start from a clean and consistent configuration.
+
+## Outputs
+- Raw performance test results and metrics.
+- Application and infrastructure logs from the test period.
+- Error reports and exception details.
+- Initial observations and anomalies from the test run.
+
+## Success Criteria
+- Performance test executed successfully without tool or environment failures.
+- All required performance metrics and logs are collected.
+- Test duration completed as planned.
+- Data collected is sufficient and valid for analysis.
+
+## Dependencies
+- A fully prepared and isolated test environment.
+- Valid and functional performance test scripts.
+- Configured monitoring tools.
+- A defined performance test plan.
+
+## Risks and Mitigation
+- **Risk**: Test environment not accurately reflecting production.
+  - **Mitigation**: Invest in dedicated, scaled test environments; use environment provisioning tools (IaC) to ensure consistency.
+- **Risk**: Insufficient or unrealistic test data.
+  - **Mitigation**: Plan test data generation carefully, use data masking for sensitive information, and ensure data volume is adequate.
+- **Risk**: Performance test tool misconfiguration or script errors.
+  - **Mitigation**: Conduct dry runs with minimal load, use version control for scripts, and perform peer reviews of test configurations.
+- **Risk**: Monitoring tools failing to capture critical data.
+  - **Mitigation**: Verify monitoring setup before tests, regularly check monitoring agent health, and cross-reference data from multiple sources.
+- **Risk**: Interference from other activities in the test environment.
+  - **Mitigation**: Ensure strict isolation of the test environment and schedule tests during off-peak hours if shared resources are unavoidable.
+==================== END: .bmad-core/tasks/conduct-performance-test.md ====================
+
+==================== START: .bmad-core/tasks/analyze-performance-bottlenecks.md ====================
+# analyze-performance-bottlenecks
+
+## Purpose
+This task provides a systematic approach for analyzing performance test results to identify, understand, and document performance bottlenecks within an application and its underlying infrastructure. The primary goal is to transform raw performance data into actionable insights that can guide optimization efforts and improve overall system performance.
+
+## Workflow
+
+### 1. Review Performance Test Report
+The first step involves a comprehensive review of the performance test report to establish context and understand the scope of the analysis.
+
+- **Executive Summary Analysis**: Start by thoroughly reviewing the executive summary and key findings of the performance test report. This provides a high-level overview of the test outcomes and highlights the most critical areas of concern.
+- **Test Context Understanding**: Understand the test objectives, scenarios executed, workload models used, and the test environment configuration. This context is crucial for interpreting the results accurately.
+- **Baseline Comparison**: If available, compare the current test results with previous baseline performance metrics or established performance targets to identify deviations and trends.
+
+### 2. Analyze Key Performance Metrics
+This phase involves a detailed examination of core performance indicators to identify areas where the system is underperforming.
+
+- **Response Time Analysis**: Examine response times for critical transactions and user journeys. Look for high averages, unusual spikes, percentile distributions (50th, 90th, 95th, 99th), and deviations from expected behavioral patterns. Pay special attention to transactions that exceed acceptable response time thresholds.
+- **Throughput Assessment**: Analyze transactions per second (TPS) or requests per second (RPS) metrics. Determine if the system is meeting established throughput targets and identify any degradation patterns as load increases.
+- **Error Rate Evaluation**: Systematically check for errors, timeouts, and failed transactions during the test. High error rates often indicate underlying bottlenecks or system instability. Categorize errors by type and frequency to understand their impact.
+- **Resource Utilization Review**: Comprehensively review CPU, memory, disk I/O, and network utilization metrics across all tiers of the application stack, including application servers, database servers, load balancers, and other infrastructure components. Identify resources that are consistently high (>80%) or maxed out (>95%).
+
+### 3. Correlate Performance Data
+This critical step involves connecting different data points to understand the relationships between performance symptoms and their underlying causes.
+
+- **Temporal Correlation**: Correlate spikes in response times with corresponding increases in resource utilization, error rates, or other performance indicators. Use precise timestamps to align events and identify causal relationships.
+- **Cross-System Alignment**: Use timestamps to align events across different monitoring systems, including application logs, server logs, database logs, and infrastructure monitoring tools. This holistic view helps identify system-wide patterns and dependencies.
+- **Pattern Recognition**: Look for recurring patterns, such as periodic performance degradation, which might indicate background processes, garbage collection cycles, or scheduled tasks impacting performance.
+
+### 4. Deep Dive into System Components
+This phase requires detailed analysis of each layer of the application stack to pinpoint specific bottlenecks and their root causes.
+
+- **Application Layer Analysis**:
+  - Analyze application logs for exceptions, long-running processes, memory leaks, or frequent garbage collection events that could impact performance.
+  - Use Application Performance Monitoring (APM) tools to trace individual requests and identify slow code paths, inefficient algorithms, N+1 query problems, or excessive object creation.
+  - Review thread dumps or heap dumps if memory management or threading issues are suspected.
+  - Examine application-specific metrics such as connection pool utilization, cache hit ratios, and queue depths.
+
+- **Database Layer Investigation**:
+  - Examine database performance metrics including slow query logs, lock contention, deadlocks, buffer cache hit ratios, I/O wait times, and connection pool utilization.
+  - Analyze query execution plans for inefficient queries, missing indexes, table scans, or suboptimal join strategies.
+  - Review database server resource utilization and identify potential storage or memory constraints.
+  - Check for database-specific issues such as index fragmentation, statistics outdated, or transaction log growth.
+
+- **Network Layer Assessment**:
+  - Measure network latency, packet loss, bandwidth utilization, and connection establishment times between different system components.
+  - Investigate potential issues with load balancers, firewalls, or network routing that could impact performance.
+  - Analyze SSL/TLS handshake times and connection pooling efficiency for encrypted communications.
+
+- **Infrastructure Layer Examination**:
+  - Review hypervisor or cloud provider metrics for underlying virtual machine or container performance, including CPU steal time, memory ballooning, or resource contention.
+  - Analyze disk I/O latency, throughput, and queue depths for storage subsystems.
+  - Examine containerization metrics such as container resource limits, orchestration overhead, and inter-service communication patterns.
+
+### 5. Identify and Categorize Root Causes
+This step transforms the technical analysis into clear understanding of performance bottlenecks and their underlying causes.
+
+- **Bottleneck Identification**: Based on the comprehensive analysis, pinpoint the specific components, code segments, or infrastructure elements causing performance bottlenecks.
+- **Root Cause Hypothesis**: Formulate clear hypotheses about the root causes of each identified bottleneck. Examples include inefficient database queries, unoptimized algorithms, insufficient infrastructure resources, memory leaks, or architectural limitations.
+- **Impact Assessment**: Evaluate the impact of each bottleneck on overall system performance, user experience, and business objectives.
+- **Bottleneck Classification**: Categorize bottlenecks by type (CPU-bound, I/O-bound, memory-bound, network-bound) and criticality (high, medium, low) to guide prioritization efforts.
+
+### 6. Document Findings and Recommendations
+The final step involves creating comprehensive documentation that will guide subsequent optimization efforts.
+
+- **Detailed Documentation**: Create thorough documentation of all identified bottlenecks, including their symptoms, root causes, impact assessment, and supporting evidence from the analysis.
+- **Priority Ranking**: Prioritize bottlenecks based on their impact on overall system performance, ease of resolution, and alignment with business objectives. Use a structured approach such as impact vs. effort matrix.
+- **Optimization Recommendations**: Provide specific, actionable recommendations for addressing each identified bottleneck, including estimated effort and expected performance improvements.
+- **Supporting Evidence**: Include relevant charts, graphs, log excerpts, and performance metrics that support the findings and recommendations.
+
+## Outputs
+- Comprehensive performance analysis report with identified bottlenecks and root causes.
+- Prioritized list of performance optimization recommendations.
+- Supporting evidence including relevant metrics, logs, and diagnostic data.
+- Impact assessment for each identified bottleneck.
+- Root cause analysis documentation with supporting technical details.
+
+## Success Criteria
+- All significant performance bottlenecks are identified and documented.
+- Root causes are clearly articulated with supporting evidence.
+- Bottlenecks are prioritized based on impact and resolution effort.
+- Actionable recommendations are provided for each identified issue.
+- Analysis findings are validated through correlation of multiple data sources.
+- Documentation is sufficient to guide optimization efforts effectively.
+
+## Dependencies
+- Completed performance test execution with comprehensive data collection.
+- Access to performance test results, metrics, and logs from all system tiers.
+- Availability of monitoring tools and data from application, database, and infrastructure layers.
+- Understanding of application architecture and system dependencies.
+- Access to application code and database schema for detailed analysis.
+
+## Risks and Mitigation
+- **Risk**: Incomplete or insufficient performance data collection.
+  - **Mitigation**: Verify monitoring coverage before test execution; implement comprehensive logging and metrics collection across all system tiers.
+- **Risk**: Misinterpretation of performance data leading to incorrect root cause identification.
+  - **Mitigation**: Involve multiple team members in analysis; validate findings through additional testing or code review; seek expert consultation for complex issues.
+- **Risk**: Focus on symptoms rather than underlying root causes.
+  - **Mitigation**: Use structured root cause analysis techniques; validate hypotheses through targeted testing; ensure analysis goes beyond surface-level metrics.
+- **Risk**: Analysis paralysis due to overwhelming amount of performance data.
+  - **Mitigation**: Use systematic approach to data analysis; focus on highest-impact metrics first; leverage automated analysis tools where appropriate.
+- **Risk**: Identified bottlenecks are not actionable or lack sufficient detail for resolution.
+  - **Mitigation**: Ensure recommendations include specific technical details and implementation guidance; validate feasibility with development team.
+==================== END: .bmad-core/tasks/analyze-performance-bottlenecks.md ====================
+
+==================== START: .bmad-core/tasks/optimize-code.md ====================
+# optimize-code
+
+## Purpose
+This task outlines the systematic process for optimizing code based on findings from performance analysis. The primary goal is to improve application performance, reduce resource consumption, and enhance scalability by identifying and addressing inefficiencies within the codebase.
+
+## Workflow
+
+### 1. Understand Performance Bottlenecks
+Before any optimization can begin, a thorough understanding of the identified performance bottlenecks is essential. This involves reviewing the performance analysis report and pinpointing the exact areas of concern.
+
+- **Review Performance Analysis Report**: Carefully examine the performance analysis report to grasp the nature and impact of the identified bottlenecks. This report should provide data-driven insights into where the system is underperforming.
+- **Pinpoint Code Sections**: Identify the specific code sections, functions, modules, or components that are contributing to the performance issues. This requires drilling down from high-level metrics to granular code segments.
+- **Understand Root Cause**: Determine the underlying root cause of each bottleneck. This could be due to inefficient algorithms, excessive database calls, high memory consumption, I/O bound operations, or other architectural or implementation flaws.
+
+### 2. Prioritize Optimizations
+With a clear understanding of the bottlenecks, the next step is to prioritize optimization efforts to maximize impact with reasonable effort.
+
+- **Impact vs. Effort Analysis**: Prioritize optimization efforts based on a balance between the potential performance impact of resolving a bottleneck and the estimated effort required to implement the fix. Focus on changes that will yield the most significant performance gains.
+
+### 3. Implement Code Optimizations
+This phase involves making targeted changes to the codebase to address the identified inefficiencies. The approach will vary depending on the nature of the bottleneck.
+
+- **Algorithm Optimization**: Replace inefficient algorithms with more performant ones. For example, converting an O(n^2) algorithm to an O(n log n) or O(n) algorithm can dramatically improve performance for large datasets.
+- **Data Structure Optimization**: Choose and implement appropriate data structures for the task at hand. Using a HashMap for fast lookups instead of an ArrayList for frequent searches, or a LinkedList for frequent insertions/deletions, can significantly impact performance.
+- **Reduce I/O Operations**: Minimize unnecessary disk reads/writes or network calls. Implement caching mechanisms (e.g., in-memory cache, distributed cache) where appropriate to reduce the frequency of expensive I/O operations.
+- **Database Query Optimization**:
+  - **Rewrite Inefficient SQL Queries**: Analyze and rewrite SQL queries that are performing poorly. This might involve optimizing `JOIN` clauses, `WHERE` conditions, or subqueries.
+  - **Add or Optimize Database Indexes**: Create new indexes or optimize existing ones to speed up data retrieval for frequently accessed columns or those used in `WHERE` clauses, `JOIN` conditions, or `ORDER BY` clauses.
+  - **Reduce Database Round Trips**: Minimize the number of interactions with the database. Use batch operations for multiple inserts/updates, or employ eager loading to fetch related data in a single query instead of multiple individual queries.
+- **Memory Management**:
+  - **Reduce Object Creation**: Optimize code to reduce the creation of unnecessary objects, thereby minimizing garbage collection overhead and improving application responsiveness.
+  - **Optimize Data Storage**: Design data structures and storage mechanisms to reduce the memory footprint of the application, especially for large datasets.
+- **Concurrency and Parallelism**:
+  - **Utilize Multi-threading/Asynchronous Programming**: For CPU-bound tasks, leverage multi-threading, parallel processing, or asynchronous programming models to utilize available CPU cores more effectively and improve responsiveness.
+  - **Ensure Proper Synchronization**: Implement appropriate synchronization mechanisms (e.g., locks, semaphores) to avoid contention and ensure data consistency in concurrent environments.
+- **Code Refactoring**:
+  - **Remove Redundant Code**: Eliminate duplicate code or unnecessary computations that add overhead without providing value.
+  - **Optimize Loops and Conditionals**: Refactor loops and conditional statements for better performance, such as moving invariant computations outside loops or optimizing branching logic.
+- **Third-Party Library Usage**: Ensure that external libraries and frameworks are used efficiently and correctly. Misuse or inefficient configuration of libraries can introduce performance overhead.
+
+### 4. Test Optimizations
+After implementing code optimizations, rigorous testing is crucial to validate the improvements and ensure no new issues have been introduced.
+
+- **Unit Testing**: Ensure that all existing unit tests pass for the modified code. Add new unit tests specifically for the optimized sections to cover new logic or edge cases.
+- **Performance Testing**: Rerun performance tests using the same scenarios and workload models as the initial analysis. This is critical to validate that the optimizations have indeed led to the expected performance improvements and that no regressions have occurred.
+- **Regression Testing**: Conduct comprehensive regression tests to ensure that the code optimizations have not inadvertently introduced new bugs or broken existing functionalities elsewhere in the application.
+
+### 5. Document Changes
+Documenting the implemented optimizations is vital for knowledge sharing, future maintenance, and understanding the rationale behind performance improvements.
+
+- **Document Optimizations**: Clearly document the changes made, the rationale behind each optimization, and the observed performance improvements (e.g., reduced response time, lower CPU usage).
+- **Update Design Documents**: Update any relevant design documents, architectural diagrams, or technical specifications to reflect the changes introduced by the code optimizations.
+
+## Outputs
+- Optimized codebase with improved performance characteristics.
+- Performance test results validating the improvements.
+- Updated documentation reflecting code changes and performance gains.
+
+## Success Criteria
+- Key performance metrics (e.g., response time, throughput) show significant improvement.
+- Resource utilization (CPU, memory, I/O) is reduced for the optimized code sections.
+- No new bugs or regressions are introduced by the optimizations.
+- The optimized code adheres to coding standards and best practices.
+- Performance improvements are validated through re-testing.
+
+## Dependencies
+- Detailed performance analysis report with identified bottlenecks.
+- Access to the codebase and development environment.
+- Performance testing tools and environment.
+- Collaboration with QA and operations teams.
+
+## Risks and Mitigation
+- **Risk**: Optimizations introducing new bugs or regressions.
+  - **Mitigation**: Thorough unit, performance, and regression testing; phased rollouts; and robust monitoring in production.
+- **Risk**: Over-optimization of non-critical code sections.
+  - **Mitigation**: Prioritize optimizations based on impact and effort; focus on identified bottlenecks rather than speculative changes.
+- **Risk**: Performance improvements not meeting expectations.
+  - **Mitigation**: Re-evaluate root cause analysis; consider alternative optimization strategies; involve performance experts.
+- **Risk**: Increased code complexity due to optimizations.
+  - **Mitigation**: Balance performance gains with code readability and maintainability; document complex optimizations thoroughly.
+- **Risk**: Inaccurate performance testing leading to false positives/negatives.
+  - **Mitigation**: Ensure realistic workload modeling, accurate test data, and proper test environment configuration.
+==================== END: .bmad-core/tasks/optimize-code.md ====================
+
+==================== START: .bmad-core/templates/performance-test-plan-tmpl.yaml ====================
+template:
+  id: performance-test-plan-template
+  name: Performance Test Plan Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/performance-test-plan.md
+    title: "{{project_name}} Performance Test Plan"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the performance test plan.
+    sections:
+      - id: purpose
+        title: Purpose
+        instruction: Clearly state the purpose and objectives of this performance test plan.
+      - id: scope
+        title: Scope
+        instruction: Define the scope of performance testing, including systems, modules, and functionalities to be tested.
+      - id: objectives
+        title: Performance Objectives
+        instruction: List the specific performance objectives (e.g., response time, throughput, resource utilization).
+
+  - id: test-environment
+    title: Test Environment
+    instruction: Describe the environment where performance tests will be executed.
+    sections:
+      - id: architecture
+        title: Environment Architecture
+        instruction: Detail the architecture of the test environment, including hardware, software, and network.
+      - id: data-setup
+        title: Test Data Setup
+        instruction: Explain how test data will be prepared and managed.
+      - id: tools
+        title: Tools Used
+        instruction: List the performance testing tools, monitoring tools, and analysis tools.
+
+  - id: workload-modeling
+    title: Workload Modeling
+    instruction: Define the simulated user behavior and load characteristics.
+    sections:
+      - id: user-journeys
+        title: Key User Journeys/Scenarios
+        instruction: Identify and describe the critical user journeys or business transactions to be simulated.
+      - id: user-load
+        title: User Load Profile
+        instruction: Define the number of virtual users, ramp-up period, and test duration.
+      - id: transaction-mix
+        title: Transaction Mix
+        instruction: Specify the percentage of each transaction type in the workload.
+
+  - id: test-scenarios
+    title: Test Scenarios
+    instruction: Detail the different types of performance tests to be conducted.
+    sections:
+      - id: load-test
+        title: Load Test
+        instruction: Describe the load test scenario (e.g., steady state, peak load).
+      - id: stress-test
+        title: Stress Test
+        instruction: Describe the stress test scenario to find system breaking points.
+      - id: endurance-test
+        title: Endurance Test
+        instruction: Describe the endurance test scenario to check for memory leaks or resource degradation.
+      - id: spike-test
+        title: Spike Test
+        instruction: Describe the spike test scenario to simulate sudden increases in load.
+
+  - id: success-criteria
+    title: Success Criteria
+    instruction: Define the metrics and thresholds for successful performance.
+    sections:
+      - id: response-times
+        title: Response Times
+        instruction: Specify acceptable response times for key transactions.
+      - id: throughput
+        title: Throughput
+        instruction: Define the required transaction per second (TPS) or requests per second (RPS).
+      - id: resource-utilization
+        title: Resource Utilization
+        instruction: Set thresholds for CPU, memory, disk I/O, and network utilization.
+      - id: error-rates
+        title: Error Rates
+        instruction: Define acceptable error rates.
+
+  - id: reporting-analysis
+    title: Reporting and Analysis
+    instruction: Describe how test results will be reported and analyzed.
+    sections:
+      - id: report-format
+        title: Report Format
+        instruction: Specify the format of the performance test report.
+      - id: analysis-approach
+        title: Analysis Approach
+        instruction: Explain how bottlenecks will be identified and root causes determined.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information.
+    sections:
+      - id: glossary
+        title: Glossary
+        instruction: Provide a glossary of terms related to performance testing.
+      - id: references
+        title: References
+        instruction: List any external documents or resources referenced.
+==================== END: .bmad-core/templates/performance-test-plan-tmpl.yaml ====================
+
+==================== START: .bmad-core/templates/performance-report-tmpl.yaml ====================
+template:
+  id: performance-report-template
+  name: Performance Test Report
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/performance-report.md
+    title: "{{project_name}} Performance Test Report"
+
+sections:
+  - id: executive-summary
+    title: Executive Summary
+    instruction: Provide a high-level overview of the performance test results and key findings.
+    sections:
+      - id: overview
+        title: Overview
+        instruction: Briefly summarize the purpose of the test, the system under test, and the main conclusions.
+      - id: key-findings
+        title: Key Findings
+        instruction: Highlight the most important performance observations and issues.
+      - id: recommendations
+        title: Recommendations
+        instruction: Provide high-level recommendations for performance improvements.
+
+  - id: test-objectives
+    title: Test Objectives
+    instruction: Reiterate the performance objectives defined in the test plan.
+    sections:
+      - id: objectives-list
+        title: Objectives
+        instruction: List the specific performance objectives that the testing aimed to achieve.
+
+  - id: test-environment
+    title: Test Environment
+    instruction: Describe the environment where the performance tests were executed.
+    sections:
+      - id: environment-details
+        title: Environment Details
+        instruction: Provide details of the hardware, software, and network configuration of the test environment.
+      - id: test-data
+        title: Test Data
+        instruction: Describe the test data used during the performance tests.
+
+  - id: test-execution-summary
+    title: Test Execution Summary
+    instruction: Provide a summary of the test execution.
+    sections:
+      - id: test-scenarios
+        title: Test Scenarios Executed
+        instruction: List the performance test scenarios that were executed (e.g., Load, Stress, Endurance).
+      - id: execution-dates
+        title: Execution Dates
+        instruction: Specify the dates and times when the tests were conducted.
+      - id: test-tool
+        title: Test Tool Used
+        instruction: Name the performance testing tool used.
+
+  - id: performance-results
+    title: Performance Results
+    instruction: Present the detailed results of the performance tests.
+    sections:
+      - id: response-times
+        title: Response Times
+        instruction: Show average, min, max, and percentile response times for key transactions.
+      - id: throughput
+        title: Throughput
+        instruction: Present transactions per second (TPS) or requests per second (RPS).
+      - id: resource-utilization
+        title: Resource Utilization
+        instruction: Show CPU, memory, disk I/O, and network utilization metrics.
+      - id: error-rates
+        title: Error Rates
+        instruction: Report any errors encountered during testing.
+      - id: graphs-charts
+        title: Graphs and Charts
+        instruction: Include relevant graphs and charts to visualize performance trends.
+
+  - id: bottleneck-analysis
+    title: Bottleneck Analysis
+    instruction: Detail the identified performance bottlenecks and their root causes.
+    sections:
+      - id: identified-bottlenecks
+        title: Identified Bottlenecks
+        instruction: Describe each bottleneck and its impact on performance.
+      - id: root-cause-analysis
+        title: Root Cause Analysis
+        instruction: Explain the underlying reasons for each bottleneck.
+
+  - id: recommendations
+    title: Recommendations
+    instruction: Provide specific recommendations for addressing the identified bottlenecks and improving performance.
+    sections:
+      - id: short-term
+        title: Short-Term Recommendations
+        instruction: List immediate actions that can be taken.
+      - id: long-term
+        title: Long-Term Recommendations
+        instruction: Suggest strategic improvements for sustained performance.
+
+  - id: conclusion
+    title: Conclusion
+    instruction: Summarize the overall outcome of the performance testing.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information.
+    sections:
+      - id: raw-data
+        title: Raw Data
+        instruction: Link to or include raw performance data.
+      - id: test-scripts
+        title: Test Scripts
+        instruction: Link to or include performance test scripts.
+==================== END: .bmad-core/templates/performance-report-tmpl.yaml ====================
+
+==================== START: .bmad-core/checklists/performance-checklist.md ====================
+# performance-checklist
+
+This checklist provides a guide for Performance Engineers to ensure comprehensive coverage of performance testing and optimization tasks.
+
+## 1. Planning and Strategy
+
+- [ ] Define performance objectives and non-functional requirements (NFRs).
+- [ ] Identify key business transactions and user journeys.
+- [ ] Determine workload models (e.g., number of users, transaction rates).
+- [ ] Select appropriate performance testing tools.
+- [ ] Define test environments and data requirements.
+- [ ] Establish success criteria and metrics (e.g., response time, throughput, resource utilization).
+
+## 2. Test Scripting and Execution
+
+- [ ] Develop realistic performance test scripts.
+- [ ] Parameterize test data to avoid caching issues.
+- [ ] Configure test scenarios (e.g., load, stress, endurance, spike).
+- [ ] Execute performance tests in a controlled environment.
+- [ ] Monitor system resources during test execution.
+
+## 3. Analysis and Reporting
+
+- [ ] Analyze test results against defined success criteria.
+- [ ] Identify performance bottlenecks (e.g., database, application code, network, infrastructure).
+- [ ] Correlate performance metrics with system logs and traces.
+- [ ] Generate comprehensive performance test reports.
+- [ ] Present findings and recommendations to stakeholders.
+
+## 4. Optimization and Retesting
+
+- [ ] Propose specific optimizations (e.g., code refactoring, query tuning, infrastructure scaling).
+- [ ] Implement recommended changes.
+- [ ] Retest to validate improvements and ensure no regressions.
+- [ ] Document all optimization efforts and their impact.
+
+## 5. Continuous Performance Monitoring
+
+- [ ] Integrate performance monitoring into CI/CD pipelines.
+- [ ] Establish performance baselines for production systems.
+- [ ] Configure alerts for performance deviations.
+- [ ] Regularly review production performance metrics.
+==================== END: .bmad-core/checklists/performance-checklist.md ====================
+
 ==================== START: .bmad-core/tasks/correct-course.md ====================
 # Correct Course Task
 
@@ -16582,6 +17816,407 @@ Be pragmatic - perfect documentation doesn't exist, but it must be enough to pro
 - NEEDS REVISION: The story requires updates (see issues)
 - BLOCKED: External information required (specify what information)
 ==================== END: .bmad-core/checklists/story-draft-checklist.md ====================
+
+==================== START: .bmad-core/tasks/update-knowledge-base.md ====================
+# update-knowledge-base
+
+## Purpose
+This task outlines the systematic process for updating a knowledge base with new or revised information. The goal is to ensure that the knowledge base remains accurate, comprehensive, and easily accessible to its target audience, reflecting the latest product features, solutions, and best practices.
+
+## Workflow
+
+### 1. Identify Content for Update
+The initial step involves identifying what content needs to be created or revised within the knowledge base. This can be triggered by various events or ongoing processes.
+
+- **Determine Article Needs**: Identify whether existing articles require revision due to outdated information, inaccuracies, or new insights, or if entirely new articles need to be created to cover new features, common issues, or emerging topics.
+- **Source Information**: Pinpoint the origin of the new information. This could include product updates, recently resolved bug fixes, newly released features, direct user feedback, support tickets, or internal discussions with subject matter experts (SMEs).
+- **Understand Audience**: Clearly define the target audience for the updated content. This understanding will influence the tone, technical depth, and level of detail required in the documentation.
+
+### 2. Gather Information
+Once the content need is identified, the next phase focuses on collecting all necessary and accurate information to support the update.
+
+- **Collect Relevant Details**: Systematically gather all pertinent details from reliable sources. This often involves interviewing subject matter experts (SMEs), reviewing product specifications, analyzing existing documentation, and consulting technical designs or code.
+- **Ensure Accuracy and Completeness**: Verify that all collected information is accurate, complete, and up-to-date. Cross-reference information from multiple sources if necessary to ensure factual correctness.
+
+### 3. Draft/Revise Content
+With the information gathered, the content is then drafted or revised, adhering to established documentation standards.
+
+- **Write/Revise Content**: Create new content from scratch or meticulously revise existing articles. All content must adhere strictly to the knowledge base's established style guide, formatting guidelines, and brand voice.
+- **Clarity and Conciseness**: Use clear, concise, and user-friendly language. Avoid jargon where possible, or ensure technical terms are adequately explained. Focus on direct communication and ease of understanding.
+- **Incorporate Visuals**: Integrate relevant visuals such as screenshots, diagrams, flowcharts, or embedded videos where they can enhance understanding and break down complex information. Ensure visuals are high-quality and annotated appropriately.
+- **Categorization and Tagging**: Ensure the content is properly categorized and tagged with relevant keywords. This is crucial for the discoverability of the article within the knowledge base and through search engines.
+
+### 4. Review and Validate
+Before publishing, the content undergoes a rigorous review process to ensure its quality and accuracy.
+
+- **Self-Review**: Conduct a thorough self-review for clarity, accuracy, completeness, and adherence to all guidelines. This initial review catches most common errors.
+- **Technical Review**: Obtain a technical review from relevant Subject Matter Experts (SMEs) to verify the technical accuracy and correctness of the content. This is critical for technical documentation.
+- **Editorial Review**: Seek an editorial review for grammar, spelling, punctuation, style, and overall consistency. This ensures the content is polished and professional.
+- **Incorporate Feedback**: Systematically incorporate feedback received from all review cycles. Prioritize feedback based on impact and urgency, and communicate changes back to reviewers if necessary.
+
+### 5. Publish Content
+Once the content is reviewed and approved, it is published to the knowledge base platform.
+
+- **Publish to Platform**: Upload or publish the finalized content to the designated knowledge base platform (e.g., Confluence, Zendesk Guide, custom CMS).
+- **Version Control**: Ensure that proper version control is applied to the article. This allows for tracking changes over time and reverting to previous versions if needed.
+- **Accessibility and Searchability**: Verify that the published content is accessible to the target audience and is easily searchable through the platform's search functionality.
+
+### 6. Monitor and Maintain
+Maintaining the knowledge base is an ongoing process that requires continuous monitoring and periodic updates.
+
+- **Monitor Usage and Feedback**: Continuously monitor article usage statistics and gather feedback from users. This helps identify areas for improvement or further clarification.
+- **Address Issues**: Promptly address any reported issues, inaccuracies, or broken links within the knowledge base content.
+- **Schedule Reviews**: Establish a regular review schedule for all knowledge base articles to ensure they remain current, accurate, and relevant as products and processes evolve.
+
+## Outputs
+- New or revised knowledge base articles.
+- Updated knowledge base platform.
+- Improved user self-service capabilities.
+
+## Success Criteria
+- Knowledge base content is accurate, up-to-date, and comprehensive.
+- Users can easily find the information they need.
+- Reduction in support tickets related to documented issues.
+- Positive user feedback on documentation quality.
+- Adherence to documentation style guides and standards.
+
+## Dependencies
+- Access to Subject Matter Experts (SMEs).
+- Access to product information and specifications.
+- Access to the knowledge base platform with publishing permissions.
+- Defined documentation style guide and content standards.
+
+## Risks and Mitigation
+- **Risk**: Outdated or inaccurate information.
+  - **Mitigation**: Implement a regular review schedule, assign content owners, and integrate documentation updates into product release cycles.
+- **Risk**: Inconsistent content or formatting.
+  - **Mitigation**: Enforce a strict style guide, use templates, and conduct regular editorial reviews.
+- **Risk**: Difficulty in finding information.
+  - **Mitigation**: Implement robust categorization, tagging, and search optimization strategies. Conduct usability testing on search functionality.
+- **Risk**: Lack of SME availability for content review.
+  - **Mitigation**: Schedule SME time in advance, provide clear review guidelines, and emphasize the importance of accurate documentation.
+- **Risk**: Information overload or overly complex articles.
+  - **Mitigation**: Break down complex topics into smaller, digestible articles. Use clear, concise language and visuals. Focus on user needs.
+==================== END: .bmad-core/tasks/update-knowledge-base.md ====================
+
+==================== START: .bmad-core/templates/user-guide-tmpl.yaml ====================
+template:
+  id: user-guide-template
+  name: User Guide Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/user-guide.md
+    title: "{{product_name}} User Guide"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the user guide and the product.
+    sections:
+      - id: welcome
+        title: Welcome to {{product_name}}
+        instruction: Briefly introduce the product and its main purpose.
+      - id: what-you-will-learn
+        title: What You Will Learn
+        instruction: Outline the key topics covered in this guide.
+      - id: conventions
+        title: Document Conventions
+        instruction: Explain any special formatting or symbols used in the guide.
+
+  - id: getting-started
+    title: Getting Started
+    instruction: Guide users through the initial setup and first use of the product.
+    sections:
+      - id: system-requirements
+        title: System Requirements
+        instruction: List any hardware, software, or network requirements.
+      - id: installation
+        title: Installation Guide
+        instruction: Provide step-by-step instructions for installing the product.
+      - id: first-login
+        title: First Login / Setup
+        instruction: Guide users through their initial access and configuration.
+
+  - id: core-features
+    title: Core Features
+    instruction: Explain the main functionalities of the product.
+    sections:
+      - id: feature-overview
+        title: Feature Overview
+        instruction: Provide a high-level summary of the product's key features.
+      - id: detailed-feature-1
+        title: {{feature_name_1}}
+        instruction: Describe the feature in detail, including its purpose and how to use it.
+      - id: detailed-feature-2
+        title: {{feature_name_2}}
+        instruction: Describe the feature in detail, including its purpose and how to use it.
+
+  - id: advanced-usage
+    title: Advanced Usage
+    instruction: Cover more complex functionalities and tips for experienced users.
+    sections:
+      - id: customization
+        title: Customization Options
+        instruction: Explain how users can customize the product to their needs.
+      - id: integrations
+        title: Integrations
+        instruction: Describe how the product integrates with other systems.
+      - id: best-practices
+        title: Best Practices
+        instruction: Provide tips and recommendations for optimal use.
+
+  - id: troubleshooting
+    title: Troubleshooting
+    instruction: Help users resolve common issues.
+    sections:
+      - id: common-issues
+        title: Common Issues and Solutions
+        instruction: List frequently encountered problems and their resolutions.
+      - id: error-messages
+        title: Understanding Error Messages
+        instruction: Explain common error messages and what they mean.
+      - id: contact-support
+        title: Contacting Support
+        instruction: Provide information on how to get further assistance.
+
+  - id: faqs
+    title: Frequently Asked Questions (FAQs)
+    instruction: Answer common questions about the product.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information.
+    sections:
+      - id: glossary
+        title: Glossary
+        instruction: Define key terms used in the guide.
+      - id: legal-notices
+        title: Legal Notices
+        instruction: Include any necessary legal disclaimers or notices.
+==================== END: .bmad-core/templates/user-guide-tmpl.yaml ====================
+
+==================== START: .bmad-core/templates/api-docs-tmpl.yaml ====================
+template:
+  id: api-docs-template
+  name: API Documentation
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/api-docs.md
+    title: "{{api_name}} API Documentation"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the API.
+    sections:
+      - id: purpose
+        title: Purpose
+        instruction: Explain the purpose and functionality of the API.
+      - id: base-url
+        title: Base URL
+        instruction: Specify the base URL for all API endpoints.
+      - id: versioning
+        title: Versioning
+        instruction: Describe the API versioning strategy.
+
+  - id: authentication
+    title: Authentication
+    instruction: Detail the authentication methods supported by the API.
+    sections:
+      - id: auth-methods
+        title: Supported Authentication Methods
+        instruction: List and describe the authentication methods (e.g., API Key, OAuth2, JWT).
+      - id: how-to-authenticate
+        title: How to Authenticate
+        instruction: Provide step-by-step instructions on how to authenticate with the API.
+
+  - id: endpoints
+    title: Endpoints
+    instruction: Document each API endpoint with its details.
+    sections:
+      - id: endpoint-structure
+        title: Endpoint Structure
+        instruction: Explain the general structure of API endpoints.
+      - id: get-resource
+        title: GET /resource
+        instruction: Document a sample GET endpoint, including parameters, responses, and examples.
+      - id: post-resource
+        title: POST /resource
+        instruction: Document a sample POST endpoint, including parameters, request body, responses, and examples.
+
+  - id: data-models
+    title: Data Models
+    instruction: Define the data structures used in API requests and responses.
+    sections:
+      - id: model-overview
+        title: Overview
+        instruction: Provide a high-level overview of the data models.
+      - id: user-model
+        title: User Model
+        instruction: Define a sample data model (e.g., User), including fields, data types, and descriptions.
+
+  - id: error-handling
+    title: Error Handling
+    instruction: Explain how errors are handled and communicated by the API.
+    sections:
+      - id: error-codes
+        title: Error Codes
+        instruction: List common error codes and their meanings.
+      - id: error-response-format
+        title: Error Response Format
+        instruction: Describe the structure of error responses.
+
+  - id: rate-limiting
+    title: Rate Limiting
+    instruction: Detail any rate limiting policies.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information.
+    sections:
+      - id: glossary
+        title: Glossary
+        instruction: Define key terms used in the API documentation.
+      - id: references
+        title: References
+        instruction: List any external resources or related documentation.
+==================== END: .bmad-core/templates/api-docs-tmpl.yaml ====================
+
+==================== START: .bmad-core/templates/release-notes-tmpl.yaml ====================
+template:
+  id: release-notes-template
+  name: Release Notes Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/release-notes-{{version}}.md
+    title: "{{product_name}} Release Notes - {{version}}"
+
+sections:
+  - id: release-overview
+    title: Release Overview
+    instruction: Provide a high-level summary of the release.
+    sections:
+      - id: version
+        title: Version
+        instruction: Specify the release version number.
+      - id: release-date
+        title: Release Date
+        instruction: Indicate the date of the release.
+      - id: summary
+        title: Summary
+        instruction: Briefly describe the main focus or theme of this release.
+
+  - id: new-features
+    title: New Features
+    instruction: Detail all new functionalities introduced in this release.
+    sections:
+      - id: feature-1
+        title: {{feature_name_1}}
+        instruction: Describe the new feature, its benefits, and how to use it.
+      - id: feature-2
+        title: {{feature_name_2}}
+        instruction: Describe the new feature, its benefits, and how to use it.
+
+  - id: enhancements
+    title: Enhancements
+    instruction: List improvements to existing features.
+    sections:
+      - id: enhancement-1
+        title: {{enhancement_name_1}}
+        instruction: Describe the enhancement and its impact.
+      - id: enhancement-2
+        title: {{enhancement_name_2}}
+        instruction: Describe the enhancement and its impact.
+
+  - id: bug-fixes
+    title: Bug Fixes
+    instruction: Document all resolved issues.
+    sections:
+      - id: bug-fix-1
+        title: {{bug_id_1}}: {{bug_summary_1}}
+        instruction: Describe the bug that was fixed and its impact.
+      - id: bug-fix-2
+        title: {{bug_id_2}}: {{bug_summary_2}}
+        instruction: Describe the bug that was fixed and its impact.
+
+  - id: known-issues
+    title: Known Issues
+    instruction: List any unresolved issues or limitations.
+    sections:
+      - id: known-issue-1
+        title: {{known_issue_name_1}}
+        instruction: Describe the known issue and any workarounds.
+
+  - id: breaking-changes
+    title: Breaking Changes (if any)
+    instruction: Detail any changes that might require user action or code modification.
+    sections:
+      - id: breaking-change-1
+        title: {{breaking_change_name_1}}
+        instruction: Describe the breaking change, its impact, and migration steps.
+
+  - id: upgrade-notes
+    title: Upgrade Notes
+    instruction: Provide instructions for upgrading to this version.
+
+  - id: acknowledgements
+    title: Acknowledgements
+    instruction: Thank contributors or third-party libraries.
+
+  - id: support
+    title: Support
+    instruction: Provide information on how to get support.
+==================== END: .bmad-core/templates/release-notes-tmpl.yaml ====================
+
+==================== START: .bmad-core/checklists/technical-writer-checklist.md ====================
+# technical-writer-checklist
+
+This checklist provides a guide for Technical Writers to ensure comprehensive coverage of documentation tasks.
+
+## 1. Planning and Research
+
+- [ ] Understand the target audience and their needs.
+- [ ] Define the scope and purpose of the documentation.
+- [ ] Gather information from SMEs, product specifications, and existing documentation.
+- [ ] Identify key features, functionalities, and workflows to document.
+- [ ] Determine the appropriate documentation format and delivery method.
+
+## 2. Content Creation
+
+- [ ] Write clear, concise, and accurate content.
+- [ ] Use consistent terminology and style (adhere to style guide).
+- [ ] Structure content logically with headings, subheadings, and lists.
+- [ ] Include examples, screenshots, and diagrams where necessary.
+- [ ] Ensure step-by-step instructions are easy to follow.
+- [ ] Address common user questions and pain points.
+- [ ] Review for grammar, spelling, and punctuation errors.
+
+## 3. Review and Validation
+
+- [ ] Conduct self-review for clarity, accuracy, and completeness.
+- [ ] Obtain technical review from SMEs for accuracy.
+- [ ] Obtain editorial review for style, grammar, and consistency.
+- [ ] Conduct user acceptance testing (UAT) or usability testing (if applicable).
+- [ ] Incorporate feedback from all review cycles.
+
+## 4. Publishing and Maintenance
+
+- [ ] Publish documentation to the designated platform (e.g., website, help desk, PDF).
+- [ ] Ensure proper version control and change management.
+- [ ] Implement search engine optimization (SEO) for online documentation.
+- [ ] Monitor documentation usage and feedback.
+- [ ] Regularly update content to reflect product changes and user feedback.
+- [ ] Archive outdated documentation.
+
+## 5. Accessibility and Localization
+
+- [ ] Ensure documentation meets accessibility standards (e.g., WCAG).
+- [ ] Plan for localization/translation if required.
+- [ ] Use translatable language and avoid culturally specific idioms.
+==================== END: .bmad-core/checklists/technical-writer-checklist.md ====================
 
 ==================== START: .bmad-core/tasks/generate-ai-frontend-prompt.md ====================
 # Create AI Frontend Prompt Task
