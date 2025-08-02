@@ -16,5 +16,6 @@ devLoadAlwaysFiles:
   - docs/architecture/tech-stack.md
   - docs/architecture/source-tree.md
 devDebugLog: .ai/debug-log.md
+devFailureLog: .ai/failure-log.md
 devStoryLocation: docs/stories
 slashPrefix: BMad
