@@ -144,9 +144,8 @@ The generated XML file contains all your project's source code in a structured f
 
 ## PAM BMad-Method Support
 
-- 💬 [Slack Channel](https://PAM.slack.com/archives/C09428DBHKQ)
-- 🐛 [Issue Tracker](https://github.com/PAM-rnd/PAM-bmad/issues)
-- 💬 [Discussions](https://github.com/PAM-rnd/PAM-bmad/discussions)
+- 🐛 [Issue Tracker](https://github.com/pietermyb/PAM-bmad/issues)
+- 💬 [Discussions](https://github.com/pietermyb/PAM-bmad/discussions)
 
 ## Original BMAD Method Support
 

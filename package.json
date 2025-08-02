@@ -58,7 +58,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pieterm_PAM/PAM-bmad.git"
+    "url": "git+https://github.com/pietermyb/PAM-bmad.git"
   },
   "engines": {
     "node": ">=20.0.0"
