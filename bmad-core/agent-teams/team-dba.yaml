@@ -1,0 +1,6 @@
+bundle:
+  name: Team DBA
+  icon: 🗄️
+  description: Includes the Database Architect & Data Analyst agent.
+agents:
+  - dba

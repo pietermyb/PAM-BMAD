@@ -1,0 +1,204 @@
+template:
+  id: database-architecture-template
+  name: Database Architecture Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/database-architecture.md
+    title: "{{project_name}} Database Architecture Document"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the database architecture document.
+    sections:
+      - id: purpose
+        title: Purpose of the document
+        instruction: Clearly state the purpose and objectives of this database architecture document.
+      - id: scope
+        title: Scope of the database architecture
+        instruction: Define the boundaries and scope of the database architecture, including what is and isn't covered.
+      - id: target-audience
+        title: Target audience
+        instruction: Identify the intended audience for this document (e.g., developers, database administrators, architects).
+
+  - id: business-requirements
+    title: Business Requirements
+    instruction: Detail the business needs and constraints that influence the database design.
+    sections:
+      - id: goals
+        title: Business goals and objectives related to data
+        instruction: Outline the overarching business goals that the database will support.
+      - id: entities
+        title: Key data entities and their relationships
+        instruction: Identify and describe the core data entities and their relationships from a business perspective.
+      - id: volume-growth
+        title: Data volume and growth expectations
+        instruction: Provide estimates for current and future data volumes and growth rates.
+      - id: performance-availability
+        title: Performance and availability requirements
+        instruction: Specify the required performance metrics (e.g., response times, throughput) and availability targets (e.g., uptime, RTO, RPO).
+      - id: security-compliance
+        title: Security and compliance requirements
+        instruction: Document any security standards, regulatory compliance (e.g., GDPR, HIPAA), or data privacy requirements.
+
+  - id: current-state-architecture
+    title: Current State Architecture (if applicable)
+    instruction: Describe the existing database landscape if this is a brownfield project.
+    sections:
+      - id: overview
+        title: Overview of existing database systems
+        instruction: Provide a high-level overview of the current database systems in use.
+      - id: data-flow-integration
+        title: Data flow and integration points
+        instruction: Describe how data currently flows between systems and any existing integration mechanisms.
+      - id: challenges-limitations
+        title: Identified challenges and limitations
+        instruction: Document any known issues, bottlenecks, or limitations of the current database architecture.
+
+  - id: target-state-architecture
+    title: Target State Architecture
+    instruction: Define the future state of the database architecture.
+    sections:
+      - id: logical-data-model
+        title: Logical Data Model
+        instruction: Present the conceptual and logical design of the data, independent of physical implementation.
+        sections:
+          - id: erd
+            title: Entity-Relationship Diagram (ERD)
+            instruction: Include the Entity-Relationship Diagram (ERD) illustrating entities and their relationships.
+          - id: entity-definitions
+            title: Entity definitions and attributes
+            instruction: Define each entity and its attributes, including business descriptions.
+          - id: relationships-cardinality
+            title: Relationships and cardinality
+            instruction: Specify the relationships between entities, including cardinality and optionality.
+
+      - id: physical-data-model
+        title: Physical Data Model
+        instruction: Detail the physical implementation of the database design.
+        sections:
+          - id: db-selection
+            title: Database system selection (e.g., SQL Server, PostgreSQL, MongoDB)
+            instruction: Justify the choice of database system(s) based on requirements.
+          - id: schema-design
+            title: Schema design (tables, columns, data types, constraints)
+            instruction: Describe the database schema, including table structures, column definitions, data types, and constraints.
+          - id: indexing-strategy
+            title: Indexing strategy
+            instruction: Outline the indexing strategy for performance optimization.
+          - id: partitioning-strategy
+            title: Partitioning strategy (if applicable)
+            instruction: Detail any partitioning strategies used for large tables or performance.
+          - id: storage-considerations
+            title: Storage considerations
+            instruction: Address storage requirements, including disk types, capacity, and growth.
+
+      - id: data-flow-integration-target
+        title: Data Flow and Integration
+        instruction: Describe how data will flow and be integrated in the target state.
+        sections:
+          - id: sources-destinations
+            title: Data sources and destinations
+            instruction: Identify all data sources and where data will be consumed.
+          - id: etl-elt
+            title: ETL/ELT processes
+            instruction: Detail the Extract, Transform, Load (ETL) or Extract, Load, Transform (ELT) processes.
+          - id: api-design
+            title: API design for data access
+            instruction: Describe any APIs designed for accessing or manipulating data.
+          - id: data-sync
+            title: Data synchronization mechanisms
+            instruction: Explain mechanisms for synchronizing data across different systems or databases.
+
+      - id: security-architecture
+        title: Security Architecture
+        instruction: Outline the security measures for the database.
+        sections:
+          - id: auth-authz
+            title: Authentication and authorization mechanisms
+            instruction: Describe how users and applications will be authenticated and authorized to access data.
+          - id: encryption
+            title: Data encryption (at rest and in transit)
+            instruction: Detail encryption strategies for data at rest and in transit.
+          - id: auditing-logging
+            title: Auditing and logging
+            instruction: Specify auditing and logging requirements for database activities.
+          - id: data-masking
+            title: Data masking/redaction (if applicable)
+            instruction: Describe any data masking or redaction techniques used for sensitive data.
+
+      - id: high-availability-dr
+        title: High Availability and Disaster Recovery
+        instruction: Define strategies to ensure continuous operation and data recovery.
+        sections:
+          - id: redundancy-failover
+            title: Redundancy and failover mechanisms
+            instruction: Detail mechanisms for redundancy and automatic failover to ensure high availability.
+          - id: backup-restore
+            title: Backup and restore procedures
+            instruction: Outline the backup and restore procedures, including frequency and retention policies.
+          - id: rpo-rto
+            title: Recovery Point Objective (RPO) and Recovery Time Objective (RTO)
+            instruction: Define the RPO and RTO for disaster recovery scenarios.
+
+      - id: performance-scalability
+        title: Performance and Scalability
+        instruction: Address how the database will meet performance and scalability demands.
+        sections:
+          - id: performance-testing
+            title: Performance testing strategy
+            instruction: Describe the approach to performance testing and benchmarking.
+          - id: scaling-mechanisms
+            title: Scaling mechanisms (e.g., sharding, replication)
+            instruction: Explain how the database will scale to handle increased load (e.g., sharding, replication).
+          - id: caching-strategies
+            title: Caching strategies
+            instruction: Detail any caching strategies employed to improve performance.
+
+  - id: technology-stack
+    title: Technology Stack
+    instruction: List the specific technologies and tools used in the database architecture.
+    sections:
+      - id: db-technologies
+        title: Chosen database technologies
+        instruction: List the specific database systems (e.g., PostgreSQL, MongoDB, Cassandra) and their versions.
+      - id: tools-frameworks
+        title: Related tools and frameworks
+        instruction: Include any related tools, ORMs, or frameworks used for database interaction or management.
+
+  - id: deployment-operations
+    title: Deployment and Operations
+    instruction: Describe how the database will be deployed, monitored, and maintained.
+    sections:
+      - id: deployment-strategy
+        title: Deployment strategy
+        instruction: Outline the strategy for deploying the database (e.g., automated, manual, cloud-native).
+      - id: monitoring-alerting
+        title: Monitoring and alerting
+        instruction: Detail the monitoring tools and alerting mechanisms for database health and performance.
+      - id: maintenance-procedures
+        title: Maintenance procedures
+        instruction: Describe routine maintenance tasks such as patching, upgrades, and cleanups.
+
+  - id: future-considerations
+    title: Future Considerations
+    instruction: Discuss potential future enhancements or considerations for the database architecture.
+    sections:
+      - id: enhancements
+        title: Potential future enhancements
+        instruction: Suggest potential future improvements or features for the database.
+      - id: emerging-technologies
+        title: Emerging technologies
+        instruction: Discuss any emerging database technologies that might be relevant in the future.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information and references.
+    sections:
+      - id: glossary
+        title: Glossary of terms
+        instruction: Provide a glossary of technical and business terms used in the document.
+      - id: references
+        title: References
+        instruction: List any external documents, standards, or resources referenced.

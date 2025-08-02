@@ -1,0 +1,179 @@
+template:
+  id: data-model-template
+  name: Data Model Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/data-model.md
+    title: "{{project_name}} Data Model Document"
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: Provide an overview of the data model document.
+    sections:
+      - id: purpose
+        title: Purpose of the data model
+        instruction: Clearly state the purpose and objectives of this data model.
+      - id: scope
+        title: Scope of the data model
+        instruction: Define the boundaries and scope of the data model, including what is and isn't covered.
+      - id: target-audience
+        title: Target audience
+        instruction: Identify the intended audience for this document (e.g., developers, business analysts, data scientists).
+
+  - id: business-context
+    title: Business Context
+    instruction: Describe the business environment and requirements that drive the data model.
+    sections:
+      - id: domain-overview
+        title: Business domain overview
+        instruction: Provide a high-level description of the business domain the data model supports.
+      - id: processes-supported
+        title: Key business processes supported by the data model
+        instruction: List and briefly describe the main business processes that rely on this data model.
+      - id: glossary
+        title: Business terms and definitions (glossary)
+        instruction: Include a glossary of key business terms and their definitions relevant to the data model.
+
+  - id: conceptual-data-model
+    title: Conceptual Data Model
+    instruction: Present the high-level, business-oriented view of the data.
+    sections:
+      - id: high-level-entities
+        title: High-level entities and their relationships
+        instruction: Illustrate the main entities and their relationships at a conceptual level, focusing on business meaning.
+      - id: business-concepts
+        title: Business concepts and their associations
+        instruction: Describe the core business concepts and how they relate to each other.
+      - id: no-technical-details
+        title: No technical details, focus on business understanding
+        instruction: Emphasize that this section is purely conceptual and avoids technical implementation details.
+
+  - id: logical-data-model
+    title: Logical Data Model
+    instruction: Detail the data structure independent of a specific database system.
+    sections:
+      - id: detailed-entities
+        title: Detailed entities with attributes
+        instruction: Define each entity with its attributes, including their names and conceptual data types.
+      - id: keys
+        title: Primary and foreign keys identified
+        instruction: Identify primary and foreign keys to establish relationships between entities.
+      - id: relationships
+        title: Relationships with cardinality and optionality
+        instruction: Specify the cardinality (one-to-one, one-to-many, many-to-many) and optionality of relationships.
+      - id: data-types
+        title: Data types (conceptual, e.g., string, number, date)
+        instruction: Assign conceptual data types to attributes.
+      - id: business-rules
+        title: Business rules and constraints
+        instruction: Document any business rules or constraints that apply to the data.
+      - id: normalization
+        title: Normalization level (e.g., 3NF, BCNF)
+        instruction: Indicate the chosen normalization level and its rationale.
+
+  - id: physical-data-model
+    title: Physical Data Model
+    instruction: Describe the data structure as implemented in a specific database system.
+    sections:
+      - id: database-system
+        title: Database system specific details (e.g., SQL Server, PostgreSQL, MongoDB)
+        instruction: Specify the target database system and any system-specific considerations.
+      - id: table-definitions
+        title: Table definitions with column names, precise data types, and lengths
+        instruction: Provide detailed table definitions, including column names, precise data types, and lengths.
+      - id: constraints
+        title: Primary key, foreign key, and unique constraints
+        instruction: Define all primary key, foreign key, and unique constraints.
+      - id: indexing
+        title: Indexing strategies
+        instruction: Outline the indexing strategy for performance optimization.
+      - id: partitioning
+        title: Partitioning strategies (if applicable)
+        instruction: Describe any partitioning strategies used for large tables.
+      - id: storage
+        title: Storage considerations (e.g., filegroups, tablespaces)
+        instruction: Detail storage considerations such as filegroups or tablespaces.
+      - id: views-procedures
+        title: Views, stored procedures, and functions related to the data model
+        instruction: Document any views, stored procedures, or functions that interact with the data model.
+
+  - id: data-dictionary
+    title: Data Dictionary
+    instruction: Provide a comprehensive reference for all data elements.
+    sections:
+      - id: comprehensive-list
+        title: Comprehensive list of all entities and attributes
+        instruction: List all entities and their attributes with detailed descriptions.
+      - id: attribute-description
+        title: Description of each attribute
+        instruction: Provide a clear and concise description for each attribute.
+      - id: attribute-details
+        title: Data type, length, nullability
+        instruction: Specify the data type, length, and nullability for each attribute.
+      - id: default-values
+        title: Default values, allowed values, and constraints
+        instruction: Document default values, allowed values, and any specific constraints.
+      - id: business-rules-attributes
+        title: Business rules associated with each attribute
+        instruction: Detail any business rules that apply to individual attributes.
+
+  - id: data-governance-security
+    title: Data Governance and Security
+    instruction: Address policies and measures for data management and protection.
+    sections:
+      - id: ownership-stewardship
+        title: Data ownership and stewardship
+        instruction: Define roles and responsibilities for data ownership and stewardship.
+      - id: classification
+        title: Data classification (e.g., sensitive, public)
+        instruction: Describe the data classification scheme and how data is categorized.
+      - id: access-control
+        title: Access control mechanisms
+        instruction: Detail the mechanisms used to control access to data.
+      - id: retention-policies
+        title: Data retention policies
+        instruction: Document policies for data retention and archival.
+      - id: audit-trails
+        title: Audit trails and logging requirements
+        instruction: Outline requirements for auditing and logging data access and modifications.
+
+  - id: data-flow-integration
+    title: Data Flow and Integration
+    instruction: Explain how data moves within and outside the system.
+    sections:
+      - id: data-entry-exit
+        title: How data enters and exits the system
+        instruction: Describe the entry and exit points for data within the system.
+      - id: etl-pipelines
+        title: ETL/ELT processes and data pipelines
+        instruction: Document the ETL/ELT processes and data pipelines used for data movement and transformation.
+      - id: integration-points
+        title: Integration points with other systems
+        instruction: Identify and describe integration points with external systems.
+
+  - id: version-control-change-management
+    title: Version Control and Change Management
+    instruction: Describe the process for managing changes to the data model.
+    sections:
+      - id: change-management
+        title: How changes to the data model are managed and tracked
+        instruction: Detail the procedures for tracking and managing changes to the data model.
+      - id: version-history
+        title: Version history
+        instruction: Maintain a history of data model versions and significant changes.
+
+  - id: appendices
+    title: Appendices
+    instruction: Include supplementary information and references.
+    sections:
+      - id: erds
+        title: Entity-Relationship Diagrams (ERDs) for conceptual, logical, and physical models
+        instruction: Provide ERDs for each level of the data model.
+      - id: sample-data
+        title: Sample data
+        instruction: Include sample data to illustrate the data model.
+      - id: references
+        title: References
+        instruction: List any external documents or resources referenced in this document.
