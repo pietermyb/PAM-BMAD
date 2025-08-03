@@ -35,7 +35,7 @@ This two-phase approach eliminates both **planning inconsistency** and **context
 
 ### What would you like to do?
 
-- **[Install and Build software with Full Stack Agile AI Team](#quick-start)** → Quick Start Instruction
+- **[Install and Build software with Full Stack Agile AI Team](#quick-start--updates)** → Quick Start Instruction
 - **[Learn how to use BMad](bmad-core/user-guide.md)** → Complete user guide and walkthrough
 - **[See available AI agents](/bmad-core/agents))** → Specialized roles for your team
 - **[Explore non-technical uses](#-beyond-software-development---expansion-packs)** → Creative writing, business, wellness, education
