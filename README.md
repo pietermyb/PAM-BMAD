@@ -50,7 +50,7 @@ This two-phase approach eliminates both **planning inconsistency** and **context
 Whether you're installing for the first time, upgrading an existing installation, or adding expansion packs, just run this single command in your project's directory:
 
 ```bash
-npx PAM-bmad install
+npx pam-bmad install
 ```
 
 This command handles everything automatically:
@@ -62,11 +62,11 @@ This command handles everything automatically:
 
 ### For BMad Developers (Contributing)
 
-If you have cloned the `PAM-bmad` repository to contribute to its development, use the following commands to update your local clone and run the installer:
+If you have cloned the `pam-bmad` repository to contribute to its development, use the following commands to update your local clone and run the installer:
 
 ```bash
 git pull
-npm run install:PAM-bmad
+npm run install:pam-bmad
 ```
 
 ### Fastest Start: Web UI Full Stack Team at your disposal (2 minutes)
@@ -100,21 +100,21 @@ The BMad-Method includes a powerful codebase flattener tool designed to prepare 
 
 ```bash
 # Basic usage - creates flattened-codebase.xml in current directory
-npx PAM-bmad flatten
+npx pam-bmad flatten
 
 # Minimal output - only file paths and metadata, no code content
-npx PAM-bmad flatten --minimal
+npx pam-bmad flatten --minimal
 
 # Specify custom input directory
-npx PAM-bmad flatten --input /path/to/source/directory
-npx PAM-bmad flatten -i /path/to/source/directory
+npx pam-bmad flatten --input /path/to/source/directory
+npx pam-bmad flatten -i /path/to/source/directory
 
 # Specify custom output file
-npx PAM-bmad flatten --output my-project.xml
-npx PAM-bmad flatten -o /path/to/output/codebase.xml
+npx pam-bmad flatten --output my-project.xml
+npx pam-bmad flatten -o /path/to/output/codebase.xml
 
 # Combine input and output options
-npx PAM-bmad flatten --input /path/to/source --output /path/to/output/codebase.xml
+npx pam-bmad flatten --input /path/to/source --output /path/to/output/codebase.xml
 ```
 
 ### Example Output
@@ -144,8 +144,8 @@ The generated XML file contains all your project's source code in a structured f
 
 ## PAM BMad-Method Support
 
-- 🐛 [Issue Tracker](https://github.com/pietermyb/PAM-bmad/issues)
-- 💬 [Discussions](https://github.com/pietermyb/PAM-bmad/discussions)
+- 🐛 [Issue Tracker](https://github.com/pietermyb/pam-bmad/issues)
+- 💬 [Discussions](https://github.com/pietermyb/pam-bmad/discussions)
 
 ## Original BMAD Method Support
 

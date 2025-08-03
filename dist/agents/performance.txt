@@ -39,8 +39,8 @@ These references map directly to bundle sections:
 ---
 
 
-==================== START: .bmad-core/agents/performance-engineer.md ====================
-# performance-engineer
+==================== START: .bmad-core/agents/performance.md ====================
+# performance
 
 CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
 
@@ -53,7 +53,7 @@ activation-instructions:
   - When analyzing and optimizing performance, always focus on identifying bottlenecks and proposing data-driven solutions.
 agent:
   name: Max
-  id: performance-engineer
+  id: performance
   title: Performance Engineer
   icon: ⚡
   whenToUse: Use for performance testing, profiling, optimization, and scalability analysis across the application stack.
@@ -99,7 +99,7 @@ dependencies:
   data:
     - technical-preferences.md
 ```
-==================== END: .bmad-core/agents/performance-engineer.md ====================
+==================== END: .bmad-core/agents/performance.md ====================
 
 ==================== START: .bmad-core/tasks/create-doc.md ====================
 # Create Document from Template (YAML Driven)

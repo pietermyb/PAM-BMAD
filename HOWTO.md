@@ -26,7 +26,7 @@ To build the project, follow these steps:
 
 ## Installing for Local Use
 
-To use the `PAM-bmad` command in other projects on your machine without publishing it to the npm registry, you can use `npm link`.
+To use the `pam-bmad` command in other projects on your machine without publishing it to the npm registry, you can use `npm link`.
 
 ### Step 1: Create a Global Link
 
@@ -38,11 +38,11 @@ npm link --force
 
 **Note:** Using `--force` ensures that any existing links are overwritten with your latest changes.
 
-This makes the `PAM-bmad` command available system-wide, pointing to your local project directory.
+This makes the `pam-bmad` command available system-wide, pointing to your local project directory.
 
 **All in one command:**
 ```bash
-npm install && npm run build && npm unlink PAM-bmad && npm link --force
+npm install && npm run build && npm unlink pam-bmad && npm link --force
 ```
 
 ### Step 2: Use in a New Project
@@ -59,10 +59,10 @@ Once the link is created, you can use the package in any new project.
 2.  Run the installer command:
 
     ```bash
-    npx PAM-bmad install
+    npx pam-bmad install
     ```
 
-This will execute the installer from your local `PAM-bmad` project and set up the necessary files and folders in your new project.
+This will execute the installer from your local `pam-bmad` project and set up the necessary files and folders in your new project.
 
 ## Verification and Troubleshooting
 
@@ -72,7 +72,7 @@ To ensure your local installation is working correctly with the latest changes:
 
 1. **Test Local Installation:**
    ```bash
-   # From the PAM-bmad project root
+   # From the pam-bmad project root
    mkdir -p /tmp/test-install
    node tools/installer/bin/bmad.js install --full --directory /tmp/test-install
    ```
@@ -81,7 +81,7 @@ To ensure your local installation is working correctly with the latest changes:
    ```bash
    # From any directory
    mkdir -p /tmp/test-npx
-   npx PAM-bmad install --full --directory /tmp/test-npx
+   npx pam-bmad install --full --directory /tmp/test-npx
    ```
 
 3. **Verify Updated Content:**
@@ -105,19 +105,19 @@ To ensure your local installation is working correctly with the latest changes:
 
 2. **Recreate the link:**
    ```bash
-   npm unlink PAM-bmad
+   npm unlink pam-bmad
    npm link --force
    ```
 
 3. **Verify the link:**
    ```bash
-   npm ls -g PAM-bmad
+   npm ls -g pam-bmad
    # Should show the path to your local project
    ```
 
 #### Issue: Package Not Found
 
-**Symptoms:** `npx PAM-bmad install` fails with "package not found" error.
+**Symptoms:** `npx pam-bmad install` fails with "package not found" error.
 
 **Cause:** The package isn't published to npm yet, so npx can't find it.
 
@@ -125,7 +125,7 @@ To ensure your local installation is working correctly with the latest changes:
 ```bash
 # Clone or download the project
 git clone <repository-url>
-cd PAM-bmad
+cd pam-bmad
 
 # Install dependencies and build
 npm install
@@ -152,7 +152,7 @@ When making changes to the project:
    ```bash
    # Test in a temporary directory
    mkdir -p /tmp/test-changes
-   npx PAM-bmad install --full --directory /tmp/test-changes
+   npx pam-bmad install --full --directory /tmp/test-changes
    ```
 5. **Verify your changes** are included in the installation
 
@@ -175,7 +175,7 @@ When ready to publish the package:
    # From a clean environment
    mkdir /tmp/test-published
    cd /tmp/test-published
-   npx PAM-bmad install --full
+   npx pam-bmad install --full
    ```
 
 ## Important Notes

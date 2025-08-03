@@ -6,10 +6,16 @@ This is the first version of the PAM BMAD Method, forked from the original BMAD 
 
 *   Initial fork of the BMAD Method for PAM.
 *   Removed the `bmad-2d-phaser-game-dev` and `bmad-2d-unity-game-dev` expansion packs.
-*   Added PAM Domain Architect Agent (domain-architect.md)
-    *   Added Tasks, Templates, Checklists and Principles.
-    *   Added EAP, TOGAF and Zachman Frameworks.
-
+*   Added 6 new agents:
+    *   Domain Architect Agent (domain-architect.md)
+        *   Added EAP, TOGAF and Zachman Frameworks for Domain Architecture.
+    *   Database Architect Agent (dba.md)
+    *   DevOps Agent (devops.md)
+    *   Performance Engineer Agent (performance.md)
+    *   Security Engineer Agent (security.md)
+    *   Technical Writer Agent (technical-writer.md)
+    *   Added Tasks, Templates, Checklists and workflows for the new agents.
+    
 ---
 
 # Original BMAD Method Changelog
