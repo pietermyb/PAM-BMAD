@@ -10,16 +10,19 @@ const inquirer = require('inquirer');
 // Handle both execution contexts (from root via npx or from installer directory)
 let version;
 let installer;
+let configLoader;
 try {
   // Try installer context first (when run from tools/installer/)
   version = require('../package.json').version;
   installer = require('../lib/installer');
+  configLoader = require('../lib/config-loader');
 } catch (e) {
   // Fall back to root context (when run via npx from GitHub)
   console.log(`Installer context not found (${e.message}), trying root context...`);
   try {
     version = require('../../../package.json').version;
     installer = require('../../../tools/installer/lib/installer');
+    configLoader = require('../../../tools/installer/lib/config-loader');
   } catch (e2) {
     console.error('Error: Could not load required modules. Please ensure you are running from the correct directory.');
     console.error('Debug info:', {
@@ -352,6 +355,157 @@ async function promptInstallation() {
 
   // Use selected IDEs directly
   answers.ides = ides;
+
+  // Ask about MCP configuration if any IDEs are selected
+  if (ides.length > 0) {
+    console.log(chalk.cyan('\n🔗 MCP (Model Context Protocol) Configuration'));
+    console.log(chalk.dim('MCP enables your AI assistants to access external tools and data sources.\n'));
+    
+    const { setupMcp } = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'setupMcp',
+        message: 'Would you like to set up MCP servers for your selected IDEs?',
+        default: true
+      }
+    ]);
+
+    if (setupMcp) {
+      console.log(chalk.bold.yellow.bgRed(' ⚠️  IMPORTANT: This is a MULTISELECT! Use SPACEBAR to toggle each MCP server! '));
+      console.log(chalk.bold.magenta('🔸 Use arrow keys to navigate'));
+      console.log(chalk.bold.magenta('🔸 Use SPACEBAR to select/deselect MCP servers'));
+      console.log(chalk.bold.magenta('🔸 Press ENTER when finished selecting\n'));
+
+      // Get available MCP servers from configuration
+      const availableMcpServers = await configLoader.getAvailableMcpServers();
+      
+      const mcpChoices = availableMcpServers.map(server => ({
+        name: `${server.icon} ${server.name} - ${server.description}`,
+        value: server.id,
+        checked: server.defaultChecked
+      }));
+
+      const { mcpServers } = await inquirer.prompt([
+        {
+          type: 'checkbox',
+          name: 'mcpServers',
+          message: 'Select MCP servers to configure (Select with SPACEBAR, confirm with ENTER):',
+          choices: mcpChoices
+        }
+      ]);
+
+      answers.mcpServers = mcpServers;
+      answers.setupMcp = true;
+
+      // Gather MCP configuration details if servers are selected
+      if (mcpServers.length > 0) {
+        console.log(chalk.cyan('\n🛠️ MCP Server Configuration'));
+        console.log(chalk.dim('Provide configuration details for the selected MCP servers.\n'));
+
+        const mcpConfig = {};
+
+        // Get server configurations to know what to ask for
+        const serverConfigs = availableMcpServers.reduce((acc, server) => {
+          acc[server.id] = server;
+          return acc;
+        }, {});
+
+        for (const serverId of mcpServers) {
+          const serverConfig = serverConfigs[serverId];
+          if (serverConfig && (serverConfig.requiredConfig.length > 0 || serverConfig.optionalConfig.length > 0)) {
+            console.log(chalk.yellow(`\n${serverConfig.icon} Configuring ${serverConfig.name}:`));
+            
+            const serverPrompts = [];
+            
+            // Handle required configuration fields
+            for (const configKey of serverConfig.requiredConfig) {
+              switch (configKey) {
+                case 'url':
+                  serverPrompts.push({
+                    type: 'input',
+                    name: 'url',
+                    message: `${serverConfig.name} Instance URL:`,
+                    default: 'http://localhost:8080',
+                    validate: (input) => {
+                      if (!input.trim()) return 'Please enter a valid URL';
+                      try {
+                        new URL(input);
+                        return true;
+                      } catch {
+                        return 'Please enter a valid URL (e.g., http://localhost:8080)';
+                      }
+                    }
+                  });
+                  break;
+                case 'apiKey':
+                  serverPrompts.push({
+                    type: 'password',
+                    name: 'apiKey',
+                    message: `${serverConfig.name} API Key:`,
+                    mask: '*',
+                    validate: (input) => {
+                      if (!input.trim()) return `Please enter your ${serverConfig.name} API key`;
+                      return true;
+                    }
+                  });
+                  break;
+                default:
+                  serverPrompts.push({
+                    type: 'input',
+                    name: configKey,
+                    message: `${configKey.charAt(0).toUpperCase() + configKey.slice(1)}:`,
+                    validate: (input) => {
+                      if (!input.trim()) return `Please enter a value for ${configKey}`;
+                      return true;
+                    }
+                  });
+              }
+            }
+            
+            // Handle optional configuration fields
+            for (const configKey of serverConfig.optionalConfig) {
+              switch (configKey) {
+                case 'username':
+                  serverPrompts.push({
+                    type: 'input',
+                    name: 'username',
+                    message: 'Authentication Username (leave empty if not required):',
+                    default: ''
+                  });
+                  break;
+                case 'password':
+                  serverPrompts.push({
+                    type: 'password',
+                    name: 'password',
+                    message: 'Authentication Password (leave empty if not required):',
+                    default: '',
+                    mask: '*'
+                  });
+                  break;
+                default:
+                  serverPrompts.push({
+                    type: 'input',
+                    name: configKey,
+                    message: `${configKey.charAt(0).toUpperCase() + configKey.slice(1)} (optional):`,
+                    default: ''
+                  });
+              }
+            }
+            
+            if (serverPrompts.length > 0) {
+              const serverAnswers = await inquirer.prompt(serverPrompts);
+              mcpConfig[serverId] = serverAnswers;
+            }
+          }
+        }
+
+        answers.mcpConfig = mcpConfig;
+      }
+    } else {
+      answers.setupMcp = false;
+      answers.mcpServers = [];
+    }
+  }
 
   // Configure GitHub Copilot immediately if selected
   if (ides.includes('github-copilot')) {

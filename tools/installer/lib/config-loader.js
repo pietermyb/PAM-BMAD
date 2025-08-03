@@ -248,6 +248,86 @@ class ConfigLoader {
       throw new Error(`Failed to resolve team dependencies for ${teamId}: ${error.message}`);
     }
   }
+
+  async getAvailableMcpServers() {
+    const mcpConfigPath = path.join(__dirname, '..', 'config', 'mcp-servers.yaml');
+    try {
+      const configContent = await fs.readFile(mcpConfigPath, 'utf8');
+      const config = yaml.load(configContent);
+      
+      // Convert to array format for easier use
+      const servers = [];
+      for (const [serverId, serverConfig] of Object.entries(config.servers || {})) {
+        servers.push({
+          id: serverId,
+          name: serverConfig.name || serverId,
+          description: serverConfig.description || 'No description available',
+          category: serverConfig.category || 'utility',
+          requiredConfig: serverConfig.required_config || [],
+          optionalConfig: serverConfig.optional_config || [],
+          dependencies: serverConfig.dependencies || [],
+          supportsInputVariables: serverConfig.supports_input_variables || false,
+          defaultChecked: serverConfig.default_checked || false,
+          icon: serverConfig.icon || '⚙️'
+        });
+      }
+      
+      return servers;
+    } catch (error) {
+      console.warn(`Failed to load MCP server configuration: ${error.message}`);
+      // Return default servers as fallback
+      return [
+        {
+          id: 'searxng',
+          name: 'SearxNG',
+          description: 'Web search capabilities via SearxNG instance',
+          category: 'search',
+          requiredConfig: ['url'],
+          optionalConfig: ['username', 'password'],
+          dependencies: ['npx mcp-searxng'],
+          supportsInputVariables: true,
+          defaultChecked: false,
+          icon: '🔍'
+        },
+        {
+          id: 'sequential-thinking',
+          name: 'Sequential Thinking',
+          description: 'Structured thinking and problem-solving',
+          category: 'reasoning',
+          requiredConfig: [],
+          optionalConfig: [],
+          dependencies: ['podman or docker'],
+          supportsInputVariables: false,
+          defaultChecked: false,
+          icon: '🧠'
+        },
+        {
+          id: 'memory',
+          name: 'Memory',
+          description: 'Persistent memory across sessions',
+          category: 'storage',
+          requiredConfig: [],
+          optionalConfig: [],
+          dependencies: ['npx mcp-memory'],
+          supportsInputVariables: false,
+          defaultChecked: false,
+          icon: '🧠'
+        },
+        {
+          id: 'ref',
+          name: 'Ref',
+          description: 'Documentation and reference lookup',
+          category: 'documentation',
+          requiredConfig: ['apiKey'],
+          optionalConfig: [],
+          dependencies: ['API key from https://ref.tools'],
+          supportsInputVariables: true,
+          defaultChecked: false,
+          icon: '📚'
+        }
+      ];
+    }
+  }
 }
 
 module.exports = new ConfigLoader();

@@ -380,7 +380,7 @@ class Installer {
       for (const ide of ides) {
         spinner.text = `Setting up ${ide} integration...`;
         const preConfiguredSettings = ide === 'github-copilot' ? config.githubCopilotConfig : null;
-        await ideSetup.setup(ide, installDir, config.agent, spinner, preConfiguredSettings);
+        await ideSetup.setup(ide, installDir, config.agent, spinner, preConfiguredSettings, config.mcpConfig || {}, config.mcpServers || []);
       }
     }
 
@@ -865,6 +865,11 @@ class Installer {
         return ideConfig?.name || ide;
       }).join(", ");
       console.log(chalk.green(`✓ IDE rules and configurations set up for: ${ideNames}`));
+    }
+    
+    if (config.setupMcp && config.mcpServers && config.mcpServers.length > 0) {
+      console.log(chalk.green(`✓ MCP servers configured: ${config.mcpServers.join(', ')}`));
+      console.log(chalk.dim('  Your AI assistants now have access to external tools and data sources'));
     }
     
 

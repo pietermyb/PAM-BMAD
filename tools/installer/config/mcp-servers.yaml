@@ -1,0 +1,68 @@
+# MCP (Model Context Protocol) Server Configurations
+# This file defines the available MCP servers that can be installed with PAM-BMAD
+
+servers:
+  searxng:
+    name: "SearxNG"
+    description: "Web search capabilities via SearxNG instance"
+    category: "search"
+    required_config:
+      - url
+    optional_config:
+      - username
+      - password
+    dependencies:
+      - "npx mcp-searxng"
+    supports_input_variables: true
+    default_checked: false
+    icon: "🔍"
+
+  sequential-thinking:
+    name: "Sequential Thinking"
+    description: "Structured thinking and problem-solving"
+    category: "reasoning"
+    required_config: []
+    dependencies:
+      - "podman or docker"
+      - "mcp/sequentialthinking container image"
+    supports_input_variables: false
+    default_checked: false
+    icon: "🧠"
+
+  memory:
+    name: "Memory"
+    description: "Persistent memory across sessions"
+    category: "storage"
+    required_config: []
+    dependencies:
+      - "npx mcp-memory"
+    supports_input_variables: false
+    default_checked: false
+    icon: "🧠"
+
+  ref:
+    name: "Ref"
+    description: "Documentation and reference lookup"
+    category: "documentation"
+    required_config:
+      - apiKey
+    dependencies:
+      - "API key from https://ref.tools"
+    supports_input_variables: true
+    default_checked: false
+    icon: "📚"
+
+# Configuration for future MCP servers
+# Add new servers here following the same pattern
+#
+# example-server:
+#   name: "Example Server"
+#   description: "Example MCP server description"
+#   category: "utility"
+#   required_config:
+#     - example_setting
+#   dependencies:
+#     - "npm install example-mcp-server"
+#   supports_input_variables: true
+#   default_checked: false
+#   icon: "⚙️"

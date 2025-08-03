@@ -32,12 +32,17 @@ class IdeSetup extends BaseIdeSetup {
     }
   }
 
-  async setup(ide, installDir, selectedAgent = null, spinner = null, preConfiguredSettings = null) {
+  async setup(ide, installDir, selectedAgent = null, spinner = null, preConfiguredSettings = null, mcpConfig = {}, mcpServers = []) {
     const ideConfig = await configLoader.getIdeConfiguration(ide);
 
     if (!ideConfig) {
       console.log(chalk.yellow(`\nNo configuration available for ${ide}`));
       return false;
+    }
+
+    // Setup MCP configuration if requested
+    if (mcpServers.length > 0) {
+      await this.setupMcpConfiguration(ide, installDir, mcpConfig, mcpServers);
     }
 
     switch (ide) {
@@ -60,6 +65,167 @@ class IdeSetup extends BaseIdeSetup {
       default:
         console.log(chalk.yellow(`\nIDE ${ide} not yet supported`));
         return false;
+    }
+  }
+
+  async setupMcpConfiguration(ide, installDir, mcpConfig, mcpServers) {
+    try {
+      // Map IDE names to their MCP configuration files
+      const ideConfigFiles = {
+        'cursor': 'cursor-mcp.json',
+        'claude-code': 'claude-code-mcp-setup.sh',
+        'windsurf': 'windsurf-mcp_config.json',
+        'trae': 'trae-mcp-config.yaml',
+        'roo': 'roocode-mcp-settings.json',
+        'cline': 'vscode-mcp.json', // Cline uses VSCode format
+        'gemini': 'gemini-cli-config.yaml',
+        'github-copilot': 'vscode-mcp.json'
+      };
+
+      const configFileName = ideConfigFiles[ide];
+      if (!configFileName) {
+        console.log(chalk.yellow(`\nMCP configuration not available for ${ide}`));
+        return false;
+      }
+
+      // Get the source configuration file from research directory
+      const sourceConfigPath = path.join(__dirname, '..', '..', '..', 'research', 'mcp-configs', configFileName);
+      
+      if (!(await fileManager.pathExists(sourceConfigPath))) {
+        console.log(chalk.yellow(`\nMCP configuration template not found for ${ide}`));
+        return false;
+      }
+
+      // Read the template configuration
+      let configContent = await fileManager.readFile(sourceConfigPath);
+
+      // Replace placeholders with actual configuration values
+      if (mcpConfig.searxng && mcpServers.includes('searxng')) {
+        configContent = configContent.replace(/\$\{input:searxngUrl\}/g, mcpConfig.searxng.url);
+        configContent = configContent.replace(/\$\{input:authUsername\}/g, mcpConfig.searxng.username || '');
+        configContent = configContent.replace(/\$\{input:authPassword\}/g, mcpConfig.searxng.password || '');
+      }
+
+      if (mcpConfig.ref && mcpServers.includes('ref')) {
+        configContent = configContent.replace(/\$\{input:refApiKey\}/g, mcpConfig.ref.apiKey);
+      }
+
+      // Filter servers based on user selection
+      if (configFileName.endsWith('.json')) {
+        const config = JSON.parse(configContent);
+        const filteredServers = {};
+        
+        // Only include selected servers
+        Object.keys(config.servers || {}).forEach(serverName => {
+          if (mcpServers.includes(serverName)) {
+            filteredServers[serverName] = config.servers[serverName];
+          }
+        });
+        
+        config.servers = filteredServers;
+        
+        // Filter inputs to only include those needed by selected servers
+        if (config.inputs) {
+          config.inputs = config.inputs.filter(input => {
+            if (input.id === 'searxngUrl' || input.id === 'authUsername' || input.id === 'authPassword') {
+              return mcpServers.includes('searxng');
+            }
+            if (input.id === 'refApiKey') {
+              return mcpServers.includes('ref');
+            }
+            return true;
+          });
+        }
+        
+        configContent = JSON.stringify(config, null, 2);
+      }
+
+      // Determine target path based on IDE
+      let targetPath;
+      switch (ide) {
+        case 'cursor':
+          targetPath = path.join(installDir, '.cursor', 'mcp.json');
+          await fileManager.ensureDirectory(path.dirname(targetPath));
+          break;
+        case 'windsurf':
+          targetPath = path.join(installDir, 'mcp_config.json');
+          break;
+        case 'trae':
+          targetPath = path.join(installDir, '.trae', 'mcp-config.yaml');
+          await fileManager.ensureDirectory(path.dirname(targetPath));
+          break;
+        case 'roo':
+          // For Roo, we need to integrate into VSCode settings
+          targetPath = path.join(installDir, '.vscode', 'settings.json');
+          await this.integrateMcpIntoVsCodeSettings(targetPath, configContent);
+          console.log(chalk.green(`✓ MCP configuration integrated into VSCode settings for Roo Code`));
+          return true;
+        case 'cline':
+        case 'github-copilot':
+          targetPath = path.join(installDir, '.vscode', 'mcp.json');
+          await fileManager.ensureDirectory(path.dirname(targetPath));
+          break;
+        case 'claude-code':
+          // For Claude Code, we need to create environment variables or execute commands
+          console.log(chalk.green(`✓ MCP setup script available at: ${sourceConfigPath}`));
+          console.log(chalk.dim(`Please run the commands in the script to complete Claude Code MCP setup`));
+          return true;
+        case 'gemini':
+          targetPath = path.join(installDir, '.gemini', 'mcp-config.yaml');
+          await fileManager.ensureDirectory(path.dirname(targetPath));
+          break;
+        default:
+          console.log(chalk.yellow(`\nMCP target path not defined for ${ide}`));
+          return false;
+      }
+
+      // Write the configuration file
+      await fileManager.writeFile(targetPath, configContent);
+      console.log(chalk.green(`✓ MCP configuration created for ${ide} at: ${targetPath}`));
+      
+      if (mcpServers.length > 0) {
+        console.log(chalk.dim(`  Configured servers: ${mcpServers.join(', ')}`));
+      }
+
+      return true;
+    } catch (error) {
+      console.error(chalk.red(`\nError setting up MCP configuration for ${ide}:`), error.message);
+      return false;
+    }
+  }
+
+  async integrateMcpIntoVsCodeSettings(settingsPath, mcpConfigContent) {
+    try {
+      // Parse the MCP configuration
+      const mcpConfig = JSON.parse(mcpConfigContent);
+      
+      // Read existing VSCode settings
+      let existingSettings = {};
+      if (await fileManager.pathExists(settingsPath)) {
+        const settingsContent = await fileManager.readFile(settingsPath);
+        try {
+          existingSettings = JSON.parse(settingsContent);
+        } catch (e) {
+          console.log(chalk.yellow('Warning: Could not parse existing VSCode settings, creating new ones'));
+        }
+      }
+
+      // Integrate MCP settings into VSCode settings structure
+      const mcpSettings = {
+        "mcp.servers": mcpConfig.servers || {},
+        "mcp.inputs": mcpConfig.inputs || []
+      };
+
+      // Merge with existing settings
+      const mergedSettings = { ...existingSettings, ...mcpSettings };
+
+      // Ensure directory exists
+      await fileManager.ensureDirectory(path.dirname(settingsPath));
+
+      // Write updated settings
+      await fileManager.writeFile(settingsPath, JSON.stringify(mergedSettings, null, 2));
+    } catch (error) {
+      throw new Error(`Failed to integrate MCP into VSCode settings: ${error.message}`);
     }
   }
 
