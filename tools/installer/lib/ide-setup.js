@@ -884,15 +884,21 @@ class IdeSetup extends BaseIdeSetup {
     // Configure VS Code workspace settings first to avoid UI conflicts with loading spinners
     await this.configureVsCodeSettings(installDir, spinner, preConfiguredSettings);
     
+    // Create the main instructions file
+    await this.createCopilotInstructions(installDir);
+    
     const chatmodesDir = path.join(installDir, ".github", "chatmodes");
+    const instructionsDir = path.join(installDir, ".github", "instructions");
     const agents = selectedAgent ? [selectedAgent] : await this.getAllAgentIds(installDir);
      
     await fileManager.ensureDirectory(chatmodesDir);
+    await fileManager.ensureDirectory(instructionsDir);
 
     for (const agentId of agents) {
       // Find the agent file
       const agentPath = await this.findAgentPath(agentId, installDir);
       const chatmodePath = path.join(chatmodesDir, `${agentId}.chatmode.md`);
+      const instructionPath = path.join(instructionsDir, `${agentId}.instructions.md`);
 
       if (agentPath) {
         // Create chat mode file with agent content
@@ -919,11 +925,16 @@ tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems
 
         await fileManager.writeFile(chatmodePath, chatmodeContent);
         console.log(chalk.green(`✓ Created chat mode: ${agentId}.chatmode.md`));
+
+        // Create instruction file for this agent
+        await this.createAgentInstructionFile(agentId, agentPath, instructionPath, installDir);
+        console.log(chalk.green(`✓ Created instruction file: ${agentId}.instructions.md`));
       }
     }
 
     console.log(chalk.green(`\n✓ Github Copilot setup complete!`));
     console.log(chalk.dim(`You can now find the BMad agents in the Chat view's mode selector.`));
+    console.log(chalk.dim(`Agent-specific instructions are available in .github/instructions/`));
 
     return true;
   }
@@ -1090,6 +1101,146 @@ tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems
     });
     console.log(chalk.dim(""));
     console.log(chalk.dim("You can modify these settings anytime in .vscode/settings.json"));
+  }
+
+  async createCopilotInstructions(installDir) {
+    const instructionsPath = path.join(installDir, ".github", "copilot-instructions.md");
+    const githubDir = path.join(installDir, ".github");
+    
+    await fileManager.ensureDirectory(githubDir);
+    
+    // Create the main copilot instructions file
+    const instructionsContent = `# PAM-BMAD GitHub Copilot Instructions
+
+This repository uses the PAM-BMAD (Process Automation Methodology for Brownfield Application Development) framework. 
+
+## Project Overview
+
+PAM-BMAD is an agent-based development methodology that provides specialized AI agents for different aspects of software development. Each agent has specific roles, responsibilities, and expertise areas.
+
+## Agent System
+
+This project includes multiple specialized agents located in the \`.bmad-core/agents/\` directory. Each agent has:
+
+- **Specific expertise**: Domain-focused knowledge and skills
+- **Role definition**: Clear responsibilities and boundaries  
+- **Startup instructions**: Initialization and activation procedures
+- **Guidelines**: Best practices and constraints
+
+## Available Agents
+
+The agents are automatically configured as chat modes and individual instruction files. You can activate them using:
+
+- **Chat modes**: Select agent from the mode selector in GitHub Copilot Chat
+- **Direct reference**: Reference agent-specific instructions from \`.github/instructions/\`
+
+## Working with Agents
+
+1. **Activation**: Use the chat mode selector to choose the appropriate agent
+2. **Context**: Each agent maintains its own context and expertise
+3. **Collaboration**: Agents can be switched as needed for different tasks
+4. **Documentation**: Always refer to the agent's complete definition for full capabilities
+
+## Project Structure
+
+- \`.bmad-core/\`: Core methodology files and agent definitions
+- \`.github/instructions/\`: Individual agent instruction files
+- \`.github/chatmodes/\`: Agent chat mode configurations
+- \`expansion-packs/\`: Additional specialized agents and capabilities
+
+## Best Practices
+
+- Choose the most appropriate agent for your current task
+- Follow the agent's specific guidelines and constraints
+- Reference project documentation in \`.bmad-core/\` for context
+- Maintain consistency with established patterns and standards
+
+For detailed information about specific agents, refer to their individual instruction files in \`.github/instructions/\`.
+`;
+
+    await fileManager.writeFile(instructionsPath, instructionsContent);
+    console.log(chalk.green("✓ Created .github/copilot-instructions.md"));
+  }
+
+  async createAgentInstructionFile(agentId, agentPath, instructionPath, installDir) {
+    const agentContent = await fileManager.readFile(agentPath);
+    const agentTitle = await this.getAgentTitle(agentId, installDir);
+    
+    // Extract YAML content and other metadata
+    const yamlMatch = agentContent.match(/```ya?ml\r?\n([\s\S]*?)```/);
+    let whenToUse = `Use when you need ${agentTitle.toLowerCase()} expertise`;
+    let icon = "🤖";
+    let roleDefinition = `You are a ${agentTitle} specializing in specific domain tasks.`;
+    
+    if (yamlMatch) {
+      const yaml = yamlMatch[1];
+      const whenToUseMatch = yaml.match(/whenToUse:\s*"(.*?)"/);
+      const iconMatch = yaml.match(/icon:\s*(.+)/);
+      const roleDefinitionMatch = yaml.match(/roleDefinition:\s*"(.*?)"/);
+      
+      if (whenToUseMatch) whenToUse = whenToUseMatch[1];
+      if (iconMatch) icon = iconMatch[1].trim();
+      if (roleDefinitionMatch) roleDefinition = roleDefinitionMatch[1];
+    }
+    
+    // Get file pattern based on agent specialization
+    let filePattern = "**/*";
+    if (agentId.includes("frontend") || agentId.includes("ux")) {
+      filePattern = "**/*.{js,jsx,ts,tsx,css,scss,html,vue}";
+    } else if (agentId.includes("backend") || agentId.includes("api")) {
+      filePattern = "**/*.{js,ts,py,java,cs,go,php}";
+    } else if (agentId.includes("database") || agentId.includes("dba")) {
+      filePattern = "**/*.{sql,migration,schema}";
+    } else if (agentId.includes("devops") || agentId.includes("infrastructure")) {
+      filePattern = "**/*.{yml,yaml,json,dockerfile,tf,sh,ps1}";
+    } else if (agentId.includes("test") || agentId.includes("qa")) {
+      filePattern = "**/*.{test.js,spec.js,test.ts,spec.ts}";
+    }
+    
+    const relativePath = path.relative(installDir, agentPath).replace(/\\/g, '/');
+    
+    const instructionContent = `---
+applyTo: "${filePattern}"
+---
+
+# ${icon} ${agentTitle} Agent Instructions
+
+## When to Use
+${whenToUse}
+
+## Role Definition
+${roleDefinition}
+
+## Agent Activation
+When working with this agent, you must:
+
+1. **Read and internalize the complete YAML configuration** from [\`${relativePath}\`](${relativePath})
+2. **Follow the startup section instructions** exactly as specified
+3. **Maintain the agent persona** until explicitly told to exit this mode
+4. **Apply domain-specific expertise** as defined in the agent configuration
+
+## Core Agent Configuration
+
+\`\`\`yaml
+${yamlMatch ? yamlMatch[1] : agentContent.replace(/^#.*$/m, "").trim()}
+\`\`\`
+
+## File Applicability
+This instruction applies to files matching: \`${filePattern}\`
+
+## Usage Guidelines
+- Activate this agent persona when ${whenToUse.toLowerCase()}
+- Follow all constraints and guidelines specified in the YAML configuration
+- Reference the complete agent definition for full context and capabilities
+- Maintain consistency with PAM-BMAD methodology and project standards
+
+## Related Resources
+- Complete agent definition: [\`${relativePath}\`](${relativePath})
+- PAM-BMAD documentation: [\`.bmad-core/\`](.bmad-core/)
+- Project methodology: [\`.bmad-core/user-guide.md\`](.bmad-core/user-guide.md)
+`;
+
+    await fileManager.writeFile(instructionPath, instructionContent);
   }
 }
 

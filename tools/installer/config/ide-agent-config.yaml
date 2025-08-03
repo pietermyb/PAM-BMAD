@@ -30,6 +30,21 @@ roo-permissions:
   sm:
     fileRegex: "\\.(md|txt)$"
     description: "Process and planning docs"
+  dba:
+    fileRegex: "\\.(md|txt|yml|yaml|json)$"
+    description: "DBA docs and configs"
+  devops:
+    fileRegex: "\\.(md|txt|yml|yaml|json)$"
+    description: "DevOps docs and configs"
+  performance:
+    fileRegex: "\\.(md|txt|yml|yaml|json)$"
+    description: "Performance docs and configs"
+  security:
+    fileRegex: "\\.(md|txt|yml|yaml|json)$"
+    description: "Security docs and configs"
+  technical-writer:
+    fileRegex: "\\.(md|txt|yml|yaml|json)$"
+    description: "Technical writing docs and configs"
   # Expansion pack agents
   game-designer:
     fileRegex: "\\.(md|txt|json|yaml|yml)$"
@@ -54,6 +69,11 @@ cline-order:
   dev: 9
   qa: 10
   ux-expert: 11
+  technical-writer: 12
+  dba: 13
+  devops: 14
+  performance: 15
+  security: 16
   # Expansion pack agents
-  bmad-the-creator: 12
-  infra-devops-platform: 13
+  bmad-the-creator: 17
+  infra-devops-platform: 18
