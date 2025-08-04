@@ -99,6 +99,7 @@ ide-configurations:
       # 1. Open the mode selector in VSCode
       # 2. Select a bmad-{agent} mode (e.g. "bmad-dev")
       # 3. The AI adopts that agent's persona and capabilities
+
   qwen-code:
     name: Qwen Code
     rule-dir: .qwen/bmad-method/

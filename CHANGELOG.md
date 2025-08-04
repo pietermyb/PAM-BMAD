@@ -7,6 +7,10 @@
 *   Added support for CoPilot Instructions.
 *   Added support to install curated list of MCP servers
 
+### Notes
+
+*   PAM-BMAD already includes KiloCode and Qwen-Code IDE support that was added to upstream BMAD in v4.34.0 and v4.35.0
+
 ## [1.0.0.]
 
 This is the first version of the PAM BMAD Method, forked from the original BMAD Method created by Brian Madison and available at https://github.com/bmadcode/BMAD-METHOD/.
@@ -43,12 +47,9 @@ This is the first version of the PAM BMAD Method, forked from the original BMAD 
 
 ## [4.33.1](https://github.com/bmadcode/BMAD-METHOD/compare/v4.33.0...v4.33.1) (2025-07-29)
 
-## [4.33.1](https://github.com/bmadcode/BMAD-METHOD/compare/v4.33.0...v4.33.1) (2025-07-29)
-
-
 ### Bug Fixes
 
-* dev agent yaml syntax for develop-story command ([#362](https://github.com/bmadcode/BMAD-METHOD/issues/362)) ([bcb3728](https://github.com/bmadcode/BMAD-METHOD/commit/bcb3728f8868c0f83bca3d61fbd7e15c4e114526))
+- dev agent yaml syntax for develop-story command ([#362](https://github.com/bmadcode/BMAD-METHOD/issues/362)) ([bcb3728](https://github.com/bmadcode/BMAD-METHOD/commit/bcb3728f8868c0f83bca3d61fbd7e15c4e114526))
 
 # [4.33.0](https://github.com/bmadcode/BMAD-METHOD/compare/v4.32.0...v4.33.0) (2025-07-28)
 

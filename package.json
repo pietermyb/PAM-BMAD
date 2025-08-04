@@ -1,5 +1,5 @@
 {
-  "name": "PAM-bmad",
+  "name": "pam-bmad",
   "version": "1.0.1",
   "description": "Breakthrough Method of Agile AI-driven Development, adapted for PAM",
   "main": "tools/cli.js",

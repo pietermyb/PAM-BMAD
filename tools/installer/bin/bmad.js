@@ -44,7 +44,7 @@ program
   .option('-f, --full', 'Install complete PAM BMad Method')
   .option('-x, --expansion-only', 'Install only expansion packs (no bmad-core)')
   .option('-d, --directory <path>', 'Installation directory')
-  .option('-i, --ide <ide...>', 'Configure for specific IDE(s) - can specify multiple (cursor, claude-code, windsurf, trae, roo, cline, gemini, github-copilot,kilo,qwen-code other)')
+  .option('-i, --ide <ide...>', 'Configure for specific IDE(s) - can specify multiple (cursor, claude-code, windsurf, trae, roo, kilo, cline, gemini, qwen-code, github-copilot, other)')
   .option('-e, --expansion-packs <packs...>', 'Install specific expansion packs (can specify multiple)')
   .action(async (options) => {
     try {
@@ -324,11 +324,11 @@ async function promptInstallation() {
           { name: 'Windsurf', value: 'windsurf' },
           { name: 'Trae', value: 'trae' }, // { name: 'Trae', value: 'trae'}
           { name: 'Roo Code', value: 'roo' },
+          { name: 'Kilo Code', value: 'kilo' },
           { name: 'Cline', value: 'cline' },
           { name: 'Gemini CLI', value: 'gemini' },
-          { name: 'Github Copilot', value: 'github-copilot' },
           { name: 'Qwen Code', value: 'qwen-code' },
-          { name: 'Kilo', value: 'kilo' }
+          { name: 'Github Copilot', value: 'github-copilot' }
         ]
       }
     ]);

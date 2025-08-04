@@ -1,6 +1,6 @@
 {
-  "name": "PAM-bmad",
-  "version": "1.0.0",
+  "name": "pam-bmad",
+  "version": "1.0.1",
   "description": "PAM BMad Method installer - AI-powered Agile development framework",
   "main": "lib/installer.js",
   "bin": {
