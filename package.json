@@ -1,10 +1,10 @@
 {
   "name": "PAM-bmad",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Breakthrough Method of Agile AI-driven Development, adapted for PAM",
   "main": "tools/cli.js",
   "bin": {
-    "PAM-bmad": "tools/PAM-bmad-npx-wrapper.js"
+    "pam-bmad": "tools/pam-bmad-npx-wrapper.js"
   },
   "scripts": {
     "build": "node tools/cli.js build",
@@ -13,7 +13,7 @@
     "list:agents": "node tools/cli.js list:agents",
     "validate": "node tools/cli.js validate",
     "flatten": "node tools/flattener/main.js",
-    "install:PAM-bmad": "node tools/installer/bin/bmad.js install",
+    "install:pam-bmad": "node tools/installer/bin/bmad.js install",
     "format": "prettier --write \"**/*.md\"",
     "version:patch": "node tools/version-bump.js patch",
     "version:minor": "node tools/version-bump.js minor",

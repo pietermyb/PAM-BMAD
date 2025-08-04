@@ -1,6 +1,6 @@
 # PAM BMad-Method: Universal AI Agent Framework
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](1.0.0)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue)](1.0.1)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org)
 

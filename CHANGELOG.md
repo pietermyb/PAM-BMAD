@@ -1,5 +1,14 @@
 # PAM BMAD Method v1.0.0
 
+## [1.0.1]
+
+### Added
+
+*   Added support for CoPilot Instructions.
+*   Added support to install curated list of MCP servers
+
+## [1.0.0.]
+
 This is the first version of the PAM BMAD Method, forked from the original BMAD Method created by Brian Madison and available at https://github.com/bmadcode/BMAD-METHOD/.
 
 ### Added
