@@ -6,7 +6,7 @@
 - [Version 2](https://github.com/bmadcode/BMad/tree/V2)
 - [Version 1](https://github.com/bmadcode/BMad/tree/V1)
 
-## Current Version: V4 - Alpha
+## Current Version: V4
 
 Guiding Principles of V4:
 
