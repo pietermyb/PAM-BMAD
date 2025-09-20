@@ -11,7 +11,7 @@
 
 *   PAM-BMAD already includes KiloCode and Qwen-Code IDE support that was added to upstream BMAD in v4.34.0 and v4.35.0
 
-## [1.0.0.]
+## [1.0.0]
 
 This is the first version of the PAM BMAD Method, forked from the original BMAD Method created by Brian Madison and available at https://github.com/bmadcode/BMAD-METHOD/.
 
